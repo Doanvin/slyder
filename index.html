@@ -25,13 +25,30 @@
             -webkit-box-sizing: inherit;
             box-sizing: inherit;
         }
-        .fancy-font {font-family:var(--fancy-font);letter-spacing: .18em;}
-        .contain {max-width:1200px;margin: 0 auto;padding:0 10px;}
-        html{font-family: var(--content-font);font-size:16px;min-width:320px;}
+        
+        /* font-size settings */
+        html{
+            font-family: var(--content-font);
+            font-size:16px;
+            min-width:320px;
+        }
+
         h1,h2,h3,h4,h5,h6 {font-family: var(--header-font);}
 
-        /* header.contain {padding:0 30px;} */
+        /* utility classes */
+        .fancy-font {
+            font-family:var(--fancy-font);
+            letter-spacing: .18em;
+        }
 
+        .contain {
+            max-width:1200px;
+            margin: 0 auto;
+            padding:0 10px;
+            width: 100%;
+        }
+
+        /* header settings */
         .header {
             display: block;
             width: 100%;
@@ -53,40 +70,64 @@
         }
         .nav-item:hover, .nav-item:focus {background-color:#00d0fc;border-radius: 30px;}
         
-        .main__container {
-            display:flex;
-            margin: 0 auto;
-            padding: 0 10px;
-            max-width: 1200px;
-            width:100%;
+        /* main section layout settings */
+        main.main {
+            /* remove padding from main container */
+            margin: 0;
+            padding:0;
+            width: 100%;
         }
 
-        aside.main__left, article.main__right {
+        .main__container {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+
+        .main__left, .main__right {
             -ms-flex-preferred-size: 100%;
             flex-basis: 100%;
+            /* padding for article aside */
+            padding:0 30px;
         }
 
-        .main__left {
-            -webkit-box-flex: 2.5;
-            -ms-flex: 2.5;
-            flex: 2.5;
-        }
-        .main__right {
-            -webkit-box-flex: 7.5;
-            -ms-flex: 7.5;
-            flex: 7.5;
+        @media only screen and (min-width: 767px) {
+            .main__left {
+                -webkit-box-flex: 2.5;
+                -ms-flex: 2.5;
+                flex: 2.5;
+                background-color: #fafafa;
+            }
+            .main__right {
+                -webkit-box-flex: 7.5;
+                -ms-flex: 7.5;
+                flex: 7.5;
+            }
         }
 
+        /* media querys */
         @media only screen and (max-width: 430px){
             .nav-menu {margin-left:20px;}
             .nav-item {padding:5px;}
         }
 
-        /* @media only screen and (max-width: ) */
-
         @media only screen and (min-width: 767px) {
+            html{font-size:17px;}
             .contain{padding:0 30px;}
             .sidebar{max-width: 280px;}
+        }
+
+        @media only screen and (min-width: 1279px) {
+            html{font-size:18px;}
+        }
+
+        @media only screen and (min-width: 1919px) {
+            html{font-size:20px;}
+        }
+
+        @media only screen and (min-width: 2900px) {
+            html{font-size:22px;}
+            .conatin{max-width:2880px;}
         }
 
     </style>
@@ -103,7 +144,7 @@
         </nav>
     </header>
     <main id="main" class="main contain">
-        <section class="main__conatiner">
+        <section class="main__container">
             <aside id="sidebar" class="sidebar main__left">
                 <h3 class="sidebar__title">Documentation</h3>
                 <hr class="line">
@@ -119,22 +160,29 @@
             </aside>
             <article id="main-content" class="main__right">
                 <h1 class="main__title"><span class="fancy-font">Welcome</span> Home</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos aliquid ullam tempora, quae, corporis explicabo et architecto rerum at doloremque qui aperiam nemo laudantium fugiat exercitationem ea! Minima, rerum dolor!</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, ratione? Vero ut earum porro nemo animi incidunt explicabo officia, facere est quo numquam atque adipisci tempora, iusto repellendus rem culpa?</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum veritatis repellendus numquam optio velit, suscipit unde incidunt? Mollitia minus non iusto incidunt dolore molestiae, saepe ea, impedit aperiam iure doloremque!</p>
             </article>
         </section>
     </main>
 
     <template id="index">
         <style>
-            body {}
+            body {
+                background-image: linear-gradient(to top, #0ba360 0%, #3cba92 100%);
+                color: #fff;
+            } 
         </style>
          <h1 class="main__title fancy-font">Usage</h1>
     </template>
 
     <template id="usage">
-        <style>body{
-            background-image: linear-gradient(to top, #0ba360 0%, #3cba92 100%);
-            color: #fff;
-        } 
+        <style>
+            body {
+                background-image: linear-gradient(to top, #0ba360 0%, #3cba92 100%);
+                color: #fff;
+            } 
         </style>
         <h1 class="main__title fancy-font">Usage</h1>
         <p>This is a magical example.</p>
@@ -282,40 +330,6 @@
     </template>
 
     <script>
-      // the "notfound" implements a catch-all
-      // with page('*', notfound). Here we have
-      // no catch-all, so page.js will redirect
-      // to the location of paths which do not
-      // match any of the following routes
-      //
-      
-
-    //   page('/', index);
-    //   page('/about', about);
-    //   page('/contact', contact);
-    //   page('/contact/:contactName', contact);
-    //   page();
-
-    //   function index() {
-    //     document.querySelector('p')
-    //       .textContent = 'viewing index';
-    //   }
-
-    //   function about() {
-    //     document.querySelector('p')
-    //       .textContent = 'viewing about';
-    //   }
-
-    //   function contact(ctx) {
-    //     document.querySelector('p')
-    //       .textContent = 'viewing contact ' + (ctx.params.contactName || '');
-    //   }
-    </script>
-
-
-    <!-- <script src="./routes.js"></script>
-    <script>window.addEventListener('DOMContentLoaded', router(event));</script> -->
-    <script>
         // match page base with github pages subdomain
         page.base('/slyder');
         page('/', index);
@@ -323,7 +337,9 @@
         page('/docs', docs);
         page('/example', example);
         page('*', notfound);
-        page();
+        page({
+            hashbang:true
+        });
 
 
         function replaceContent(id) {
@@ -334,7 +350,7 @@
                 $content.innerHTML = '';
                 $content.appendChild(clone);
             } else {
-                console.log('template not supported')
+                alert('HTML template tags are not supported by your browser. Please upgrade to Firefox or Chrome.')
             }
         }
 
@@ -343,8 +359,7 @@
         }
 
         function usage() {
-        replaceContent('usage');
-        console.log('I made it though usage')
+            replaceContent('usage');
         }
 
         function docs() {
@@ -359,18 +374,10 @@
             replaceContent('notfound');
         }
 
-        function handleClick(event) {
-            console.log(event.target)
-            if ('content' in document.createElement('template')){
-                let $content = document.getElementById('main-content');
-                const template = document.getElementById('usage');
-                const clone = document.importNode(template.content, true);
-                $content.innerHTML = '';
-                $content.appendChild(clone);
-            } else {
-                console.log('template not supported')
-            }
-        }
+        //   function contact(ctx) {
+        //     document.querySelector('p')
+        //       .textContent = 'viewing contact ' + (ctx.params.contactName || '');
+        //   }
     </script>
 </body>
 </html>
