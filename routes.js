@@ -1,8 +1,8 @@
-(()=> {
+const router = () => {
   page('/', index);
-  page('/usage', usage);
-  page('/docs', docs);
-  page('/example', example);
+  page('/Usage', usage);
+  page('/Docs', docs);
+  page('/Example', example);
   page('*', notfound);
 
 
@@ -33,4 +33,4 @@
   function notfound() {
     replaceContent('NotFound');
   }
-})();
+};
