@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
     <link rel="dns-prefetch" href="https://fonts.googleapis.com"> 
+    <link rel="dns-prefetch" href="https://unpkg.com">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=1, min-width=1, max-width=2.5">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=1, minimum-scale=1, maximum-scale=2.5">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Slyder | Modern Page Transitions</title>
     <meta description="A simple page transition component for single page applications.">
@@ -17,26 +18,49 @@
             --content-font: 'Open Sans', -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol';
             --fancy-font: 'Mr Dafoe', cursive, -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol';
         }
+        *, ::before, ::after {
+            -webkit-box-sizing: inherit;
+            box-sizing: inherit;
+        }
         .fancy-font {font-family:var(--fancy-font);letter-spacing: .18em;}
-        .contain {margin: 0 auto;}
-        
-        header {
+        .contain {max-width:1200px;margin: 0 auto;padding:0 10px;}
+        html{font-family: var(--content-font);font-size:16px;min-width:320px;}
+        h1,h2,h3,h4,h5,h6 {font-family: var(--header-font);}
+
+        /* header.contain {padding:0 30px;} */
+
+        .header {
             display: block;
             width: 100%;
-            background: #00d0fc;
+            height:60px;
+            /* background: #00d0fc; */
+            background-image: linear-gradient(to top, #00c6fb 0%, #005bea 100%);
             color: #fff;
             font-family: var(--header-font);
+            z-index: 1;
         }
 
-        nav {
-            display: inline-block;
+        nav.nav {display: block;padding-top:20px;}
+        .nav-brand {display: inline-block;}
+        .nav-menu {display: inline-block;margin-left:30px;}
+        .nav-item {
+            padding:15px;
+            color: #966be6;
+            font-weight:bold;
         }
+        .nav-item:hover, .nav-item:focus {background-color:#00d0fc;border-radius: 30px;}
         
         .main__container {
             display:flex;
             margin: 0 auto;
             padding: 0 10px;
             max-width: 1200px;
+            width:100%;
+        }
+
+        aside.main__left, article.main__right {
+            -ms-flex-preferred-size: 100%;
+            flex-basis: 100%;
         }
 
         .main__left {
@@ -50,42 +74,188 @@
             flex: 7.5;
         }
 
-        @media only screen and (min-width: 640px) {
-            .nav {
-                max-width: 
-            }
+        @media only screen and (max-width: 430px){
+            .nav-menu {margin-left:20px;}
+            .nav-item {padding:5px;}
+        }
+
+        /* @media only screen and (max-width: ) */
+
+        @media only screen and (min-width: 767px) {
+            .contain{padding:0 30px;}
+            .sidebar{max-width: 280px;}
         }
 
     </style>
 </head>
 <body>
-    <header>
+    <header class="header">
+        <script src="https://unpkg.com/page/page.js"></script>
+        <script src="./routes.js"></script>
         <nav id="main-nav" class="nav contain">
             <div class="nav-brand fancy-font">SLYDER</div>
             <div class="nav-menu">
-                <a href="#Usage" class="nav-item">Usage</a>
-                <a href="#Docs" class="nav-item">Docs</a>
-                <a href="#Example" class="nav-item">Example</a>
+                <a href="Usage" class="nav-item">Usage</a>
+                <a href="Docs" class="nav-item">Docs</a>
+                <a href="Example" class="nav-item">Example</a>
             </div>
         </nav>
     </header>
-    <main id="main" class="main">
+    <main id="main" class="main contain">
         <section class="main__conatiner">
-            <aside id="sidebar main__left" class="sidebar">
+            <aside id="sidebar" class="sidebar main__left">
                 <h3 class="sidebar__title">Documentation</h3>
                 <hr class="line">
-                <ul id="sidebar-nav" class="sidebar__menu">
-                    <li>Introduction</li>
-                    <li>Installation Without NPM, YARN</li>
-                    <li>Installation With NPM, YARN</li>
-                    <li>Use Cases</li>
-                    <li class="fancy-font">That's All Folks</li>
-                </ul>
+                <nav id="sidebar-nav">
+                    <ul id="sidebar-menu" class="sidebar__menu">
+                        <li>Introduction</li>
+                        <li>Installation w/o NPM</li>
+                        <li>Installation w/ NPM</li>
+                        <li>Use Cases</li>
+                        <li class="fancy-font">That's All Folks</li>
+                    </ul>
+                </nav>
             </aside>
             <article id="main-content" class="main__right">
-
+                <h1 class="main__title"><span class="fancy-font">Welcome</span> Home</h1>
             </article>
         </section>
     </main>
+
+    <template id="home">
+        <style>
+            body {}
+        </style>
+         <h1 class="main__title fancy-font">Usage</h1>
+    </template>
+
+    <template id="Usage">
+        <style>body{
+            background-image: linear-gradient(to top, #0ba360 0%, #3cba92 100%);
+            color: #fff;
+        } 
+        </style>
+        <h1 class="main__title fancy-font">Usage</h1>
+    </template>
+
+    <template id="Docs">
+        <style>
+            body {
+                background-image: linear-gradient(to right, #f83600 0%, #f9d423 100%);
+                color: #fff;
+            }
+        </style>
+         <h1 class="fancy-font">Docs</h1>
+    </template>
+
+    <template id="Example">
+        <h1 class="main__title fancy-font">Example</h1>
+    </template>
+
+    <template id="NotFound">
+        <style>
+            body, html{
+            margin: 0 auto;
+            padding: 0;
+            font-weight: 800;
+            }
+
+            body{
+            background: #000;
+            font-family: cursive;
+            }
+
+            svg {
+                display: block;
+                font: 10.5em 'Monoton';
+                width: 320px;
+                height: 300px;
+                margin: 0 auto;
+            }
+
+            .content{
+            text-align: center;
+            }
+
+            h1{
+            text-align: center;
+            font: 2em 'Roboto', sans-serif;
+            font-weight: 900;
+            color: #2f8f7f;
+            opacity: .6;
+            }
+
+            a{
+            display: inline-block;
+            text-transform: uppercase;
+            font: 1em 'Roboto';
+            font-weight: 300;
+            border: 1px solid #2f8f7f;
+            border-radius: 4px;
+            color: #2f8f7f;
+            margin-top: 10%;
+            padding: 8px 14px;
+            text-decoration: none;
+            opacity: .6;
+            }
+
+            .text {
+                fill: none;
+                stroke: white;
+                stroke-dasharray: 8% 29%;
+                stroke-width: 5px;
+                stroke-dashoffset: 1%;
+                animation: stroke-offset 5.5s infinite linear;
+            }
+
+            .text:nth-child(1){
+                stroke: #1c234d;
+                animation-delay: -1;
+            }
+
+            .text:nth-child(2){
+                stroke: #315b2c;
+                animation-delay: -2s;
+            }
+
+            .text:nth-child(3){
+                stroke: #2f8f7f;
+                animation-delay: -3s;
+            }
+
+            .text:nth-child(4){
+                stroke: #2f8f7f;
+                animation-delay: -4s;
+            }
+
+            .text:nth-child(5){
+                stroke: #da2717;
+                animation-delay: -5s;
+            }
+
+            @keyframes stroke-offset{
+                100% {
+                stroke-dashoffset: -35%;
+            }
+            }
+        </style>
+        <svg viewBox="0 0 360 300">
+            <symbol id="s-text">
+                <text text-anchor="middle" x="50%" y="80%">404</text>
+            </symbol>
+        
+            <g class = "g-ants">
+                <use xlink:href="#s-text" class="text"></use>
+                <use xlink:href="#s-text" class="text"></use>
+                <use xlink:href="#s-text" class="text"></use>
+                <use xlink:href="#s-text" class="text"></use>
+                <use xlink:href="#s-text" class="text"></use>
+            </g>
+        </svg>
+        <div class="content"> 
+        <h1>Page Not Found</h1>
+        <a href="/">Back to Home</a>
+        </div>
+    </template>
 </body>
 </html>
