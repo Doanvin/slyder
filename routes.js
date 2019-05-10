@@ -7,7 +7,7 @@ const router = () => {
 
 
   function replaceContent(id) {
-    $content = document.getElementById('main-content');
+    let $content = document.getElementById('main-content');
     const template = document.getElementById(id);
     const clone = document.importNode(template.content, true);
     $content.innerHTML = '';
@@ -20,6 +20,7 @@ const router = () => {
 
   function usage() {
   replaceContent('Usage');
+  console.log('I made it though usage')
   }
 
   function docs() {

@@ -10,6 +10,7 @@
     <meta description="A simple page transition component for single page applications.">
     <link rel="stylesheet" href="normalize.min.css">
     <link href="https://fonts.googleapis.com/css?family=Mr+Dafoe|Open+Sans|Prompt" rel="stylesheet">
+    <script src="./page.js"></script>
 
 
     <style>
@@ -93,9 +94,9 @@
         <nav id="main-nav" class="nav contain">
             <div class="nav-brand fancy-font">SLYDER</div>
             <div class="nav-menu">
-                <a href="Usage" class="nav-item">Usage</a>
-                <a href="Docs" class="nav-item">Docs</a>
-                <a href="Example" class="nav-item">Example</a>
+                <a href="usage" class="nav-item">Usage</a>
+                <a href="docs" class="nav-item">Docs</a>
+                <a href="example" class="nav-item">Example</a>
             </div>
         </nav>
     </header>
@@ -276,8 +277,55 @@
         </div>
     </template>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/page.js/1.11.4/page.min.js"></script>
-    <script src="./routes.js"></script>
-    <script>window.addEventListener('DOMContentLoaded', router(event));</script>
+    <button onclick="handleClick(event)">Click Me</button>
+
+    <!-- <script src="./routes.js"></script>
+    <script>window.addEventListener('DOMContentLoaded', router(event));</script> -->
+    <script>
+        page('./', index);
+        page('./usage', usage);
+        page('./docs', docs);
+        page('./example', example);
+        page('*', notfound);
+
+
+        function replaceContent(id) {
+            if ('content' in document.createElement('template')){
+                let $content = document.getElementById('main-content');
+                const template = document.getElementById(id);
+                const clone = document.importNode(template.content, true);
+                $content.innerHTML = '';
+                $content.appendChild(clone);
+            } else {
+                console.log('template not supported')
+            }
+        }
+
+        function index() {
+            replaceContent('home');
+        }
+
+        function usage() {
+        replaceContent('usage');
+        console.log('I made it though usage')
+        }
+
+        function docs() {
+            replaceContent('docs');
+        }
+
+        function example() {
+            replaceContent('example');
+        }
+
+        function notfound() {
+            replaceContent('notfound');
+        }
+
+        function handleClick(event) {
+            console.log(event.target)
+            page('usage', usage);
+        }
+    </script>
 </body>
 </html>
