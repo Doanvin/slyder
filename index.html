@@ -10,7 +10,7 @@
     <meta description="A simple page transition component for single page applications.">
     <link rel="stylesheet" href="normalize.min.css">
     <link href="https://fonts.googleapis.com/css?family=Mr+Dafoe|Open+Sans|Prompt" rel="stylesheet">
-    <script src="./page.js"></script>
+    <script src="/page.js"></script>
 
 
     <style>
@@ -279,9 +279,52 @@
 
     <button onclick="handleClick(event)">Click Me</button>
 
+    <h1>Basic</h1>
+    <p></p>
+    <ul>
+      <li><a href="./">/</a></li>
+      <li><a href="#whoop">#whoop</a></li>
+      <li><a href="./about">/about</a></li>
+      <li><a href="./contact">/contact</a></li>
+      <li><a href="./contact/me">/contact/me</a></li>
+      <li><a href="./not-found?foo=bar">/not-found</a></li>
+    </ul>
+
+    <script>
+      // the "notfound" implements a catch-all
+      // with page('*', notfound). Here we have
+      // no catch-all, so page.js will redirect
+      // to the location of paths which do not
+      // match any of the following routes
+      //
+      page.base('/basic');
+
+      page('/', index);
+      page('/about', about);
+      page('/contact', contact);
+      page('/contact/:contactName', contact);
+      page();
+
+      function index() {
+        document.querySelector('p')
+          .textContent = 'viewing index';
+      }
+
+      function about() {
+        document.querySelector('p')
+          .textContent = 'viewing about';
+      }
+
+      function contact(ctx) {
+        document.querySelector('p')
+          .textContent = 'viewing contact ' + (ctx.params.contactName || '');
+      }
+    </script>
+
+
     <!-- <script src="./routes.js"></script>
     <script>window.addEventListener('DOMContentLoaded', router(event));</script> -->
-    <script>
+    <!-- <script>
         page('./', index);
         page('./usage', usage);
         page('./docs', docs);
@@ -324,8 +367,16 @@
 
         function handleClick(event) {
             console.log(event.target)
-            page('usage', usage);
-        }
+            if ('content' in document.createElement('template')){
+                let $content = document.getElementById('main-content');
+                const template = document.getElementById('usage');
+                const clone = document.importNode(template.content, true);
+                $content.innerHTML = '';
+                $content.appendChild(clone);
+            } else {
+                console.log('template not supported')
+            }
+        } -->
     </script>
 </body>
 </html>
