@@ -21,6 +21,19 @@
             --header-font: 'Prompt', -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol';
             --content-font: 'Open Sans', -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol';
             --fancy-font: 'Mr Dafoe', cursive, -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol';
+            --blue: #00d0fc;
+            --blue-light: #0b9aff;
+            --blue-lighter: #30a8fc;
+            --blue-dark: #0064ab;
+            --blue-darker: #004e84;
+            --green: #00F485;
+            --green-dark: #00B663;
+            --orange: #FF4500;
+            --orange-darker: #CF3800;
+            --orange-lighter:#FF5E23;
+            --yellow: #FFBE00;
+            --purple: #9600FC;
+            overflow-x: hidden;
         }
         *, ::before, ::after {
             -webkit-box-sizing: inherit;
@@ -67,7 +80,8 @@
         .nav-menu {display: inline-block;margin-left:30px;}
         .nav-item {
             padding:15px;
-            color: #966be6;
+            /* color: #966be6; */
+            color: #00f485;
             font-weight:bold;
         }
         .nav-item:hover, .nav-item:focus {background-color:#00d0fc;border-radius: 30px;}
@@ -84,6 +98,7 @@
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
+            min-height: calc(100vh - 60px);
         }
 
         .main__left, .main__right {
@@ -92,6 +107,24 @@
             /* padding for article aside */
             padding:0 30px;
         }
+
+        /* sidebar settings, some in .main__left */
+        .sidebar__menu {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar__menu a {
+            text-decoration: none;
+            color: #00b664;
+        }
+
+        .sidebar__menu-item {
+            padding: 10px 0;
+        }
+
+        .main__title {color:var(--orange);}
+        .main__title--contrast {color: var(--orange-lighter);}
 
         @media only screen and (min-width: 767px) {
             .main__left {
@@ -152,16 +185,16 @@
                 <hr class="line">
                 <nav id="sidebar-nav">
                     <ul id="sidebar-menu" class="sidebar__menu">
-                        <li>Introduction</li>
-                        <li>Installation w/o NPM</li>
-                        <li>Installation w/ NPM</li>
-                        <li>Use Cases</li>
-                        <li class="fancy-font">That's All Folks</li>
+                        <a href="#Introduction"><li class="sidebar__menu-item">Introduction</li></a>
+                        <a href="#Installation-w-o-NPM"><li class="sidebar__menu-item">Installation w/o NPM</li></a>
+                        <a href="#Installation-w-NPM"><li class="sidebar__menu-item">Installation w/ NPM</li></a>
+                        <a href="#Use-Cases"><li class="sidebar__menu-item">Use Cases</li></a>
+                        <li class="fancy-font sidebar__menu-item">That's All Folks</li>
                     </ul>
                 </nav>
             </aside>
             <article id="main-content" class="main__right">
-                <h1 class="main__title"><span class="fancy-font">Welcome</span> Home</h1>
+                <h1 class="main__title"><span class="fancy-font main__title--contrast">Welcome</span> Home</h1>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos aliquid ullam tempora, quae, corporis explicabo et architecto rerum at doloremque qui aperiam nemo laudantium fugiat exercitationem ea! Minima, rerum dolor!</p>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, ratione? Vero ut earum porro nemo animi incidunt explicabo officia, facere est quo numquam atque adipisci tempora, iusto repellendus rem culpa?</p>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum veritatis repellendus numquam optio velit, suscipit unde incidunt? Mollitia minus non iusto incidunt dolore molestiae, saepe ea, impedit aperiam iure doloremque!</p>
@@ -203,6 +236,8 @@
                 background-image: linear-gradient(to right, #f83600 0%, #f9d423 100%);
                 color: #fff;
             }
+            .main__title {color:var(--blue);}
+            .main__title--contrast {color: var(--blue-dark);}
         </style>
          <h1 class="main__title fancy-font">Docs</h1>
          <p>This is a magical example.</p>
