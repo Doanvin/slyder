@@ -1,0 +1,29 @@
+{
+  "name": "slyder",
+  "version": "0.1.0",
+  "description": "A simple page transition component for single page applications.",
+  "main": "slyder.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Doanvin/slyder.git"
+  },
+  "keywords": [
+    "page",
+    "transitions",
+    "javascript",
+    "web",
+    "component",
+    "css",
+    "transition",
+    "transition"
+  ],
+  "author": "@Doanvin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Doanvin/slyder/issues"
+  },
+  "homepage": "https://github.com/Doanvin/slyder#readme"
+}
