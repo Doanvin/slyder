@@ -123,7 +123,7 @@
         </section>
     </main>
 
-    <template id="home">
+    <template id="index">
         <style>
             body {}
         </style>
@@ -289,26 +289,26 @@
       // match page base with github pages subdomain
       page.base('/slyder');
 
-      page('/', index);
-      page('/about', about);
-      page('/contact', contact);
-      page('/contact/:contactName', contact);
-      page();
+    //   page('/', index);
+    //   page('/about', about);
+    //   page('/contact', contact);
+    //   page('/contact/:contactName', contact);
+    //   page();
 
-      function index() {
-        document.querySelector('p')
-          .textContent = 'viewing index';
-      }
+    //   function index() {
+    //     document.querySelector('p')
+    //       .textContent = 'viewing index';
+    //   }
 
-      function about() {
-        document.querySelector('p')
-          .textContent = 'viewing about';
-      }
+    //   function about() {
+    //     document.querySelector('p')
+    //       .textContent = 'viewing about';
+    //   }
 
-      function contact(ctx) {
-        document.querySelector('p')
-          .textContent = 'viewing contact ' + (ctx.params.contactName || '');
-      }
+    //   function contact(ctx) {
+    //     document.querySelector('p')
+    //       .textContent = 'viewing contact ' + (ctx.params.contactName || '');
+    //   }
     </script>
 
 
@@ -335,7 +335,7 @@
         }
 
         function index() {
-            replaceContent('home');
+            replaceContent('index');
         }
 
         function usage() {
