@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="normalize.min.css">
     <link href="https://fonts.googleapis.com/css?family=Mr+Dafoe|Open+Sans|Prompt" rel="stylesheet">
     <script src="/slyder/page.js"></script>
+    <!-- match base with github pages subdomain -->
     <base href="/slyder/" >
 
 
@@ -278,19 +279,6 @@
         </div>
     </template>
 
-    <button onclick="handleClick(event)">Click Me</button>
-
-    <h1>Basic</h1>
-    <p></p>
-    <ul>
-      <li><a href="./">/</a></li>
-      <li><a href="#whoop">#whoop</a></li>
-      <li><a href="./about">/about</a></li>
-      <li><a href="./contact">/contact</a></li>
-      <li><a href="./contact/me">/contact/me</a></li>
-      <li><a href="./not-found?foo=bar">/not-found</a></li>
-    </ul>
-
     <script>
       // the "notfound" implements a catch-all
       // with page('*', notfound). Here we have
@@ -298,6 +286,7 @@
       // to the location of paths which do not
       // match any of the following routes
       //
+      // match page base with github pages subdomain
       page.base('/slyder');
 
       page('/', index);
@@ -325,7 +314,7 @@
 
     <!-- <script src="./routes.js"></script>
     <script>window.addEventListener('DOMContentLoaded', router(event));</script> -->
-    <!-- <script>
+    <script>
         page('./', index);
         page('./usage', usage);
         page('./docs', docs);
@@ -377,7 +366,7 @@
             } else {
                 console.log('template not supported')
             }
-        } -->
+        }
     </script>
 </body>
 </html>
