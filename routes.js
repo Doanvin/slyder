@@ -20,10 +20,11 @@ function replaceContent(id) {
         let $content = document.getElementById('main-content');
 
         // access the link import
-        const link = document.querySelector(`link[rel="import"][href="${BASE}/views/${id}.html"]`).import;
+        const link = document.querySelector(`link[rel="import"][href="${BASE}/views/${id}.html"]`);
+        const linkimport = link.import;
 
         // select the template from inside the imported html
-        const template = link.getElementById(id);
+        const template = linkimport.getElementById(id);
 
         // clone it, clear the $content, insert your cloned template to $content
         const clone = document.importNode(template.content, true);
