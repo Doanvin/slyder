@@ -3,10 +3,12 @@ page.base('/slyder');
 page('/', index);
 page('/usage', usage);
 page('/docs', docs);
+// page('/docs/:page', docs);
 page('/example', example);
 page('*', notfound);
 page({
-    hashbang:true
+    hashbang:true,
+    dipatch:false
 });
 
 
