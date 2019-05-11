@@ -50,7 +50,10 @@
             min-width:320px;
             overflow-x:hidden;
         }
-        body {overflow-x:hidden;}
+        body {
+            overflow-x:hidden;
+            background-color: #7DF5BE;
+        }
 
         h1,h2,h3,h4,h5,h6 {font-family: var(--header-font);}
 
@@ -78,6 +81,7 @@
         /* HEADER SETTINGS */
         .header {
             display: block;
+            position: fixed;
             width: 100%;
             height:var(--nav-height);
             max-height:var(--nav-height);
@@ -87,6 +91,10 @@
             color: #fff;
             font-family: var(--header-font);
             z-index: 1;
+        }
+
+        .header--shadow {
+            box-shadow: 0 0 3px 3px rgba(0, 143, 79, 0.8);
         }
 
         /* NAV SETTINGS */
@@ -127,7 +135,7 @@
         /* MAIN SECTION LAYOUT SETTINGS */
         main.main {
             /* remove padding from main container */
-            margin: 0 auto;
+            margin: var(--nav-height) auto 0;
             padding:0;
             width: 100%;
         }
@@ -171,12 +179,12 @@
             padding: 10px 0;
         }
 
-        .main__title {color: var(--orange);}
+        .main__title {color: #431c57;}
         .main__title--contrast {color: var(--orange-lighter);}
 
         article.main__right {
-            background-image: linear-gradient(to top, #0ba360 0%, #3cba92 100%);
-            color: #fff;
+            background-image: #7DF5BE;
+            color: #431c57;
         } 
 
         @media only screen and (min-width: 767px) {
@@ -243,8 +251,10 @@
 
     </style>
 </head>
+
+
 <body>
-    <header class="header">
+    <header class="header header--shadow">
         <nav id="main-nav" class="nav contain">
             <div class="nav-brand fancy-font"><a href="./">SLYDER</a></div>
             <div class="nav-menu">
@@ -254,7 +264,7 @@
             </div>
         </nav>
     </header>
-    <main id="main" class="main contain">
+    <main id="main" class="main">
         <section class="main__container">
             <aside id="sidebar" class="sidebar sidebar__fixed main__left">
                 <h3 class="sidebar__title">Documentation</h3>
@@ -277,6 +287,30 @@
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos aliquid ullam tempora, quae, corporis explicabo et architecto rerum at doloremque qui aperiam nemo laudantium fugiat exercitationem ea! Minima, rerum dolor!</p>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, ratione? Vero ut earum porro nemo animi incidunt explicabo officia, facere est quo numquam atque adipisci tempora, iusto repellendus rem culpa?</p>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum veritatis repellendus numquam optio velit, suscipit unde incidunt? Mollitia minus non iusto incidunt dolore molestiae, saepe ea, impedit aperiam iure doloremque!</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos aliquid ullam tempora, quae, corporis explicabo et architecto rerum at doloremque qui aperiam nemo laudantium fugiat exercitationem ea! Minima, rerum dolor!</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, ratione? Vero ut earum porro nemo animi incidunt explicabo officia, facere est quo numquam atque adipisci tempora, iusto repellendus rem culpa?</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum veritatis repellendus numquam optio velit, suscipit unde incidunt? Mollitia minus non iusto incidunt dolore molestiae, saepe ea, impedit aperiam iure doloremque!</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos aliquid ullam tempora, quae, corporis explicabo et architecto rerum at doloremque qui aperiam nemo laudantium fugiat exercitationem ea! Minima, rerum dolor!</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, ratione? Vero ut earum porro nemo animi incidunt explicabo officia, facere est quo numquam atque adipisci tempora, iusto repellendus rem culpa?</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum veritatis repellendus numquam optio velit, suscipit unde incidunt? Mollitia minus non iusto incidunt dolore molestiae, saepe ea, impedit aperiam iure doloremque!</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos aliquid ullam tempora, quae, corporis explicabo et architecto rerum at doloremque qui aperiam nemo laudantium fugiat exercitationem ea! Minima, rerum dolor!</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, ratione? Vero ut earum porro nemo animi incidunt explicabo officia, facere est quo numquam atque adipisci tempora, iusto repellendus rem culpa?</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum veritatis repellendus numquam optio velit, suscipit unde incidunt? Mollitia minus non iusto incidunt dolore molestiae, saepe ea, impedit aperiam iure doloremque!</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos aliquid ullam tempora, quae, corporis explicabo et architecto rerum at doloremque qui aperiam nemo laudantium fugiat exercitationem ea! Minima, rerum dolor!</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, ratione? Vero ut earum porro nemo animi incidunt explicabo officia, facere est quo numquam atque adipisci tempora, iusto repellendus rem culpa?</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum veritatis repellendus numquam optio velit, suscipit unde incidunt? Mollitia minus non iusto incidunt dolore molestiae, saepe ea, impedit aperiam iure doloremque!</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos aliquid ullam tempora, quae, corporis explicabo et architecto rerum at doloremque qui aperiam nemo laudantium fugiat exercitationem ea! Minima, rerum dolor!</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, ratione? Vero ut earum porro nemo animi incidunt explicabo officia, facere est quo numquam atque adipisci tempora, iusto repellendus rem culpa?</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum veritatis repellendus numquam optio velit, suscipit unde incidunt? Mollitia minus non iusto incidunt dolore molestiae, saepe ea, impedit aperiam iure doloremque!</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos aliquid ullam tempora, quae, corporis explicabo et architecto rerum at doloremque qui aperiam nemo laudantium fugiat exercitationem ea! Minima, rerum dolor!</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, ratione? Vero ut earum porro nemo animi incidunt explicabo officia, facere est quo numquam atque adipisci tempora, iusto repellendus rem culpa?</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum veritatis repellendus numquam optio velit, suscipit unde incidunt? Mollitia minus non iusto incidunt dolore molestiae, saepe ea, impedit aperiam iure doloremque!</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos aliquid ullam tempora, quae, corporis explicabo et architecto rerum at doloremque qui aperiam nemo laudantium fugiat exercitationem ea! Minima, rerum dolor!</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, ratione? Vero ut earum porro nemo animi incidunt explicabo officia, facere est quo numquam atque adipisci tempora, iusto repellendus rem culpa?</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum veritatis repellendus numquam optio velit, suscipit unde incidunt? Mollitia minus non iusto incidunt dolore molestiae, saepe ea, impedit aperiam iure doloremque!</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos aliquid ullam tempora, quae, corporis explicabo et architecto rerum at doloremque qui aperiam nemo laudantium fugiat exercitationem ea! Minima, rerum dolor!</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, ratione? Vero ut earum porro nemo animi incidunt explicabo officia, facere est quo numquam atque adipisci tempora, iusto repellendus rem culpa?</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum veritatis repellendus numquam optio velit, suscipit unde incidunt? Mollitia minus non iusto incidunt dolore molestiae, saepe ea, impedit aperiam iure doloremque!</p>
             </article>
         </section>
     </main>
@@ -284,8 +318,8 @@
     <template id="index">
         <style>
             article.main__right {
-                background-image: linear-gradient(to top, #0ba360 0%, #3cba92 100%);
-                color: #fff;
+                background-image: #7DF5BE;
+                color: #008F4E;
             } 
         </style>
          <h1 class="main__title fancy-font">Welcome Home</h1>
@@ -453,6 +487,8 @@
     <!-- ROUTING USING page.js -->
     <script src="/slyder/page.js"></script>
     <script src="/slyder/routes.js"></script>
+    <!-- SLYDER ANIMATIONS -->
+    <link rel="stylesheet" href="/slyder/css/slyder.css">
 
 </body>
 </html>
