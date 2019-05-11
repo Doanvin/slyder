@@ -17,6 +17,7 @@
 
 
     <style>
+        /* VARIABLE SETTINGS */
         :root {
             --header-font: 'Prompt', -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol';
             --content-font: 'Open Sans', -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol';
@@ -33,6 +34,8 @@
             --orange-lighter:#FF5E23;
             --yellow: #FFBE00;
             --purple: #9600FC;
+            --nav-height: 60px;
+            --main-height: calc(100vh - var(--nav-height));
             overflow-x: hidden;
         }
         *, ::before, ::after {
@@ -40,7 +43,7 @@
             box-sizing: inherit;
         }
         
-        /* font-size settings */
+        /* FONT-SIZE SETTINGS */
         html{
             font-family: var(--content-font);
             font-size:16px;
@@ -51,7 +54,7 @@
 
         h1,h2,h3,h4,h5,h6 {font-family: var(--header-font);}
 
-        /* utility classes */
+        /* UTILITY CLASSES */
         .fancy-font {
             font-family:var(--fancy-font);
             letter-spacing: .18em;
@@ -64,7 +67,15 @@
             width: 100%;
         }
 
-        /* header settings */
+        .wavy-divider {
+            width: 100%;
+            /* padding: 10px 0; */
+            margin: 10px auto;
+            height: 5px;
+            background-image: linear-gradient(to right, #eea2a2 0%, #bbc1bf 19%, #57c6e1 42%, #b49fda 79%, #7ac5d8 100%);
+        }
+
+        /* HEADER SETTINGS */
         .header {
             display: block;
             width: 100%;
@@ -78,17 +89,37 @@
 
         nav.nav {display: block;padding-top:20px;}
         .nav-brand {display: inline-block;}
-        .nav-brand a {color:#fff;text-decoration: none;}
-        .nav-menu {display: inline-block;margin-left:30px;}
+        .nav-brand a {
+            color:#fff;
+            text-decoration: none;
+            border: 2px solid transparent;
+            border-radius: 30px;
+            padding: 8px; 
+        }
+
+        .nav-brand a:focus {
+            border: 2px solid var(--green);
+            border-radius: 30px;
+        }
+        .nav-menu {
+            display: inline-block;
+            margin-left:30px;
+        }
+
         .nav-item {
             padding:15px;
             /* color: #966be6; */
             color: #00f485;
             font-weight:bold;
         }
-        .nav-item:hover, .nav-item:focus {background-color:#00d0fc;border-radius: 30px;}
         
-        /* main section layout settings */
+        .nav-item:hover, 
+        .nav-item:focus {
+            background-color:#00d0fc;
+            border-radius: 30px;
+        }
+        
+        /* MAIN SECTION LAYOUT SETTINGS */
         main.main {
             /* remove padding from main container */
             margin: 0 auto;
@@ -100,7 +131,7 @@
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
-            min-height: calc(100vh - 60px);
+            min-height: var(--main-height);
         }
 
         .main__left, .main__right {
@@ -110,18 +141,28 @@
             padding:0 30px;
         }
 
-        /* sidebar settings, some in .main__left */
+        /* SIDEBAR SETTINGS, some in .main__left */
+        .sidebar {background-color: #f1f1f1;}
+
         .sidebar__menu {
             list-style: none;
             padding: 0;
         }
 
         .sidebar__menu a {
+            border: 2px solid transparent;
             text-decoration: none;
             color: #00b664;
+            padding: 8px; 
+        }
+        .sidebar__menu a:hover,
+        .sidebar__menu a:focus {
+            border: 2px solid var(--green);
+            border-radius: 30px;
         }
 
         .sidebar__menu-item {
+            border: 2px solid transparent;
             padding: 10px 0;
         }
 
@@ -129,20 +170,22 @@
         .main__title--contrast {color: var(--orange-lighter);}
 
         @media only screen and (min-width: 767px) {
-            .main__left {
+            /* .main__left {
                 -webkit-box-flex: 2.5;
                 -ms-flex: 2.5;
                 flex: 2.5;
-                background-color: #f1f1f1;
             }
             .main__right {
                 -webkit-box-flex: 7.5;
                 -ms-flex: 7.5;
                 flex: 7.5;
-            }
+            } */
+
+            .sidebar__fixed {position:fixed;height: calc(100vh - 60px);width: 25%;}
+            .sidebar__fixed-compliment {margin-left: calc(25% + 60px);}
         }
 
-        /* media querys */
+        /* MEDIA QUERYS */
         @media only screen and (max-width: 430px){
             .nav-menu {margin-left:20px;}
             .nav-item {padding:5px;}
@@ -182,21 +225,24 @@
     </header>
     <main id="main" class="main contain">
         <section class="main__container">
-            <aside id="sidebar" class="sidebar main__left">
+            <aside id="sidebar" class="sidebar sidebar__fixed main__left">
                 <h3 class="sidebar__title">Documentation</h3>
-                <hr class="line">
+                <div class="wavy-divider"></div>
                 <nav id="sidebar-nav">
                     <ul id="sidebar-menu" class="sidebar__menu">
-                        <a href="#Introduction"><li class="sidebar__menu-item">Introduction</li></a>
-                        <a href="#Installation-w-o-NPM"><li class="sidebar__menu-item">Installation w/o NPM</li></a>
-                        <a href="#Installation-w-NPM"><li class="sidebar__menu-item">Installation w/ NPM</li></a>
-                        <a href="#Use-Cases"><li class="sidebar__menu-item">Use Cases</li></a>
-                        <li class="fancy-font sidebar__menu-item">That's All Folks</li>
+                        <li class="sidebar__menu-item"><a href="#Introduction">Introduction</a></li>
+                        <li class="sidebar__menu-item"><a href="#Installation-w-o-NPM">Installation w/o NPM</a></li>
+                        <li class="sidebar__menu-item"><a href="#Installation-w-NPM">Installation w/ NPM</a></li>                
+                        <li class="sidebar__menu-item"><a href="#Use-Cases">Use Cases</a></li>
                     </ul>
                 </nav>
+                <div class="wavy-divider"></div>
+                <ul class="sidebar__menu">
+                        <li class="fancy-font sidebar__menu-item">That's All Folks</li>
+                </ul>
             </aside>
-            <article id="main-content" class="main__right">
-                <h1 class="main__title"><span class="fancy-font main__title--contrast">Welcome</span> Home</h1>
+            <article id="main-content" class="main__right sidebar__fixed-compliment">
+                <h1 class="main__title fancy-font">Welcome Home</h1>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos aliquid ullam tempora, quae, corporis explicabo et architecto rerum at doloremque qui aperiam nemo laudantium fugiat exercitationem ea! Minima, rerum dolor!</p>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, ratione? Vero ut earum porro nemo animi incidunt explicabo officia, facere est quo numquam atque adipisci tempora, iusto repellendus rem culpa?</p>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum veritatis repellendus numquam optio velit, suscipit unde incidunt? Mollitia minus non iusto incidunt dolore molestiae, saepe ea, impedit aperiam iure doloremque!</p>
@@ -211,7 +257,7 @@
                 color: #fff;
             } 
         </style>
-         <h1 class="main__title"><span class="fancy-font">Welcome</span> Home</h1>
+         <h1 class="main__title fancy-font">Welcome Home</h1>
          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos aliquid ullam tempora, quae, corporis explicabo et architecto rerum at doloremque qui aperiam nemo laudantium fugiat exercitationem ea! Minima, rerum dolor!</p>
          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, ratione? Vero ut earum porro nemo animi incidunt explicabo officia, facere est quo numquam atque adipisci tempora, iusto repellendus rem culpa?</p>
          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum veritatis repellendus numquam optio velit, suscipit unde incidunt? Mollitia minus non iusto incidunt dolore molestiae, saepe ea, impedit aperiam iure doloremque!</p>
@@ -220,7 +266,7 @@
     <template id="usage">
         <style>
             article.main__right {
-                background-image: linear-gradient(to top, #0ba360 0%, #3cba92 100%);
+                background-image: linear-gradient(-225deg, #5271C4 0%, #B19FFF 48%, #ECA1FE 100%);
                 color: #fff;
             } 
         </style>
