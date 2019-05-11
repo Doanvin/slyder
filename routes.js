@@ -20,7 +20,7 @@ function replaceContent(id) {
         let $content = document.getElementById('main-content');
 
         // access the link import
-        const link = document.querySelector(`link[rel="import"][href="${BASE}/views/${id}"]`).import;
+        const link = document.querySelector(`link[rel="import"][href="${BASE}/views/${id}.html"]`).import;
 
         // select the template from inside the imported html
         const template = link.getElementById(id);
