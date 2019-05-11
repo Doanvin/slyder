@@ -1,5 +1,6 @@
 // match page base with github pages subdomain
-page.base('/slyder');
+const BASE = '/slyder';
+page.base(BASE);
 page('/', index);
 page('/usage', usage);
 page('/docs', docs);
@@ -19,7 +20,7 @@ function replaceContent(id) {
         let $content = document.getElementById('main-content');
 
         // access the link import
-        const link = document.querySelector('link[rel=import]').import;
+        const link = document.querySelector(`link[rel="import"][href="${BASE}/views/${id}"]`).import;
 
         // select the template from inside the imported html
         const template = link.getElementById(id);
