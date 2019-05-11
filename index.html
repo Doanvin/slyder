@@ -36,7 +36,8 @@
             --purple: #9600FC;
             --nav-height: 60px;
             --main-height: calc(100vh - var(--nav-height));
-            --main-x-padding: 30px;
+            --main-x-padding: 10px;
+            --sidebar-max-width: 280px;
             overflow-x: hidden;
         }
         *, ::before, ::after {
@@ -173,8 +174,13 @@
         .main__title {color: var(--orange);}
         .main__title--contrast {color: var(--orange-lighter);}
 
+        article.main__right {
+            background-image: linear-gradient(to top, #0ba360 0%, #3cba92 100%);
+            color: #fff;
+        } 
+
         @media only screen and (min-width: 767px) {
-            /* .main__left {
+            .main__left {
                 -webkit-box-flex: 2.5;
                 -ms-flex: 2.5;
                 flex: 2.5;
@@ -183,10 +189,9 @@
                 -webkit-box-flex: 7.5;
                 -ms-flex: 7.5;
                 flex: 7.5;
-            } */
+            }
 
-            .sidebar__fixed {position:fixed;height: calc(100vh - calc(var(--main-x-padding) * 2));width: 25%;}
-            .sidebar__fixed-compliment {margin-left: calc(25% + calc(var(--main-x-padding) * 2));}
+            
         }
 
         /* MEDIA QUERYS */
@@ -196,9 +201,31 @@
         }
 
         @media only screen and (min-width: 767px) {
+            :root{--main-x-padding: 30px;}
             html{font-size:17px;}
-            .contain{padding:0 30px;}
-            .sidebar{max-width: 280px;}
+
+            .contain{
+                padding:0 var(--main-x-padding);
+            }
+            .sidebar{max-width: var(--sidebar-max-width);}
+
+            .sidebar__fixed {
+                position:fixed;
+                height: calc(100vh - var(--nav-height));
+                width: 25vw;}
+
+            .sidebar__fixed-compliment {
+                
+                margin-left: calc(25vw + calc(var(--main-x-padding) * 1.8));
+                padding-left: var(--main-x-padding);}
+        }
+
+        @media only screen and (min-width: 1145px) {
+            .sidebar__fixed-compliment {
+                /* HARD CODED MAX WIDTH OF SIDEBAR TO BE MARGIN-LEFT OF ARTICLE */
+                margin-left: 340px;
+                width: calc(100% - calc(var(--sidebar-max-width) + calc(var(--main-x-padding * 2))))
+            }
         }
 
         @media only screen and (min-width: 1279px) {
