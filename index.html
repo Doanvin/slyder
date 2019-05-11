@@ -30,7 +30,7 @@
             --orange: #FF4500;
             --orange-darker: #CF3800;
             --orange-lighter:#FF5E23;
-            --yellow: #FFBE00;
+            --yellow: #f9d022;
             --purple: #9600FC;
             --nav-height: 60px;
             --main-height: calc(100vh - var(--nav-height));
@@ -89,6 +89,7 @@
             z-index: 1;
         }
 
+        /* NAV SETTINGS */
         nav.nav {display: block;padding-top:20px;}
         .nav-brand {display: inline-block;}
         .nav-brand a {
@@ -114,11 +115,12 @@
             /* color: #966be6; */
             color: #00f485;
             font-weight:bold;
+            border: 2px solid transparent;
         }
         
         .nav-item:hover, 
         .nav-item:focus {
-            background-color:#00d0fc;
+            border: 2px solid var(--green);
             border-radius: 30px;
         }
         
@@ -342,7 +344,7 @@
         <style>
             div.notfound {
             margin: 0 auto;
-            padding: 0;
+            padding: 30px;
             font-weight: 800;
             }
 
@@ -446,58 +448,11 @@
         </div>
     </template>
 
+    <!-- GOOGLE FONTS -->
     <link href="https://fonts.googleapis.com/css?family=Mr+Dafoe|Open+Sans|Prompt" rel="stylesheet">
+    <!-- ROUTING USING page.js -->
     <script src="/slyder/page.js"></script>
     <script src="/slyder/routes.js"></script>
-    <!-- <script>
-        // match page base with github pages subdomain
-        page.base('/slyder');
-        page('/', index);
-        page('/usage', usage);
-        page('/docs', docs);
-        page('/example', example);
-        page('*', notfound);
-        page({
-            hashbang:true
-        });
 
-
-        function replaceContent(id) {
-            if ('content' in document.createElement('template')){
-                let $content = document.getElementById('main-content');
-                const template = document.getElementById(id);
-                const clone = document.importNode(template.content, true);
-                $content.innerHTML = '';
-                $content.appendChild(clone);
-            } else {
-                alert('HTML template tags are not supported by your browser. Please upgrade to Firefox or Chrome.')
-            }
-        }
-
-        function index() {
-            replaceContent('index');
-        }
-
-        function usage() {
-            replaceContent('usage');
-        }
-
-        function docs() {
-            replaceContent('docs');
-        }
-
-        function example() {
-            replaceContent('example');
-        }
-
-        function notfound() {
-            replaceContent('notfound');
-        }
-
-        //   function contact(ctx) {
-        //     document.querySelector('p')
-        //       .textContent = 'viewing contact ' + (ctx.params.contactName || '');
-        //   }
-    </script> -->
 </body>
 </html>
