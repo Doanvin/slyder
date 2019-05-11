@@ -36,6 +36,7 @@
             --purple: #9600FC;
             --nav-height: 60px;
             --main-height: calc(100vh - var(--nav-height));
+            --main-x-padding: 30px;
             overflow-x: hidden;
         }
         *, ::before, ::after {
@@ -79,7 +80,9 @@
         .header {
             display: block;
             width: 100%;
-            height:60px;
+            height:var(--nav-height);
+            max-height:var(--nav-height);
+            overflow: hidden;
             /* background: #00d0fc; */
             background-image: linear-gradient(to top, #00c6fb 0%, #005bea 100%);
             color: #fff;
@@ -103,11 +106,12 @@
         }
         .nav-menu {
             display: inline-block;
-            margin-left:30px;
+            margin-left: var(--main-x-padding);
         }
 
         .nav-item {
-            padding:15px;
+            padding:8px;
+            margin:7px;
             /* color: #966be6; */
             color: #00f485;
             font-weight:bold;
@@ -138,7 +142,7 @@
             -ms-flex-preferred-size: 100%;
             flex-basis: 100%;
             /* padding for article aside */
-            padding:0 30px;
+            padding:0 var(--main-x-padding);
         }
 
         /* SIDEBAR SETTINGS, some in .main__left */
@@ -181,14 +185,14 @@
                 flex: 7.5;
             } */
 
-            .sidebar__fixed {position:fixed;height: calc(100vh - 60px);width: 25%;}
-            .sidebar__fixed-compliment {margin-left: calc(25% + 60px);}
+            .sidebar__fixed {position:fixed;height: calc(100vh - calc(var(--main-x-padding) * 2));width: 25%;}
+            .sidebar__fixed-compliment {margin-left: calc(25% + calc(var(--main-x-padding) * 2));}
         }
 
         /* MEDIA QUERYS */
         @media only screen and (max-width: 430px){
-            .nav-menu {margin-left:20px;}
-            .nav-item {padding:5px;}
+            .nav-menu {margin-left:10px;}
+            .nav-item {padding:5px;margin:0px;}
         }
 
         @media only screen and (min-width: 767px) {
