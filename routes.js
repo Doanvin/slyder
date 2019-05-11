@@ -1,37 +1,48 @@
-const router = () => {
-  page('/', index);
-  page('/Usage', usage);
-  page('/Docs', docs);
-  page('/Example', example);
-  page('*', notfound);
+// match page base with github pages subdomain
+page.base('/slyder');
+page('/', index);
+page('/usage', usage);
+page('/docs', docs);
+page('/example', example);
+page('*', notfound);
+page({
+    hashbang:true
+});
 
 
-  function replaceContent(id) {
-    let $content = document.getElementById('main-content');
-    const template = document.getElementById(id);
-    const clone = document.importNode(template.content, true);
-    $content.innerHTML = '';
-    $content.appendChild(clone);
-  }
+function replaceContent(id) {
+    if ('content' in document.createElement('template')){
+        let $content = document.getElementById('main-content');
+        const template = document.getElementById(id);
+        const clone = document.importNode(template.content, true);
+        $content.innerHTML = '';
+        $content.appendChild(clone);
+    } else {
+        alert('HTML template tags are not supported by your browser. Please upgrade to Firefox or Chrome.')
+    }
+}
 
-  function index() {
-    replaceContent('home');
-  }
+function index() {
+    replaceContent('index');
+}
 
-  function usage() {
-  replaceContent('Usage');
-  console.log('I made it though usage')
-  }
+function usage() {
+    replaceContent('usage');
+}
 
-  function docs() {
-    replaceContent('Docs');
-  }
+function docs() {
+    replaceContent('docs');
+}
 
-  function example() {
-    replaceContent('Example');
-  }
+function example() {
+    replaceContent('example');
+}
 
-  function notfound() {
-    replaceContent('NotFound');
-  }
-};
+function notfound() {
+    replaceContent('notfound');
+}
+
+//   function contact(ctx) {
+//     document.querySelector('p')
+//       .textContent = 'viewing contact ' + (ctx.params.contactName || '');
+//   }

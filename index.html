@@ -10,8 +10,6 @@
     <title>Slyder | Modern Page Transitions</title>
     <meta description="A simple page transition component for single page applications.">
     <link rel="stylesheet" href="normalize.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Mr+Dafoe|Open+Sans|Prompt" rel="stylesheet">
-    <script src="/slyder/page.js"></script>
     <!-- match base with github pages subdomain -->
     <base href="/slyder/" >
 
@@ -448,7 +446,10 @@
         </div>
     </template>
 
-    <script>
+    <link href="https://fonts.googleapis.com/css?family=Mr+Dafoe|Open+Sans|Prompt" rel="stylesheet">
+    <script src="/slyder/page.js"></script>
+    <script src="/slyder/routes.js"></script>
+    <!-- <script>
         // match page base with github pages subdomain
         page.base('/slyder');
         page('/', index);
@@ -497,6 +498,6 @@
         //     document.querySelector('p')
         //       .textContent = 'viewing contact ' + (ctx.params.contactName || '');
         //   }
-    </script>
+    </script> -->
 </body>
 </html>
