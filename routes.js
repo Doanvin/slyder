@@ -122,11 +122,11 @@ Slyder.prototype.whichAnimationEvent = function whichAnimationEvent() {
         "WebkitAnimation": "webkitAnimationEnd"
     }
 
-    for (let t in animations) {
-        if (el.style[t] !== undefined) {
-            return animations[t];
+    Object.keys(animations).forEach((key) => {
+        if (el.style[key] !== undefined) {
+            return animations[key];
         }
-    }
+    })
 }
 
 // replace the content of the of the element with id arg
