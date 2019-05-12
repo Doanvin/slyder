@@ -36,6 +36,10 @@
             --main-height: calc(100vh - var(--nav-height));
             --main-x-padding: 10px;
             --sidebar-max-width: 280px;
+            --header-shadow: 0 0 3px 3px rgba(0, 143, 79, 0.8);
+            --title-color: #8934b4;
+            --content-color: #00572F;
+            --background-image: #7DF5BE;
             overflow-x: hidden;
         }
         *, ::before, ::after {
@@ -94,7 +98,7 @@
         }
 
         .header--shadow {
-            box-shadow: 0 0 3px 3px rgba(0, 143, 79, 0.8);
+            box-shadow: var(--header-shadow);
         }
 
         /* NAV SETTINGS */
@@ -182,10 +186,6 @@
         .main__title {
             font-weight: normal; 
             font-size: 2.5em;
-        }
-
-        .main__title--contrast {
-            color: var(--orange-lighter);
         }
 
         article.main__right {
@@ -301,13 +301,12 @@
 
     <template id="index">
         <style>
-            .main__title {
-                color: #8934b4;
+            :root{
+                --header-shadow: rgba(89, 146, 120, 0.8);
+                --background-image: #7DF5BE;
+                --title-color: #8934b4;
+                --content-color: #00572F;
             }
-            article.main__right {
-                background-image: #7DF5BE;
-                color: #00572F;
-            } 
         </style>
         <h1 class="main__title fancy-font">Welcome Home</h1>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos aliquid ullam tempora, quae, corporis explicabo et architecto rerum at doloremque qui aperiam nemo laudantium fugiat exercitationem ea! Minima, rerum dolor!</p>
@@ -342,10 +341,12 @@
 
     <template id="usage">
         <style>
-            article.main__right {
-                background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
-                color: #fff;
-            } 
+            :root{
+                /* --header-shadow: rgba(89, 146, 120, 0.8); */
+                --background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+                /* --title-color: #8934b4; */
+                --content-color: #fff;
+            }
         </style>
         <h1 class="main__title fancy-font">Usage</h1>
         <p>This is a magical example.</p>
@@ -356,12 +357,12 @@
 
     <template id="docs">
         <style>
-            .header--shadow {box-shadow: 0 0 3px 3px rgba(176, 134, 104, 0.8);}
-            article.main__right {
-                background-image: linear-gradient(to right, #ffc3a0 0%, #ffafbd 100%);
-                color: rgb(135, 61, 0);
+            :root{
+                --header-shadow: 0 0 3px 3px rgba(176, 134, 104, 0.8);
+                --background-image: linear-gradient(to right, #ffc3a0 0%, #ffafbd 100%);
+                --title-color: #9e5428;
+                --content-color: rgb(135, 61, 0);
             }
-            .main__title {color: #9e5428;}
         </style>
         <h1 class="main__title fancy-font">Docs</h1>
         <p>This is a magical example.</p>
@@ -372,11 +373,11 @@
 
     <template id="example">
         <style>
-            .header--shadow {box-shadow: 0 0 3px 3px rgba(99,201,187,0.8);}
-            .main__title {color: #8019b5;}
-            article.main__right {
-                background-image: linear-gradient(-225deg, #69EACB 0%, #EACCF8 48%, #6654F1 100%);
-                color: #9f40e0;
+            :root{
+                --header-shadow: 0 0 3px 3px rgba(99,201,187,0.8);
+                --background-image: linear-gradient(-225deg, #69EACB 0%, #EACCF8 48%, #6654F1 100%);
+                --title-color: #8019b5;;
+                --content-color: #9f40e0;
             }
         </style>
         <h1 class="main__title fancy-font">Example</h1>
