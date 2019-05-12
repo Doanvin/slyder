@@ -26,11 +26,13 @@ function setMetadata(meta) {
 function setColorVars(s) {
     let root = document.documentElement;
 
-    Object.keys(s).forEach((key) => {
+    Object.keys(s).forEach(function(key) {
         // prevent from setting var to an empty string
         if (s[key] === '' || s[key] === null || s[key] === undefined) {
             return;
         }
+
+        console.log(key, i, arr);
 
         switch (key) {
             case 'headerShadow':
