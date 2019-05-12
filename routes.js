@@ -26,7 +26,7 @@ function Slyder (current, next) {
     this.sly = window.sly;
     this.current = current;
     this.next = next;
-    this.animationEndEvent = this.whichAnimationEvent();
+    this.animationEndEvent = this.whichAnimationEvent.bind(this);
     this.currentAnimationEnded = false;
     this.nextAnimationEnded = false;
     this.isAnimating = true;
