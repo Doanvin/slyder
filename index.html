@@ -291,7 +291,7 @@
     <script>
         // meta is an object with title and description keys
         function setMetadata(meta) {
-            let title = document.querySelector('meta[title]'),
+            let title = document.getElementsByTagName('title')[0],
                 description = document.querySelector('meta[description]');
 
             title.setAttribute('title', meta.title);
@@ -359,6 +359,15 @@
         <p>Lorem ipsum elit. Eligendi praesentium ea, totam magnam magni velit. Quae nemo vitae inventore cumque. Neque harum dolore fugiat, dolorem facilis recusandae! Magnam, minima!</p>
         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus ullam natus veniam voluptatum, deserunt dolore ea fuga nemo vel cumque optio. Iusto eaque nulla voluptatum aut qui.</p>
         <p>Lorem ipsum, dolor  adipisicing elit. Dignissimos magni cumque accusamus quaerat nulla soluta, molestiae deserunt praesentium ipsam laborum excepturi obcaecati unde voluptatem. Odit voluptas ducimus non?</p>
+        <script>
+                (() => {
+                    const metadata = {
+                        title: 'Slyder | Usage',
+                        desctiption: 'How to use Slyder page transitions for single page applications. When to use Slyder.'
+                    }
+                    setMetadata(metadata);
+                })();
+            </script>
     </template>
 
     <template id="docs">
