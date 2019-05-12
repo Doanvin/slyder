@@ -1,6 +1,5 @@
 // match page base with github pages subdomain
-const BASE = '/slyder';
-page.base(BASE);
+page.base('/slyder');
 page('/', index);
 page('/usage', usage);
 page('/docs', docs);
@@ -8,8 +7,7 @@ page('/docs', docs);
 page('/example', example);
 page('*', notfound);
 page({
-    hashbang:true,
-    dipatch:false
+    hashbang:true
 });
 
 
@@ -19,12 +17,8 @@ function replaceContent(id) {
         // $content is the element who's content you would like to replace
         let $content = document.getElementById('main-content');
 
-        // access the link import
-        const link = document.querySelector(`link[rel="import"][href="${BASE}/views/${id}.html"]`);
-        const linkimport = link.import;
-
-        // select the template from inside the imported html
-        const template = linkimport.getElementById(id);
+        // seleclt the template used to replace $content
+        const template = document.getElementById(id);
 
         // clone it, clear the $content, insert your cloned template to $content
         const clone = document.importNode(template.content, true);
