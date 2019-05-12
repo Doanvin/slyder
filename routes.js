@@ -26,7 +26,7 @@ function Slyder (current, next) {
     this.sly = window.sly;
     this.current = current;
     this.next = next;
-    this.animationEndEvent = this.whichAnimationEvent.bind(this);
+    this.animationEndEvent = this.whichAnimationEvent();
     this.currentAnimationEnded = false;
     this.nextAnimationEnded = false;
     this.isAnimating = true;
@@ -104,7 +104,7 @@ function Slyder (current, next) {
 
 }
 
-Slyder.prototype.handleEndAnimation = function() {
+Slyder.prototype.handleEndAnimation = function () {
     this.currentAnimationEnded = false;
     this.nextAnimationEnded = false;
     this.next.classList = 'sly-page';
@@ -112,7 +112,7 @@ Slyder.prototype.handleEndAnimation = function() {
 }
 
 // detect the correct transition event
-Slyder.prototype.whichAnimationEvent = function whichAnimationEvent() {
+Slyder.prototype.whichAnimationEvent = function () {
     const el = document.createElement("div");
 
     const animations = {
