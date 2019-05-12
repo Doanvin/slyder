@@ -26,21 +26,25 @@ function setMetadata(meta) {
 function setColorVars(s) {
     let root = document.documentElement;
 
-    Object.keys(s).forEach((key, i, arr) => {
+    Object.keys(s).forEach((key) => {
         // prevent from setting var to an empty string
-        if (arr[key] === '' || arr[key] === null) {
+        if (s[key] === '' || s[key] === null || s[key] === undefined) {
             return;
         }
 
         switch (key) {
             case 'headerShadow':
-                root.style.setProperty('--header-shadow', arr[key]);
+                root.style.setProperty('--header-shadow', s[key]);
+                console.log(s[key]);
             case 'background':
-                root.style.setProperty('--background-image', arr[key]);
+                root.style.setProperty('--background-image', s[key]);
+                console.log(s[key]);
             case 'titleColor':
-                root.style.setProperty('--title-color', arr[key]);
+                root.style.setProperty('--title-color', s[key]);
+                console.log(s[key]);
             case 'contentColor':
-                root.style.setProperty('--content-color', arr[key]);
+                root.style.setProperty('--content-color', s[key]);
+                console.log(s[key]);
         }
     });
 }
