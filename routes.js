@@ -24,11 +24,11 @@ function setMetadata(meta) {
 // s is an object with 4 keys: 
 // headerShadow: box-shadow, background: background-image, title:color, content:color
 function setColorVars(s) {
-    let root = document.querySelector('html');
+    let root = document.documentElement;
 
     Object.keys(s).forEach((key, i, arr) => {
         // prevent from setting var to an empty string
-        if (arr[key] === '' || arr[key] === null || arr[key] === undefined) {
+        if (arr[key] === '' || arr[key] === null) {
             return;
         }
 
