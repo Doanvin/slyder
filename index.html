@@ -287,6 +287,18 @@
         </section>
     </main>
 
+    <!-- SCRIPTS FOR USE IN TEMPLATES -->
+    <script>
+        // meta is an object with title and description keys
+        function setMetadata(meta) {
+            let title = document.querySelector('meta[title]'),
+                description = document.querySelector('meta[description]');
+
+            title.setAttribute('title', meta.title);
+            desctiption.setAttribute('description', meta.description);
+        }
+    </script>
+
     <template id="index">
         <style>
             article.main__right {
@@ -325,18 +337,12 @@
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum veritatis repellendus numquam optio velit, suscipit unde incidunt? Mollitia minus non iusto incidunt dolore molestiae, saepe ea, impedit aperiam iure doloremque!</p>
 
         <script>
-            (function(){
+            (() => {
                 const metadata = {
                     title: 'Slyder | Modern Page Transitions',
                     desctiption: 'A simple page transition component for single page applications.'
                 }
-                function setMetadata(meta) {
-                    let title = document.querySelector('meta[title]'),
-                        description = document.querySelector('meta[description]');
-
-                    title.setAttribute('title', meta.title);
-                    desctiption.setAttribute('description', meta.description);
-                }
+                setMetadata(metadata);
             })();
         </script>
     </template>
@@ -353,7 +359,6 @@
         <p>Lorem ipsum elit. Eligendi praesentium ea, totam magnam magni velit. Quae nemo vitae inventore cumque. Neque harum dolore fugiat, dolorem facilis recusandae! Magnam, minima!</p>
         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus ullam natus veniam voluptatum, deserunt dolore ea fuga nemo vel cumque optio. Iusto eaque nulla voluptatum aut qui.</p>
         <p>Lorem ipsum, dolor  adipisicing elit. Dignissimos magni cumque accusamus quaerat nulla soluta, molestiae deserunt praesentium ipsam laborum excepturi obcaecati unde voluptatem. Odit voluptas ducimus non?</p>
-
     </template>
 
     <template id="docs">
@@ -365,12 +370,20 @@
             .main__title {color:var(--blue);}
             .main__title--contrast {color: var(--blue-dark);}
         </style>
-         <h1 class="main__title fancy-font">Docs</h1>
-         <p>This is a magical example.</p>
-         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum sit eum quam harum obcaecati? Totam provident voluptate quas fuga iste impedit, porro suscipit rerum possimus qui, reprehenderit dolor vel veniam.</p>
-         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto consectetur magnam possimus ea nostrum sed tempora reiciendis sit. Vel dolore praesentium quaerat repellat libero commodi voluptatem, magnam numquam id consequatur.</p>
-         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni delectus voluptas, obcaecati fuga exercitationem dignissimos totam. Eos, tempore, doloremque facilis saepe alias earum perferendis reprehenderit suscipit nemo aliquid non! Illo.</p>
- 
+        <h1 class="main__title fancy-font">Docs</h1>
+        <p>This is a magical example.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum sit eum quam harum obcaecati? Totam provident voluptate quas fuga iste impedit, porro suscipit rerum possimus qui, reprehenderit dolor vel veniam.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto consectetur magnam possimus ea nostrum sed tempora reiciendis sit. Vel dolore praesentium quaerat repellat libero commodi voluptatem, magnam numquam id consequatur.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni delectus voluptas, obcaecati fuga exercitationem dignissimos totam. Eos, tempore, doloremque facilis saepe alias earum perferendis reprehenderit suscipit nemo aliquid non! Illo.</p>
+        <script>
+            (() => {
+                const metadata = {
+                    title: 'Slyder | Documentation',
+                    desctiption: 'Learn about Slyder page transitions for single page applicaitons. Use Slyder for a superior UX.'
+                }
+                setMetadata(metadata);
+            })();
+        </script>
     </template>
 
     <template id="example">
@@ -385,6 +398,15 @@
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi praesentium ea, totam magnam magni velit. Quae nemo accusamus vitae inventore cumque. Neque harum dolore fugiat, dolorem facilis recusandae! Magnam, minima!</p>
         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus sequi, molestiae unde ullam natus veniam voluptatum, deserunt dolore ea fuga nemo vel cumque optio. Iusto eaque nulla voluptatum aut qui.</p>
         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos incidunt dolore magni cumque accusamus quaerat nulla soluta, molestiae deserunt praesentium ipsam laborum excepturi obcaecati unde voluptatem. Odit voluptas ducimus non?</p>
+        <script>
+            (() => {
+                const metadata = {
+                    title: 'Slyder | Examples',
+                    desctiption: 'A walk through of Slyder page transitions being used. Look at the code.'
+                }
+                setMetadata(metadata);
+            })();
+        </script>
     </template>
 
     <template id="notfound">
@@ -493,6 +515,15 @@
             <a href="./" class="notfound">Back to Home</a>
             </div>
         </div>
+        <script>
+            (() => {
+                const metadata = {
+                    title: 'Slyder | 404 Page Not Found',
+                    desctiption: 'Slyder page transitions for single page applications 404 page.'
+                }
+                setMetadata(metadata);
+            })();
+        </script>
     </template>
 
     <!-- GOOGLE FONTS -->
