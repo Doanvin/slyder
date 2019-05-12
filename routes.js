@@ -34,7 +34,7 @@ function Slyder (current, next, options = {animate: 'moveToLeft'}) {
         inClass = '';
 
     if (!this.sly) {
-        console.error('You need to setup a variable named "sly" on the window.\nvar sly = {animate: "moveToLeft"};  or \nwindow.sly = {animate: "moveToLeft"}');
+        console.error('You need to setup a variable named "sly" on the window.\nvar sly = {animate: "moveToLeft"};  or \nwindow.sly = {animate: "moveToLeft"};');
     }
     
     switch (this.sly.animate) {
@@ -134,7 +134,7 @@ function replaceContent(id) {
     // check for <template> support
     if ('content' in document.createElement('template')) {
         // current page before navigating
-        const $currentPage = document.querySelector('sly-page');
+        const $currentPage = document.querySelector('.sly-page');
 
         // $content is the element who's content you would like to replace
         const $content = document.getElementById('main-content');
