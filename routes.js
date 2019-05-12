@@ -31,9 +31,7 @@ function setColorVars(s) {
         if (s[key] === '' || s[key] === null || s[key] === undefined) {
             return;
         }
-
-        console.log(key, i, arr);
-
+        
         switch (key) {
             case 'headerShadow':
                 root.style.setProperty('--header-shadow', s[key]);
