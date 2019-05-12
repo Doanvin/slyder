@@ -22,7 +22,9 @@ function setMetadata(meta) {
     description.setAttribute('description', meta.description);
 }
 
-function Slyder (current, next, options = {animate: 'moveToLeft'}) {
+function Slyder(current, next, options = {
+    animate: 'moveToLeft'
+}) {
     this.sly = options;
     this.current = current;
     this.next = next;
@@ -36,7 +38,7 @@ function Slyder (current, next, options = {animate: 'moveToLeft'}) {
     if (!this.sly) {
         console.error('You need to setup a variable named "sly" on the window.\nvar sly = {animate: "moveToLeft"};  or \nwindow.sly = {animate: "moveToLeft"};');
     }
-    
+
     switch (this.sly.animate) {
         case 'moveToLeft':
             outClass = 'sly-moveToLeft sly-page--current';
@@ -99,7 +101,7 @@ function Slyder (current, next, options = {animate: 'moveToLeft'}) {
         this.next.removeEventListener(this.animataionEndEvent);
         this.nextAnimationEnded = true;
         if (this.currentAnimationEnded === true) this.handleEndAnimation.bind(this);
-        
+
     });
 
 }
@@ -144,7 +146,7 @@ function replaceContent(id) {
 
         // clone it, clear the $content, insert your cloned template to $content
         const clone = document.importNode(template.content, true);
-        $content.innerHTML = '';
+        // $content.innerHTML = '';
         $content.appendChild(clone);
         const $nextPage = document.querySelector('.sly-page--next');
 
