@@ -37,16 +37,16 @@ function setColorVars(s) {
         switch (key) {
             case 'headerShadow':
                 root.style.setProperty('--header-shadow', s[key]);
-                console.log(s[key]);
+                break;
             case 'background':
                 root.style.setProperty('--background-image', s[key]);
-                console.log(s[key]);
+                break;
             case 'titleColor':
                 root.style.setProperty('--title-color', s[key]);
-                console.log(s[key]);
+                break;
             case 'contentColor':
                 root.style.setProperty('--content-color', s[key]);
-                console.log(s[key]);
+                break;
         }
     });
 }
