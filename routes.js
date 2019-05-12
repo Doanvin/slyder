@@ -113,8 +113,7 @@ Slyder.prototype.handleEndAnimation = function() {
 
 // detect the correct transition event
 Slyder.prototype.whichAnimationEvent = function whichAnimationEvent() {
-    const t,
-        el = document.createElement("fakeelement");
+    const el = document.createElement("fakeelement");
 
     const animations = {
         "animation": "animationend",
@@ -123,7 +122,7 @@ Slyder.prototype.whichAnimationEvent = function whichAnimationEvent() {
         "WebkitAnimation": "webkitAnimationEnd"
     }
 
-    for (t in animations) {
+    for (let t in animations) {
         if (el.style[t] !== undefined) {
             return animations[t];
         }
