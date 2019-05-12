@@ -179,8 +179,14 @@
             padding: 10px 0;
         }
 
-        .main__title {color: #431c57;}
-        .main__title--contrast {color: var(--orange-lighter);}
+        .main__title {
+            font-weight: normal; 
+            font-size: 2.5em;
+        }
+
+        .main__title--contrast {
+            color: var(--orange-lighter);
+        }
 
         article.main__right {
             background-image: #7DF5BE;
@@ -287,23 +293,14 @@
         </section>
     </main>
 
-    <!-- SCRIPTS FOR USE IN TEMPLATES -->
-    <script>
-        // meta is an object with title and description keys
-        function setMetadata(meta) {
-            let title = document.getElementsByTagName('title')[0],
-                description = document.querySelector('meta[description]');
-
-            title.setAttribute('title', meta.title);
-            description.setAttribute('description', meta.description);
-        }
-    </script>
-
     <template id="index">
         <style>
+            .main__title {
+                color: #8934b4;
+            }
             article.main__right {
                 background-image: #7DF5BE;
-                color: #008F4E;
+                color: #00572F;
             } 
         </style>
         <h1 class="main__title fancy-font">Welcome Home</h1>
@@ -335,16 +332,6 @@
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, ratione? Vero ut earum porro nemo animi incidunt explicabo officia, facere est quo numquam atque adipisci tempora, iusto repellendus rem culpa?</p>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum veritatis repellendus numquam optio velit, suscipit unde incidunt? Mollitia minus non iusto incidunt dolore molestiae, saepe ea, impedit aperiam iure doloremque!</p>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum veritatis repellendus numquam optio velit, suscipit unde incidunt? Mollitia minus non iusto incidunt dolore molestiae, saepe ea, impedit aperiam iure doloremque!</p>
-
-        <script>
-            (() => {
-                const metadata = {
-                    title: 'Slyder | Modern Page Transitions',
-                    description: 'A simple page transition component for single page applications.'
-                }
-                setMetadata(metadata);
-            })();
-        </script>
     </template>
 
     <template id="usage">
@@ -359,15 +346,6 @@
         <p>Lorem ipsum elit. Eligendi praesentium ea, totam magnam magni velit. Quae nemo vitae inventore cumque. Neque harum dolore fugiat, dolorem facilis recusandae! Magnam, minima!</p>
         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus ullam natus veniam voluptatum, deserunt dolore ea fuga nemo vel cumque optio. Iusto eaque nulla voluptatum aut qui.</p>
         <p>Lorem ipsum, dolor  adipisicing elit. Dignissimos magni cumque accusamus quaerat nulla soluta, molestiae deserunt praesentium ipsam laborum excepturi obcaecati unde voluptatem. Odit voluptas ducimus non?</p>
-        <script>
-                (() => {
-                    const metadata = {
-                        title: 'Slyder | Usage',
-                        description: 'How to use Slyder page transitions for single page applications. When to use Slyder.'
-                    }
-                    setMetadata(metadata);
-                })();
-            </script>
     </template>
 
     <template id="docs">
@@ -384,19 +362,11 @@
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum sit eum quam harum obcaecati? Totam provident voluptate quas fuga iste impedit, porro suscipit rerum possimus qui, reprehenderit dolor vel veniam.</p>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto consectetur magnam possimus ea nostrum sed tempora reiciendis sit. Vel dolore praesentium quaerat repellat libero commodi voluptatem, magnam numquam id consequatur.</p>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni delectus voluptas, obcaecati fuga exercitationem dignissimos totam. Eos, tempore, doloremque facilis saepe alias earum perferendis reprehenderit suscipit nemo aliquid non! Illo.</p>
-        <script>
-            (() => {
-                const metadata = {
-                    title: 'Slyder | Documentation',
-                    description: 'Learn about Slyder page transitions for single page applicaitons. Use Slyder for a superior UX.'
-                }
-                setMetadata(metadata);
-            })();
-        </script>
     </template>
 
     <template id="example">
         <style>
+            .main__title {color: #431c57;}
             article.main__right {
                 background-image: linear-gradient(-225deg, #69EACB 0%, #EACCF8 48%, #6654F1 100%);
                 color: #fff;
@@ -407,15 +377,6 @@
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi praesentium ea, totam magnam magni velit. Quae nemo accusamus vitae inventore cumque. Neque harum dolore fugiat, dolorem facilis recusandae! Magnam, minima!</p>
         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus sequi, molestiae unde ullam natus veniam voluptatum, deserunt dolore ea fuga nemo vel cumque optio. Iusto eaque nulla voluptatum aut qui.</p>
         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos incidunt dolore magni cumque accusamus quaerat nulla soluta, molestiae deserunt praesentium ipsam laborum excepturi obcaecati unde voluptatem. Odit voluptas ducimus non?</p>
-        <script>
-            (() => {
-                const metadata = {
-                    title: 'Slyder | Examples',
-                    description: 'A walk through of Slyder page transitions being used. Look at the code.'
-                }
-                setMetadata(metadata);
-            })();
-        </script>
     </template>
 
     <template id="notfound">
@@ -524,15 +485,6 @@
             <a href="./" class="notfound">Back to Home</a>
             </div>
         </div>
-        <script>
-            (() => {
-                const metadata = {
-                    title: 'Slyder | 404 Page Not Found',
-                    description: 'Slyder page transitions for single page applications 404 page.'
-                }
-                setMetadata(metadata);
-            })();
-        </script>
     </template>
 
     <!-- GOOGLE FONTS -->
