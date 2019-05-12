@@ -24,7 +24,7 @@ function setMetadata(meta) {
 // s is an object with 4 keys: 
 // headerShadow: box-shadow, background: background-image, title:color, content:color
 function setColorVars(s) {
-    let root = document.documentElement;
+    var root = document.documentElement;
 
     Object.keys(s).forEach(function(key) {
         // prevent from setting var to an empty string
@@ -84,7 +84,7 @@ function index() {
         contentColor: '#00572F'
     };
     setMetadata(metadata);
-    setColorVars(metadata);
+    // setColorVars(metadata);
     replaceContent('index');
 }
 
@@ -98,7 +98,7 @@ function usage() {
         contentColor:'#fff'
     }
     setMetadata(metadata);
-    setColorVars(metadata);
+    // setColorVars(metadata);
     replaceContent('usage');
 }
 
@@ -112,7 +112,7 @@ function docs() {
         contentColor: 'rgb(135, 61, 0)'
     }
     setMetadata(metadata);
-    setColorVars(metadata);
+    // setColorVars(metadata);
     replaceContent('docs');
 }
 
@@ -126,7 +126,7 @@ function example() {
         contentColor:'#9f40e0'
     }
     setMetadata(metadata);
-    setColorVars(metadata);
+    // setColorVars(metadata);
     replaceContent('example');
 }
 
@@ -140,7 +140,7 @@ function notfound() {
         contentColor:''
     }
     setMetadata(metadata);
-    setColorVars(metadata);
+    // setColorVars(metadata);
     replaceContent('notfound');
 }
 
