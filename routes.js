@@ -80,8 +80,8 @@ function index() {
         contentColor: '#00572F'
     };
     setMetadata(metadata);
-    replaceContent('index');
     setColorVars(metadata);
+    replaceContent('index');
 }
 
 function usage() {
@@ -94,6 +94,7 @@ function usage() {
         contentColor:'#fff'
     }
     setMetadata(metadata);
+    setColorVars(metadata);
     replaceContent('usage');
 }
 
@@ -107,6 +108,7 @@ function docs() {
         contentColor: 'rgb(135, 61, 0)'
     }
     setMetadata(metadata);
+    setColorVars(metadata);
     replaceContent('docs');
 }
 
@@ -120,6 +122,7 @@ function example() {
         contentColor:'#9f40e0'
     }
     setMetadata(metadata);
+    setColorVars(metadata);
     replaceContent('example');
 }
 
@@ -133,6 +136,7 @@ function notfound() {
         contentColor:''
     }
     setMetadata(metadata);
+    setColorVars(metadata);
     replaceContent('notfound');
 }
 
