@@ -1,3 +1,16 @@
+.sly-page-current {
+	display: block;
+	visibility: visible;
+	z-index: 1;
+}
+
+.sly-page-next {
+	display: none;
+}
+.sly-page-ontop {
+	z-index: 999;
+}
+
 /* ANIMATIONS */
 /* move from / to  */
 

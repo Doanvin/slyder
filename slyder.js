@@ -1,6 +1,20 @@
-function handleRouteChange() {
-    setMetadata();
-    
+// detect the correct transition event
+function whichAnimationEvent(){
+  const t,
+      el = document.createElement("fakeelement");
+
+  const animations = {
+    "animation"      : "animationend",
+    "OAnimation"     : "oAnimationEnd",
+    "MozAnimation"   : "animationend",
+    "WebkitAnimation": "webkitAnimationEnd"
+  }
+
+  for (t in animations){
+    if (el.style[t] !== undefined){
+      return animations[t];
+    }
+  }
 }
 
 const button = document.querySelector(".button"),
