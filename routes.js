@@ -22,7 +22,7 @@ function setMetadata(meta) {
     description.setAttribute('description', meta.description);
 }
 
-var Slyder = function (current, next) {
+function Slyder (current, next) {
     this.sly = window.sly;
     this.current = current;
     this.next = next;
