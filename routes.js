@@ -20,41 +20,6 @@ function setMetadata(meta) {
     description.setAttribute('description', meta.description);
 }
 
-// override style variables
-// s is an object with 4 keys: 
-// headerShadow: box-shadow, background: background-image, title:color, content:color
-function setColorVars(s) {
-    var root = document.documentElement;
-
-    Object.keys(s).forEach(function(key) {
-        // prevent from setting var to an empty string
-        if (s[key] === '' || s[key] === null || s[key] === undefined) {
-            return;
-        }
-
-        console.log(key, s[key]);
-
-        switch (key) {
-            case 'headerShadow':
-                root.style.setProperty('--header-shadow', s[key]);
-                console.log(s[key]);
-                break;
-            case 'background':
-                root.style.setProperty('--background-image', s[key]);
-                console.log(s[key]);
-                break;
-            case 'titleColor':
-                root.style.setProperty('--title-color', s[key]);
-                console.log(s[key]);
-                break;
-            case 'contentColor':
-                root.style.setProperty('--content-color', s[key]);
-                console.log(s[key]);
-                break;
-        }
-    });
-}
-
 // replace the content of the of the element with id arg
 function replaceContent(id) {
     if ('content' in document.createElement('template')){
@@ -77,70 +42,45 @@ function replaceContent(id) {
 function index() {
     const metadata = {
         title: 'Slyder | Modern Page Transitions',
-        description: 'A simple page transition component for single page applications.',
-        headerShadow: 'rgba(89, 146, 120, 0.8)',
-        background: '#7DF5BE',
-        titleColor: '#8934b4',
-        contentColor: '#00572F'
-    };
+        description: 'A simple page transition component for single page applications.'
+    }
     setMetadata(metadata);
-    // setColorVars(metadata);
     replaceContent('index');
 }
 
 function usage() {
     const metadata = {
         title: 'Slyder | Usage',
-        description: 'How to use Slyder page transitions for single page applications. When to use Slyder.',
-        headerShadow: '',
-        background: 'linear-gradient(to right, #4facfe 0%, #00f2fe 100%)',
-        titleColor: '',
-        contentColor:'#fff'
+        description: 'How to use Slyder page transitions for single page applications. When to use Slyder.'
     }
     setMetadata(metadata);
-    // setColorVars(metadata);
     replaceContent('usage');
 }
 
 function docs() {
     const metadata = {
         title: 'Slyder | Documentation',
-        description: 'Learn about Slyder page transitions for single page applicaitons. Use Slyder for a superior UX.',
-        headerShadow: '0 0 3px 3px rgba(176, 134, 104, 0.8)',
-        background: 'linear-gradient(to right, #ffc3a0 0%, #ffafbd 100%)',
-        titleColor: '#9e5428',
-        contentColor: 'rgb(135, 61, 0)'
+        description: 'Learn about Slyder page transitions for single page applicaitons. Use Slyder for a superior UX.'
     }
     setMetadata(metadata);
-    // setColorVars(metadata);
     replaceContent('docs');
 }
 
 function example() {
     const metadata = {
         title: 'Slyder | Examples',
-        description: 'A walk through of Slyder page transitions being used. Look at the code.',
-        headerShadow: '0 0 3px 3px rgba(99,201,187,0.8)',
-        background: 'linear-gradient(-225deg, #69EACB 0%, #EACCF8 48%, #6654F1 100%)',
-        titleColor: '#8019b5',
-        contentColor:'#9f40e0'
+        description: 'A walk through of Slyder page transitions being used. Look at the code.'
     }
     setMetadata(metadata);
-    // setColorVars(metadata);
     replaceContent('example');
 }
 
 function notfound() {
     const metadata = {
         title: 'Slyder | 404 Page Not Found',
-        description: 'Slyder page transitions for single page applications 404 page.',
-        headerShadow: '',
-        background: '',
-        titleColor: '',
-        contentColor:''
+        description: 'Slyder page transitions for single page applications 404 page.'
     }
     setMetadata(metadata);
-    // setColorVars(metadata);
     replaceContent('notfound');
 }
 
