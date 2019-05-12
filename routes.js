@@ -20,6 +20,31 @@ function setMetadata(meta) {
     description.setAttribute('description', meta.description);
 }
 
+// override style variables
+// s is an object with 4 keys: 
+// headerShadow: box-shadow, background: background-image, title:color, content:color
+function setColorVars(s) {
+    let root = document.querySelector('html');
+
+    Object.keys(s).forEach((key, i, arr) => {
+        // prevent from setting var to an empty string
+        if (arr[key] === '' || arr[key] === null || arr[key] === undefined) {
+            return;
+        }
+
+        switch (key) {
+            case 'headerShadow':
+                root.style.setProperty('--header-shadow', arr[key]);
+            case 'background':
+                root.style.setProperty('--background-image', arr[key]);
+            case 'titleColor':
+                root.style.setProperty('--title-color', arr[key]);
+            case 'contentColor':
+                root.style.setProperty('--content-color', arr[key]);
+        }
+    });
+}
+
 // replace the content of the of the element with id arg
 function replaceContent(id) {
     if ('content' in document.createElement('template')){
@@ -42,16 +67,25 @@ function replaceContent(id) {
 function index() {
     const metadata = {
         title: 'Slyder | Modern Page Transitions',
-        description: 'A simple page transition component for single page applications.'
-    }
+        description: 'A simple page transition component for single page applications.',
+        headerShadow: 'rgba(89, 146, 120, 0.8)',
+        background: '#7DF5BE',
+        titleColor: '#8934b4',
+        contentColor: '#00572F'
+    };
     setMetadata(metadata);
     replaceContent('index');
+    setColorVars(metadata);
 }
 
 function usage() {
     const metadata = {
         title: 'Slyder | Usage',
-        description: 'How to use Slyder page transitions for single page applications. When to use Slyder.'
+        description: 'How to use Slyder page transitions for single page applications. When to use Slyder.',
+        headerShadow: '',
+        background: 'linear-gradient(to right, #4facfe 0%, #00f2fe 100%)',
+        titleColor: '',
+        contentColor:'#fff'
     }
     setMetadata(metadata);
     replaceContent('usage');
@@ -60,7 +94,11 @@ function usage() {
 function docs() {
     const metadata = {
         title: 'Slyder | Documentation',
-        description: 'Learn about Slyder page transitions for single page applicaitons. Use Slyder for a superior UX.'
+        description: 'Learn about Slyder page transitions for single page applicaitons. Use Slyder for a superior UX.',
+        headerShadow: '0 0 3px 3px rgba(176, 134, 104, 0.8)',
+        background: 'linear-gradient(to right, #ffc3a0 0%, #ffafbd 100%)',
+        titleColor: '#9e5428',
+        contentColor: 'rgb(135, 61, 0)'
     }
     setMetadata(metadata);
     replaceContent('docs');
@@ -69,7 +107,11 @@ function docs() {
 function example() {
     const metadata = {
         title: 'Slyder | Examples',
-        description: 'A walk through of Slyder page transitions being used. Look at the code.'
+        description: 'A walk through of Slyder page transitions being used. Look at the code.',
+        headerShadow: '0 0 3px 3px rgba(99,201,187,0.8)',
+        background: 'linear-gradient(-225deg, #69EACB 0%, #EACCF8 48%, #6654F1 100%)',
+        titleColor: '#8019b5',
+        contentColor:'#9f40e0'
     }
     setMetadata(metadata);
     replaceContent('example');
@@ -78,7 +120,11 @@ function example() {
 function notfound() {
     const metadata = {
         title: 'Slyder | 404 Page Not Found',
-        description: 'Slyder page transitions for single page applications 404 page.'
+        description: 'Slyder page transitions for single page applications 404 page.',
+        headerShadow: '',
+        background: '',
+        titleColor: '',
+        contentColor:''
     }
     setMetadata(metadata);
     replaceContent('notfound');
