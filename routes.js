@@ -22,8 +22,8 @@ function setMetadata(meta) {
     description.setAttribute('description', meta.description);
 }
 
-function Slyder (current, next) {
-    this.sly = window.sly;
+function Slyder (current, next, options = {animate: 'moveToLeft'}) {
+    this.sly = options;
     this.current = current;
     this.next = next;
     this.animationEndEvent = whichAnimationEvent();
