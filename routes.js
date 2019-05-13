@@ -128,19 +128,23 @@ function slyder(current, next) {
             current.classList.add(...outClass);
         }
 
+        const handleNextAnimationEnd = () => {
+            next.removeEventListener(animationEndEventName, handleNextAnimationEnd);
+            next.classList.remove(...inClass);
+        }
+
         // Functions to handle animationEndEvent
         const addNextListener = async (next) => {
-            next.addEventListener(animationEndEventName, handleNextAnimationEnd = () => {
-                next.removeEventListener(animationEndEventName, handleNextAnimationEnd);
-                next.classList.remove(...inClass);
-            });
+            next.addEventListener(animationEndEventName, handleNextAnimationEnd);
+        }
+
+        const handleCurrrentAnimationEnd = () => {
+            current.removeEventListener(animationEndEventName, handleCurrrentAnimationEnd);
+            current.remove();
         }
 
         const addCurrentListener = async (current) => {
-            current.addEventListener(animationEndEventName, handleCurrrentAnimationEnd = () => {
-                current.removeEventListener(animationEndEventName, handleCurrrentAnimationEnd);
-                current.remove();
-            });
+            current.addEventListener(animationEndEventName, handleCurrentAnimationEnd);
         }
 
         // Add animation end listeners in parallel, then add animation classes
