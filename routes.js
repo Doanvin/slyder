@@ -169,7 +169,7 @@ function whichAnimationEvent() {
 
     const animationKeys = Object.keys(animations);
     function getKey(myKeys) {
-        keys = [];
+        let keys = [];
         myKeys.forEach( (key) => {
             if (el[key] !== undefined)  {
                 keys.push(animations[key]);
@@ -189,7 +189,7 @@ function replaceContent(id) {
         // current page before navigating
         const $currentPage = document.querySelector('.sly-page');
 
-        // $content is the element who's content you would like to replace
+        // $content is the element who's content you would like to append to
         const $content = document.getElementById('main-container');
 
         // select the template used to replace $content
