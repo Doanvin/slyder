@@ -117,29 +117,35 @@ function setMetadata(meta) {
 
 
 function slyder(current, next) {
-    let currentEl = current;
-    let nextEl = next;
     const animationEndEventName = whichAnimationEvent();
     let outClass = ['sly-moveToLeft'];
     let inClass = ['sly-moveFromRight'];
 
-    const slyderAnimation = async () => {
-        function addClasses() {
-            nextEl.classList.add(...outClass, 'sly-page--current');
-            currentEl.classList.add(...inClass);
+    const slyderAnimation = async (current, next) => {
+        function addClasses(current, next) {
+            next.classList.add(...outClass, 'sly-page--current');
+            current.classList.add(...inClass);
+        }
+
+        const addNextListener = (next) => {
+            next.addEventListener(animationEndEventName, () => {
+                next.removeEventListener(animationEndEventName);
+                next.classList.remove(...outClass);
+            });
+        }
+
+        const addCurrentListener = (current) => {
+            current.addEventListener(animationEndEventName, () => {
+                current.removeEventListener(animationEndEventName);
+                current.remove();
+            });
         }
         
-        await addClasses();
+        await addClasses(current, next);
         
         return Promise.all([
-            (nextEl.addEventListener(animationEndEventName, () => {
-                nextEl.removeEventListener(animationEndEventName);
-                nextEl.classList.remove(...outClass);
-            }))(),
-            (currentEl.addEventListener(animationEndEventName, () => {
-                currentEl.removeEventListener(animationEndEventName);
-                currentEl.remove();
-            }))()
+            addNextListener(),
+            addCurrentListener()
         ]);
     }
     slyderAnimation();
