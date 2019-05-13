@@ -22,96 +22,128 @@ function setMetadata(meta) {
     description.setAttribute('description', meta.description);
 }
 
-function Slyder(current, next, options = {
-    animate: 'moveToLeft'
-}) {
-    this.sly = options;
-    this.current = current;
-    this.next = next;
-    this.animationEndEvent = whichAnimationEvent();
-    this.currentAnimationEnded = false;
-    this.nextAnimationEnded = false;
-    this.isAnimating = true;
-    var outClass = '',
-        inClass = '';
+// function Slyder(current, next, options = {
+//     animate: 'moveToLeft'
+// }) {
+//     this.sly = options;
+//     this.current = current;
+//     this.next = next;
+//     this.animationEndEvent = whichAnimationEvent();
+//     this.currentAnimationEnded = false;
+//     this.nextAnimationEnded = false;
+//     this.isAnimating = true;
+//     var outClass = '',
+//         inClass = '';
 
-    if (!this.sly) {
-        console.error('You need to setup a variable named "sly" on the window.\nvar sly = {animate: "moveToLeft"};  or \nwindow.sly = {animate: "moveToLeft"};');
+//     if (!this.sly) {
+//         console.error('You need to setup a variable named "sly" on the window.\nvar sly = {animate: "moveToLeft"};  or \nwindow.sly = {animate: "moveToLeft"};');
+//     }
+
+//     switch (this.sly.animate) {
+//         case 'moveToLeft':
+//             outClass = 'sly-moveToLeft sly-page--current';
+//             inClass = 'sly-moveFromRight';
+//             break;
+//         case 'moveToRight':
+//             outClass = 'sly-moveToRight sly-page--current';
+//             inClass = 'sly-moveFromLeft';
+//             break;
+//         case 'moveToTop':
+//             outClass = 'sly-moveToTop sly-page--current';
+//             inClass = 'sly-moveFromBottom';
+//             break;
+//         case 'moveToBottom':
+//             outClass = 'sly-moveToBottom sly-page--current';
+//             inClass = 'sly-moveFromTop';
+//             break;
+//         case 'fadeInLeft':
+//             outClass = 'sly-fade sly-page--current';
+//             inClass = 'sly-moveFromRight sly-ontop';
+//             break;
+//         case 'faseInRight':
+//             outClass = 'sly-fade sly-page--current';
+//             inClass = 'sly-moveFromLeft sly-ontop';
+//             break;
+//         case 'fadeInTop':
+//             outClass = 'sly-fade sly-page--current';
+//             inClass = 'sly-moveFromBottom sly-ontop';
+//             break;
+//         case 'fadeInBottom':
+//             outClass = 'sly-fade sly-page--current';
+//             inClass = 'sly-moveFromTop sly-ontop';
+//             break;
+//         case 'moveToLeftFade':
+//             outClass = 'sly-moveToLeftFade sly-page--current';
+//             inClass = 'sly-moveFromRightFade';
+//             break;
+//         case 'moveToRightFade':
+//             outClass = 'sly-moveToRightFade sly-page--current';
+//             inClass = 'sly-moveFromLeftFade';
+//             break;
+//         case 'moveToTopFade':
+//             outClass = 'sly-moveToTopFade sly-page--current';
+//             inClass = 'sly-moveFromBottomFade';
+//             break;
+//         case 'moveToBottomFade':
+//             outClass = 'sly-moveToBottomFade sly-page--current';
+//             inClass = 'sly-moveFromTopFade';
+//             break;
+//     }
+
+//     this.current.classList = outClass;
+//     this.next.classList = inClass;
+//     this.current.addEventListener(this.animationEndEvent, () => {
+//         this.current.removeEventListener(this.animationEndEvent);
+//         this.currentAnimationEnded = true;
+//         if (this.nextAnimationEnded === true) this.handleEndAnimation.bind(this);
+//     });
+//     this.next.addEventListener(this.animataionEndEvent, () => {
+//         this.next.removeEventListener(this.animataionEndEvent);
+//         this.nextAnimationEnded = true;
+//         if (this.currentAnimationEnded === true) this.handleEndAnimation.bind(this);
+
+//     });
+
+// }
+
+// Slyder.prototype.handleEndAnimation = function () {
+//     this.currentAnimationEnded = false;
+//     this.nextAnimationEnded = false;
+//     this.next.classList = 'sly-page';
+//     this.current.remove();
+// }
+
+
+
+
+function slyder(current, next) {
+    const animationEndEventName = whichAnimationEvent();
+    let outClass = ['sly-moveToLeft'];
+    let inClass = ['sly-moveFromRight'];
+
+    const slyderAnimation = async () => {
+        function addClasses() {
+            next.classList.add(...outClass, 'sly-page--current');
+            current.classList.add(...inClass);
+        }
+        
+        await addClasses();
+        
+        return Promise.all([
+            (next.addEventListener(animationEndEventName, () => {
+                next.removeEventListener(animationEndEventName);
+                next.classList.remove(...outClass);
+            }))(),
+            (current.addEventListener(animationEndEventName, () => {
+                current.removeEventListener(animationEndEventName);
+                current.remove();
+            }))()
+        ]);
     }
-
-    switch (this.sly.animate) {
-        case 'moveToLeft':
-            outClass = 'sly-moveToLeft sly-page--current';
-            inClass = 'sly-moveFromRight';
-            break;
-        case 'moveToRight':
-            outClass = 'sly-moveToRight sly-page--current';
-            inClass = 'sly-moveFromLeft';
-            break;
-        case 'moveToTop':
-            outClass = 'sly-moveToTop sly-page--current';
-            inClass = 'sly-moveFromBottom';
-            break;
-        case 'moveToBottom':
-            outClass = 'sly-moveToBottom sly-page--current';
-            inClass = 'sly-moveFromTop';
-            break;
-        case 'fadeInLeft':
-            outClass = 'sly-fade sly-page--current';
-            inClass = 'sly-moveFromRight sly-ontop';
-            break;
-        case 'faseInRight':
-            outClass = 'sly-fade sly-page--current';
-            inClass = 'sly-moveFromLeft sly-ontop';
-            break;
-        case 'fadeInTop':
-            outClass = 'sly-fade sly-page--current';
-            inClass = 'sly-moveFromBottom sly-ontop';
-            break;
-        case 'fadeInBottom':
-            outClass = 'sly-fade sly-page--current';
-            inClass = 'sly-moveFromTop sly-ontop';
-            break;
-        case 'moveToLeftFade':
-            outClass = 'sly-moveToLeftFade sly-page--current';
-            inClass = 'sly-moveFromRightFade';
-            break;
-        case 'moveToRightFade':
-            outClass = 'sly-moveToRightFade sly-page--current';
-            inClass = 'sly-moveFromLeftFade';
-            break;
-        case 'moveToTopFade':
-            outClass = 'sly-moveToTopFade sly-page--current';
-            inClass = 'sly-moveFromBottomFade';
-            break;
-        case 'moveToBottomFade':
-            outClass = 'sly-moveToBottomFade sly-page--current';
-            inClass = 'sly-moveFromTopFade';
-            break;
-    }
-
-    this.current.classList = outClass;
-    this.next.classList = inClass;
-    this.current.addEventListener(this.animationEndEvent, () => {
-        this.current.removeEventListener(this.animationEndEvent);
-        this.currentAnimationEnded = true;
-        if (this.nextAnimationEnded === true) this.handleEndAnimation.bind(this);
-    });
-    this.next.addEventListener(this.animataionEndEvent, () => {
-        this.next.removeEventListener(this.animataionEndEvent);
-        this.nextAnimationEnded = true;
-        if (this.currentAnimationEnded === true) this.handleEndAnimation.bind(this);
-
-    });
-
+    slyderAnimation();
 }
 
-Slyder.prototype.handleEndAnimation = function () {
-    this.currentAnimationEnded = false;
-    this.nextAnimationEnded = false;
-    this.next.classList = 'sly-page';
-    this.current.remove();
-}
+
 
 // detect the correct transition event
 function whichAnimationEvent() {
@@ -150,8 +182,7 @@ function replaceContent(id) {
         $content.appendChild(clone);
         const $nextPage = document.querySelector('.sly-page--next');
 
-        let slyde = new Slyder($currentPage, $nextPage);
-        console.log(slyde.isAnimating);
+        slyder($currentPage, $nextPage);
     } else {
         alert('HTML template tags are not supported by your browser. Please upgrade to the latest version of Firefox or Chrome.')
     }
