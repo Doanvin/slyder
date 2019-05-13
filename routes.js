@@ -123,6 +123,7 @@ function slyder(current, next) {
 
     const slyderAnimation = async (current, next) => {
         function addClasses(current, next) {
+            next.classList.remove('sly-page--next');
             next.classList.add(...outClass, 'sly-page--current');
             current.classList.add(...inClass);
         }
