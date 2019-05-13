@@ -116,7 +116,7 @@ function setMetadata(meta) {
 
 
 
-function slyder(current, next) {
+function Slyder(current, next) {
     // const current = document.querySelector('.sly-page');
     // const next = document.querySelector('.sly-page--next');
     let isAnimating = false;
@@ -124,7 +124,8 @@ function slyder(current, next) {
     let outClass = ['sly-moveToLeft'];
     let inClass = ['sly-moveFromRight'];
 
-    const slyderAnimation = async (current, next) => {
+    async function animation(current, next) {
+        if (isAnimating) {return;}
         isAnimating = true;
 
         const updateClasses = (current, next, cb) => {
@@ -164,7 +165,30 @@ function slyder(current, next) {
         
         updateClasses(current, next, () => isAnimating = false);
     }
-    slyderAnimation(current, next);
+
+    function addLinkListeners(options = {
+            containerSelector: 'header',
+            linkSelector: 'a'
+        }) {
+        let header = document.querySelector(options.containerSelector);
+        let linkTags = header.querySelectorAll(options.linkSelector);
+        let links = Array.prototype.slice.call(linkTags);
+        links.forEach((link, i) => {
+            link.addEventListener('click', {
+                idx: i,
+                handleEvent: event => {
+                    event.target.dataset['sly-idx'] = this.idx;
+                }
+            });
+        });
+    }
+
+    animation(current, next);
+
+    return {
+        animate: animation,
+        addLinkListeners
+    }
 }
 
 
@@ -214,7 +238,7 @@ function replaceContent(id) {
         $content.appendChild(clone);
         const $nextPage = document.querySelector('.sly-page--next');
 
-        slyder($currentPage, $nextPage);
+        Slyder($currentPage, $nextPage);
     } else {
         alert('HTML template tags are not supported by your browser. Please upgrade to the latest version of Firefox or Chrome.')
     }

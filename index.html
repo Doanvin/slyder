@@ -519,31 +519,15 @@
         </div>
     </template>
 
-    <script>{
+    <!-- <script>
         'use strict';
         let slyderLinkListenerOptions = {
             containerSelector: 'header',
             linkSelector: 'a'
         }
+        let slyder = new Slyder();
 
-        function addLinkListeners(options = {
-            containerSelector: 'header',
-            linkSelector: 'a'
-        }) {
-            let header = document.querySelector(options.containerSelector);
-            let linkTags = header.querySelectorAll(options.linkSelector);
-            let links = Array.prototype.slice.call(linkTags);
-            links.forEach((link, i) => {
-                link.addEventListener('click', {
-                    idx: i,
-                    handleEvent: event => {
-                        event.target.dataset['sly-idx'] = this.idx;
-                    }
-                });
-            });
-        }
-    }
-    </script>
+    </script> -->
 
     <!-- ROUTING USING page.js -->
     <script src="/slyder/page.js"></script>
