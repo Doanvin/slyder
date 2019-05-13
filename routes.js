@@ -161,17 +161,25 @@ function whichAnimationEvent() {
     const el = document.createElement("div");
 
     const animations = {
-        "animation": "animationend",
-        "OAnimation": "oAnimationEnd",
-        "MozAnimation": "animationend",
-        "WebkitAnimation": "webkitAnimationEnd"
+        "onanimationend": "animationend",
+        "onoanimationend": "oanimationend",
+        "onmozanimationend": "animationend",
+        "onwebkitanimationend": "webkitanimationend"
     }
 
-    Object.keys(animations).forEach((key) => {
-        if (el.style[key] !== undefined) {
-            return animations[key];
-        }
-    })
+    const animationKeys = Object.keys(animations);
+    function getKey(myKeys) {
+        keys = [];
+        myKeys.forEach( (key) => {
+            if (el[key] !== undefined)  {
+                keys.push(animations[key]);
+            }
+        });
+        return keys[0];
+    }
+
+    return getKey(animationKeys);
+    
 }
 
 // replace the content of the of the element with id arg
