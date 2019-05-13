@@ -148,7 +148,7 @@ function slyder(current, next) {
             addCurrentListener(current)
         ]);
     }
-    slyderAnimation();
+    slyderAnimation(current, next);
 }
 
 
