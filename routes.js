@@ -144,8 +144,8 @@ function slyder(current, next) {
         await addClasses(current, next);
         
         return Promise.all([
-            addNextListener(),
-            addCurrentListener()
+            addNextListener(next),
+            addCurrentListener(current)
         ]);
     }
     slyderAnimation();
