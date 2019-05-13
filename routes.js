@@ -117,16 +117,22 @@ function setMetadata(meta) {
 
 
 function slyder(current, next) {
+    // const current = document.querySelector('.sly-page');
+    // const next = document.querySelector('.sly-page--next');
+    let isAnimating = false;
     const animationEndEventName = whichAnimationEvent();
     let outClass = ['sly-moveToLeft'];
     let inClass = ['sly-moveFromRight'];
 
     const slyderAnimation = async (current, next) => {
-        const updateClasses = (current, next) => {
+        isAnimating = true;
+
+        const updateClasses = (current, next, cb) => {
             next.classList.remove('sly-page--next');
             next.classList.add(...inClass, 'sly-page--current');
             current.classList.remove('sly-page--current');
             current.classList.add(...outClass);
+            cb();
         }
 
         // Functions to handle animationEndEvent
@@ -156,7 +162,7 @@ function slyder(current, next) {
             await addCurrentListener(current)
         ])
         
-        updateClasses(current, next);
+        updateClasses(current, next, () => isAnimating = false);
     }
     slyderAnimation(current, next);
 }
