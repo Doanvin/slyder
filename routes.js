@@ -122,32 +122,34 @@ function slyder(current, next) {
     let inClass = ['sly-moveFromRight'];
 
     const slyderAnimation = async (current, next) => {
-        function addClasses(current, next) {
+        const addClasses = (current, next) => {
             next.classList.remove('sly-page--next');
             next.classList.add(...inClass, 'sly-page--current');
             current.classList.add(...outClass);
         }
 
-        const addNextListener = (next) => {
+        // Functions to handle animationEndEvent
+        const addNextListener = async (next) => {
             next.addEventListener(animationEndEventName, () => {
                 next.removeEventListener(animationEndEventName);
                 next.classList.remove(...inClass);
             });
         }
 
-        const addCurrentListener = (current) => {
+        const addCurrentListener = async (current) => {
             current.addEventListener(animationEndEventName, () => {
                 current.removeEventListener(animationEndEventName);
                 current.remove();
             });
         }
+
+        // Add animation end listeners in parallel, then add animation classes
+        await Promise.all([
+            await addNextListener(next),
+            await addCurrentListener(current)
+        ])
         
-        await addClasses(current, next);
-        
-        return Promise.all([
-            addNextListener(next),
-            addCurrentListener(current)
-        ]);
+        addClasses(current, next);
     }
     slyderAnimation(current, next);
 }
