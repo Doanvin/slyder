@@ -122,9 +122,10 @@ function slyder(current, next) {
     let inClass = ['sly-moveFromRight'];
 
     const slyderAnimation = async (current, next) => {
-        const addClasses = (current, next) => {
+        const updateClasses = (current, next) => {
             next.classList.remove('sly-page--next');
             next.classList.add(...inClass, 'sly-page--current');
+            current.classList.remove('sly-page--current');
             current.classList.add(...outClass);
         }
 
@@ -149,13 +150,13 @@ function slyder(current, next) {
             current.addEventListener(animationEndEventName, handleCurrentAnimationEnd);
         }
 
-        // Add animation end listeners in parallel, then add animation classes
+        // Add animation end listeners in parallel, then update animation classes
         await Promise.all([
             await addNextListener(next),
             await addCurrentListener(current)
         ])
         
-        addClasses(current, next);
+        updateClasses(current, next);
     }
     slyderAnimation(current, next);
 }
