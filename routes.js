@@ -130,15 +130,15 @@ function slyder(current, next) {
 
         // Functions to handle animationEndEvent
         const addNextListener = async (next) => {
-            next.addEventListener(animationEndEventName, () => {
-                next.removeEventListener(animationEndEventName);
+            next.addEventListener(animationEndEventName, handleNextAnimationEnd = () => {
+                next.removeEventListener(animationEndEventName, handleNextAnimationEnd);
                 next.classList.remove(...inClass);
             });
         }
 
         const addCurrentListener = async (current) => {
-            current.addEventListener(animationEndEventName, () => {
-                current.removeEventListener(animationEndEventName);
+            current.addEventListener(animationEndEventName, handleCurrrentAnimationEnd = () => {
+                current.removeEventListener(animationEndEventName, handleCurrrentAnimationEnd);
                 current.remove();
             });
         }
