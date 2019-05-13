@@ -182,7 +182,7 @@ function replaceContent(id) {
         const $currentPage = document.querySelector('.sly-page');
 
         // $content is the element who's content you would like to replace
-        const $content = document.getElementById('main-content');
+        const $content = document.getElementById('main-container');
 
         // select the template used to replace $content
         const template = document.getElementById(id);
