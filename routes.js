@@ -280,7 +280,7 @@ function route(data = {
     setMetadata(data);
 
     function transition(cb) {
-        let contentRaplaced = slyder.replaceContent(data.id);
+        let contentReplaced = slyder.replaceContent(data.id);
         if (contentReplaced) {
             cb();
         }
