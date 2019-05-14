@@ -16,9 +16,7 @@ const Route = function router(data = {
     replaceContent(data.id);
 
    let slyder = new Slyder();
-   slyder.animate({
-        current: selector
-    });
+   slyder.animate(selector);
 }
 
 const indexData = {
@@ -153,11 +151,7 @@ function Slyder() {
     let outClass = ['sly-moveToLeft'];
     let inClass = ['sly-moveFromRight'];
 
-    async function animation(options = {
-        current: 'sly-page',
-        next: 'sly-page--next'
-    }) {
-
+    async function animation(current = 'sly-page', next = 'sly-page--next') {
         if (isAnimating) {
             return;
         }
