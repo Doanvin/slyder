@@ -240,7 +240,8 @@ var slyder = (function Slyder() {
     // Public Api for Slyder instances
     return {
         animate: animation,
-        addLinkListeners
+        addLinkListeners,
+        replaceContent
     }
 })();
 
