@@ -102,22 +102,23 @@ function setMetadata(meta) {
 // }
 
 var store = (function Store() {
-    function getKey(key) {
+    function get(key) {
         JSON.parse(localStorage.getItem(key));
     }
-    function setKey(key, value) {
+
+    function set(key, value) {
         localStorage.setItem(key, value);
     }
     return {
-        getKey,
-        setKey
+        get,
+        set
     };
 })();
 
 
 
 
-var slyder = (function Slyder() {
+function Slyder() {
     // const current = document.querySelector('.sly-page');
     // const next = document.querySelector('.sly-page--next');
     let isAnimating = false;
@@ -172,15 +173,15 @@ var slyder = (function Slyder() {
         let header = document.querySelector(options.containerSelector);
         let linkTags = header.querySelectorAll(options.linkSelector);
         let links = Array.prototype.slice.call(linkTags);
-        links.forEach((link, i) => {
-            let listenerObj = {
-                idx: i,
-                handleEvent: event => {
-                    event.target.dataset['slyIdx'] = this.idx;
-                }
-            }
-            link.addEventListener('click', listenerObj, listenerObj);
-        });
+
+        function handleClick() {
+            if (event.target.dataset.slyIdx < store.get())
+        }
+
+        for (let i = 0; i < links.length; i++) {
+            links[i].dataset.slyIdx = i;
+            links[i].addEventListener('click', handleClick);
+        }
     }
 
     // replace the content of the of the element with id arg
@@ -241,9 +242,9 @@ var slyder = (function Slyder() {
         addLinkListeners,
         replaceContent
     }
-})();
+};
 
-
+var slyder = new Slyder();
 
 
 
@@ -263,11 +264,11 @@ var slyder = (function Slyder() {
 
 
 function route(data = {
-        id: 'index',
-        type: 'page',
-        title: '',
-        description: ''
-    }) {
+    id: 'index',
+    type: 'page',
+    title: '',
+    description: ''
+}) {
     const selector = getSelector(data.type, data.id);
 
     function getSelector(type, id) {
@@ -275,11 +276,12 @@ function route(data = {
     }
 
     setMetadata(data);
+
     function transition(cb) {
         slyder.replaceContent(data.id);
         cb();
     }
-    
+
     transition(() => slyder.animate('.sly-page', selector));
 }
 
@@ -290,7 +292,10 @@ const indexData = {
     title: 'Slyder | Modern Page Transitions',
     description: 'A simple page transition component for single page applications.'
 }
-function index () {route(indexData)}
+
+function index() {
+    route(indexData)
+}
 
 const usageData = {
     id: 'usage',
@@ -298,7 +303,10 @@ const usageData = {
     title: 'Slyder | Usage',
     description: 'How to use Slyder page transitions for single page applications. When to use Slyder.'
 }
-function usage () {route(usageData)}
+
+function usage() {
+    route(usageData)
+}
 
 
 const docsData = {
@@ -307,7 +315,10 @@ const docsData = {
     title: 'Slyder | Documentation',
     description: 'Learn about Slyder page transitions for single page applicaitons. Use Slyder for a superior UX.'
 }
-function docs() {route(docsData)}
+
+function docs() {
+    route(docsData)
+}
 
 const exampleData = {
     id: 'example',
@@ -315,7 +326,10 @@ const exampleData = {
     title: 'Slyder | Examples',
     description: 'A walk through of Slyder page transitions being used. Look at the code.'
 }
-function example() {route(exampleData)}
+
+function example() {
+    route(exampleData)
+}
 
 const notfoundData = {
     id: 'notfound',
@@ -323,7 +337,10 @@ const notfoundData = {
     title: 'Slyder | 404 Page Not Found',
     description: 'Slyder page transitions for single page applications 404 page.'
 }
-function notfound(){route(notfoundData)}
+
+function notfound() {
+    route(notfoundData)
+}
 
 
 // match page base with github pages subdomain
