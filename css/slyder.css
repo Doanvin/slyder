@@ -5,7 +5,6 @@
 	-webkit-transform-style: preserve-3d;
 	-moz-transform-style: preserve-3d;
 	transform-style: preserve-3d;
-	overflow-y: scroll;
 }
 
 .sly-page--current {
@@ -22,8 +21,7 @@
 }
 
 .sly-page--absolute {
-	position: absolute;
-	right: 0;
+	position: static;
 }
 
 /* ANIMATIONS */
