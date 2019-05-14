@@ -286,7 +286,7 @@ function route(data = {
         }
     }
 
-    transition(() => slyder.animate('.sly-page', selector));
+    transition(() => slyder.animate('.sly-page', '.sly-page--next'));
 }
 
 
