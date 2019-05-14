@@ -187,7 +187,7 @@ function Slyder() {
     // replace the content of the of the element with id arg
     function replaceContent(id) {
         if (isAnimating) {
-            return;
+            return false;
         }
         isAnimating = true;
 
@@ -203,6 +203,8 @@ function Slyder() {
             const clone = document.importNode(template.content, true);
             // $content.innerHTML = '';
             $content.appendChild(clone);
+
+            return true;
 
         } else {
             alert('HTML template tags are not supported by your browser. Please upgrade to the latest version of Firefox or Chrome.')
@@ -278,8 +280,10 @@ function route(data = {
     setMetadata(data);
 
     function transition(cb) {
-        slyder.replaceContent(data.id);
-        cb();
+        let contentRaplaced = slyder.replaceContent(data.id);
+        if (contentReplaced) {
+            cb();
+        }
     }
 
     transition(() => slyder.animate('.sly-page', selector));
