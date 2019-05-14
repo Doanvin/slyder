@@ -162,7 +162,8 @@ var slyder = (function Slyder() {
         await Promise.all([
             await addNextListener(next),
             await addCurrentListener(current)
-        ]).then(updateClasses(current, next, () => isAnimating = false));
+        ]).then(updateClasses(current, next));
+        isAnimating = false;
     }
 
     function addLinkListeners(options = {
