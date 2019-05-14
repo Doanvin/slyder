@@ -4,10 +4,10 @@
 // meta is an object with title and description properties
 function setMetadata(meta) {
     let title = document.getElementsByTagName('title')[0],
-        description = document.querySelector('meta[description]');
+        description = document.querySelector('meta[name="description"]');
 
     title.setAttribute('title', meta.title);
-    description.setAttribute('description', meta.description);
+    description.setAttribute('content', meta.description);
 }
 
 // function Slyder(current, next, options = {
