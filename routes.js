@@ -112,14 +112,14 @@ var slyder = (function Slyder() {
     let outClass = ['sly-moveToLeft'];
     let inClass = ['sly-moveFromRight'];
 
-    async function animation(current = 'sly-page', next = 'sly-page--next') {
+    async function animation(currentPage = 'sly-page', nextPage = 'sly-page--next') {
         if (isAnimating) {
             return;
         }
         isAnimating = true;
 
-        const current = document.querySelector(current);
-        const next = document.querySelector(next);
+        const current = document.querySelector(currentPage);
+        const next = document.querySelector(nextPage);
 
         const updateClasses = (current, next, cb) => {
             next.classList.remove('sly-page--next');
