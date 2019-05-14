@@ -140,8 +140,8 @@ var slyder = (function Slyder() {
         // Functions to handle animationEndEvent
 
         function handleNextAnimationEnd() {
-            next.removeEventListener(animationEndEventName, handleNextAnimationEnd);
             next.classList.remove(...inClass);
+            next.removeEventListener(animationEndEventName, handleNextAnimationEnd);
         }
 
         function handleCurrentAnimationEnd() {
@@ -162,9 +162,7 @@ var slyder = (function Slyder() {
         await Promise.all([
             await addNextListener(next),
             await addCurrentListener(current)
-        ])
-
-        updateClasses(current, next, () => isAnimating = false);
+        ]).then(updateClasses(current, next, () => isAnimating = false));
     }
 
     function addLinkListeners(options = {
