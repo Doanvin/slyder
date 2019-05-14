@@ -126,11 +126,6 @@ var slyder = (function Slyder() {
     let inClass = ['sly-moveFromRight'];
 
     async function animation(currentPage, nextPage) {
-        if (isAnimating) {
-            return;
-        }
-        isAnimating = true;
-
         const current = document.querySelector(currentPage);
         const next = document.querySelector(nextPage);
 
@@ -190,6 +185,31 @@ var slyder = (function Slyder() {
         });
     }
 
+    // replace the content of the of the element with id arg
+    function replaceContent(id) {
+        if (isAnimating) {
+            return;
+        }
+        isAnimating = true;
+
+        // check for <template> support
+        if ('content' in document.createElement('template')) {
+            // $content is the element who's content you would like to append to
+            const $content = document.getElementById('main-container');
+
+            // select the template used to replace $content
+            const template = document.getElementById(id);
+
+            // clone it, clear the $content, insert your cloned template to $content
+            const clone = document.importNode(template.content, true);
+            // $content.innerHTML = '';
+            $content.appendChild(clone);
+
+        } else {
+            alert('HTML template tags are not supported by your browser. Please upgrade to the latest version of Firefox or Chrome.')
+        }
+    }
+
     // detect the correct transition event
     function whichAnimationEvent() {
         const el = document.createElement("div");
@@ -225,25 +245,7 @@ var slyder = (function Slyder() {
 })();
 
 
-// replace the content of the of the element with id arg
-function replaceContent(id) {
-    // check for <template> support
-    if ('content' in document.createElement('template')) {
-        // $content is the element who's content you would like to append to
-        const $content = document.getElementById('main-container');
 
-        // select the template used to replace $content
-        const template = document.getElementById(id);
-
-        // clone it, clear the $content, insert your cloned template to $content
-        const clone = document.importNode(template.content, true);
-        // $content.innerHTML = '';
-        $content.appendChild(clone);
-
-    } else {
-        alert('HTML template tags are not supported by your browser. Please upgrade to the latest version of Firefox or Chrome.')
-    }
-}
 
 
 
@@ -311,7 +313,7 @@ function usage() {
         description: 'How to use Slyder page transitions for single page applications. When to use Slyder.'
     }
     setMetadata(metadata);
-    replaceContent('usage');
+    slyder.replaceContent('usage');
     slyder.animate('.sly-page', '.sly-page--next');
 }
 
@@ -321,7 +323,7 @@ function docs() {
         description: 'Learn about Slyder page transitions for single page applicaitons. Use Slyder for a superior UX.'
     }
     setMetadata(metadata);
-    replaceContent('docs');
+    slyder.replaceContent('docs');
     slyder.animate('.sly-page', '.sly-page--next');
 }
 
@@ -331,7 +333,7 @@ function example() {
         description: 'A walk through of Slyder page transitions being used. Look at the code.'
     }
     setMetadata(metadata);
-    replaceContent('example');
+    slyder.replaceContent('example');
     slyder.animate('.sly-page', '.sly-page--next');
 }
 
@@ -341,7 +343,7 @@ function notfound() {
         description: 'Slyder page transitions for single page applications 404 page.'
     }
     setMetadata(metadata);
-    replaceContent('notfound');
+    slyder.replaceContent('notfound');
     slyder.animate('.sly-page', '.sly-page--next');
 }
 
