@@ -112,7 +112,7 @@ var slyder = (function Slyder() {
     let outClass = ['sly-moveToLeft'];
     let inClass = ['sly-moveFromRight'];
 
-    async function animation(currentPage = 'sly-page', nextPage = 'sly-page--next') {
+    async function animation(currentPage = '.sly-page', nextPage = '.sly-page--next') {
         if (isAnimating) {
             return;
         }
