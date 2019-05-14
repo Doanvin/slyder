@@ -311,6 +311,7 @@ function usage() {
     }
     setMetadata(metadata);
     replaceContent('usage');
+    slyder.animate('.sly-page', '.sly-page--next');
 }
 
 function docs() {
@@ -320,6 +321,7 @@ function docs() {
     }
     setMetadata(metadata);
     replaceContent('docs');
+    slyder.animate('.sly-page', '.sly-page--next');
 }
 
 function example() {
@@ -329,6 +331,7 @@ function example() {
     }
     setMetadata(metadata);
     replaceContent('example');
+    slyder.animate('.sly-page', '.sly-page--next');
 }
 
 function notfound() {
@@ -338,6 +341,7 @@ function notfound() {
     }
     setMetadata(metadata);
     replaceContent('notfound');
+    slyder.animate('.sly-page', '.sly-page--next');
 }
 
 //   function contact(ctx) {
