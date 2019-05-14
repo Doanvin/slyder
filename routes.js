@@ -129,12 +129,11 @@ var slyder = (function Slyder() {
         const current = document.querySelector(currentPage);
         const next = document.querySelector(nextPage);
 
-        const updateClasses = (current, next, cb) => {
+        const updateClasses = (current, next) => {
             next.classList.remove('sly-page--next');
             next.classList.add(...inClass, 'sly-page--current');
             current.classList.remove('sly-page--current');
             current.classList.add(...outClass);
-            cb();
         }
 
         // Functions to handle animationEndEvent
@@ -147,6 +146,7 @@ var slyder = (function Slyder() {
         function handleCurrentAnimationEnd() {
             current.removeEventListener(animationEndEventName, handleCurrentAnimationEnd);
             current.remove();
+            isAnimating = false;
         }
 
         // Functions to add animationend event listeners
@@ -163,7 +163,6 @@ var slyder = (function Slyder() {
             await addNextListener(next),
             await addCurrentListener(current)
         ]).then(updateClasses(current, next));
-        isAnimating = false;
     }
 
     function addLinkListeners(options = {
