@@ -275,8 +275,12 @@ function route(data = {
     }
 
     setMetadata(data);
-    slyder.replaceContent(data.id);
-    slyder.animate('.sly-page', selector);
+    function transition(cb) {
+        slyder.replaceContent(data.id);
+        cb();
+    }
+    
+    transition(() => slyder.animate('.sly-page', selector));
 }
 
 
@@ -286,9 +290,40 @@ const indexData = {
     title: 'Slyder | Modern Page Transitions',
     description: 'A simple page transition component for single page applications.'
 }
-let index = () => route(indexData);
+function index () {route(indexData)}
+
+const usageData = {
+    id: 'usage',
+    type: 'page',
+    title: 'Slyder | Usage',
+    description: 'How to use Slyder page transitions for single page applications. When to use Slyder.'
+}
+function usage () {route(usageData)}
 
 
+const docsData = {
+    id: 'docs',
+    type: 'page',
+    title: 'Slyder | Documentation',
+    description: 'Learn about Slyder page transitions for single page applicaitons. Use Slyder for a superior UX.'
+}
+function docs() {route(docsData)}
+
+const exampleData = {
+    id: 'example',
+    type: 'page',
+    title: 'Slyder | Examples',
+    description: 'A walk through of Slyder page transitions being used. Look at the code.'
+}
+function example() {route(exampleData)}
+
+const notfoundData = {
+    id: 'notfound',
+    type: 'page',
+    title: 'Slyder | 404 Page Not Found',
+    description: 'Slyder page transitions for single page applications 404 page.'
+}
+function notfound(){route(notfoundData)}
 
 
 // match page base with github pages subdomain
@@ -305,45 +340,45 @@ page({
 
 
 
-function usage() {
-    const metadata = {
-        title: 'Slyder | Usage',
-        description: 'How to use Slyder page transitions for single page applications. When to use Slyder.'
-    }
-    setMetadata(metadata);
-    slyder.replaceContent('usage');
-    slyder.animate('.sly-page', '.sly-page--next');
-}
+// function usage() {
+//     const metadata = {
+//         title: 'Slyder | Usage',
+//         description: 'How to use Slyder page transitions for single page applications. When to use Slyder.'
+//     }
+//     setMetadata(metadata);
+//     slyder.replaceContent('usage');
+//     slyder.animate('.sly-page', '.sly-page--next');
+// }
 
-function docs() {
-    const metadata = {
-        title: 'Slyder | Documentation',
-        description: 'Learn about Slyder page transitions for single page applicaitons. Use Slyder for a superior UX.'
-    }
-    setMetadata(metadata);
-    slyder.replaceContent('docs');
-    slyder.animate('.sly-page', '.sly-page--next');
-}
+// function docs() {
+//     const metadata = {
+//         title: 'Slyder | Documentation',
+//         description: 'Learn about Slyder page transitions for single page applicaitons. Use Slyder for a superior UX.'
+//     }
+//     setMetadata(metadata);
+//     slyder.replaceContent('docs');
+//     slyder.animate('.sly-page', '.sly-page--next');
+// }
 
-function example() {
-    const metadata = {
-        title: 'Slyder | Examples',
-        description: 'A walk through of Slyder page transitions being used. Look at the code.'
-    }
-    setMetadata(metadata);
-    slyder.replaceContent('example');
-    slyder.animate('.sly-page', '.sly-page--next');
-}
+// function example() {
+//     const metadata = {
+//         title: 'Slyder | Examples',
+//         description: 'A walk through of Slyder page transitions being used. Look at the code.'
+//     }
+//     setMetadata(metadata);
+//     slyder.replaceContent('example');
+//     slyder.animate('.sly-page', '.sly-page--next');
+// }
 
-function notfound() {
-    const metadata = {
-        title: 'Slyder | 404 Page Not Found',
-        description: 'Slyder page transitions for single page applications 404 page.'
-    }
-    setMetadata(metadata);
-    slyder.replaceContent('notfound');
-    slyder.animate('.sly-page', '.sly-page--next');
-}
+// function notfound() {
+//     const metadata = {
+//         title: 'Slyder | 404 Page Not Found',
+//         description: 'Slyder page transitions for single page applications 404 page.'
+//     }
+//     setMetadata(metadata);
+//     slyder.replaceContent('notfound');
+//     slyder.animate('.sly-page', '.sly-page--next');
+// }
 
 //   function contact(ctx) {
 //     document.querySelector('p')
