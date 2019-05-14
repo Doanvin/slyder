@@ -280,7 +280,7 @@
             }
 
             .sidebar__fixed-compliment {
-                position: relative;
+                position: absolute;
                 margin-left: calc(25vw + calc(var(--main-x-padding) * 1.8));
                 padding-left: var(--main-x-padding);
                 height: var(--main-height);
@@ -291,8 +291,10 @@
         @media only screen and (min-width: 1145px) {
             .sidebar__fixed-compliment {
                 /* HARD CODED MAX WIDTH OF SIDEBAR TO BE MARGIN-LEFT OF ARTICLE */
-                margin-left: 340px;
-                width: calc(100% - calc(var(--sidebar-max-width) + calc(var(--main-x-padding * 2))))
+                --main-right-margin-left: calc(var(--sidebar-max-width) + calc(--main-x-padding*2));
+                --main-rml-padding: calc(var(--main-right-margin-left) * calc(var(--main-x-padding) * 2))
+                margin-left: var(--main-right-margin-left);
+                width: calc(100vw - calc(var(--main-rml-padding) + calc(var(--main-x-padding * 2))))
             }
         }
 

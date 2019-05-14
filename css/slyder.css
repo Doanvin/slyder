@@ -21,7 +21,7 @@
 }
 
 .sly-page--absolute {
-	position: static;
+	position: absolute;
 }
 
 /* ANIMATIONS */
