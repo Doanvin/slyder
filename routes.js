@@ -15,11 +15,10 @@ const Route = function router(data = {
     setMetadata(data);
     replaceContent(data.id);
 
-    window.slyder.animate({
+   let slyder = new Slyder();
+   slyder.animate({
         current: selector
     });
-
-    return {selecor}
 }
 
 const indexData = {
