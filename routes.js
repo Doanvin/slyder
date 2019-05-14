@@ -1,44 +1,5 @@
 'use strict';
 
-const Route = function router(data = {
-        id: 'index',
-        type: 'page',
-        title: '',
-        description: ''
-    }) {
-    const selector = getSelector(data.type, data.id);
-
-    function getSelector(type, id) {
-        return `.${type}-${id}`;
-    }
-
-    setMetadata(data);
-    replaceContent(data.id);
-
-   let slyder = new Slyder();
-   slyder.animate(selector);
-}
-
-const indexData = {
-    id: 'index',
-    type: 'page',
-    title: 'Slyder | Modern Page Transitions',
-    description: 'A simple page transition component for single page applications.'
-}
-let index = new Route(indexData);
-
-// match page base with github pages subdomain
-page.base('/slyder');
-page('/', index);
-page('/usage', usage);
-page('/docs', docs);
-// page('/docs/:page', docs);
-page('/example', example);
-page('*', notfound);
-page({
-    hashbang: true
-});
-
 // Set the metadata for the new page
 // meta is an object with title and description properties
 function setMetadata(meta) {
@@ -143,7 +104,7 @@ function setMetadata(meta) {
 
 
 
-function Slyder() {
+var slyder = (function Slyder() {
     // const current = document.querySelector('.sly-page');
     // const next = document.querySelector('.sly-page--next');
     let isAnimating = false;
@@ -247,7 +208,7 @@ function Slyder() {
         animate: animation,
         addLinkListeners
     }
-}
+})();
 
 
 // replace the content of the of the element with id arg
@@ -283,6 +244,52 @@ function replaceContent(id) {
 //         current: 'page-index'
 //     })
 // }
+
+
+
+function route(data = {
+        id: 'index',
+        type: 'page',
+        title: '',
+        description: ''
+    }) {
+    const selector = getSelector(data.type, data.id);
+
+    function getSelector(type, id) {
+        return `.${type}-${id}`;
+    }
+
+    setMetadata(data);
+    replaceContent(data.id);
+
+    slyder.animate(selector);
+}
+
+
+const indexData = {
+    id: 'index',
+    type: 'page',
+    title: 'Slyder | Modern Page Transitions',
+    description: 'A simple page transition component for single page applications.'
+}
+let index = route(indexData);
+
+
+
+
+// match page base with github pages subdomain
+page.base('/slyder');
+page('/', index);
+page('/usage', usage);
+page('/docs', docs);
+// page('/docs/:page', docs);
+page('/example', example);
+page('*', notfound);
+page({
+    hashbang: true
+});
+
+
 
 function usage() {
     const metadata = {
