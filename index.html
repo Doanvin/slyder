@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <link rel="dns-prefetch" href="https://fonts.googleapis.com"> 
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com"> 
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=1, minimum-scale=1, maximum-scale=2.5">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=1, minimum-scale=1, maximum-scale=2.5">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Slyder | Modern Page Transitions</title>
     <meta description="A simple page transition component for single page applications.">
     <link rel="stylesheet" href="normalize.min.css">
     <!-- match base with github pages subdomain -->
-    <base href="/slyder/" >
+    <base href="/slyder/">
     <!-- GOOGLE FONTS -->
     <link href="https://fonts.googleapis.com/css?family=Mr+Dafoe|Open+Sans|Prompt" rel="stylesheet">
 
@@ -19,9 +21,9 @@
     <style>
         /* VARIABLE SETTINGS */
         :root {
-            --header-font: 'Prompt', -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol';
-            --content-font: 'Open Sans', -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol';
-            --fancy-font: 'Mr Dafoe', cursive, -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol';
+            --header-font: 'Prompt', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+            --content-font: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+            --fancy-font: 'Mr Dafoe', cursive, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
             --blue: #00d0fc;
             --blue-light: #0b9aff;
             --blue-lighter: #30a8fc;
@@ -31,7 +33,7 @@
             --green-dark: #00B663;
             --orange: #FF4500;
             --orange-darker: #CF3800;
-            --orange-lighter:#FF5E23;
+            --orange-lighter: #FF5E23;
             --yellow: #f9d022;
             --purple: #9600FC;
             --nav-height: 60px;
@@ -44,35 +46,46 @@
             --background-image: #7DF5BE;
             overflow-x: hidden;
         }
-        *, ::before, ::after {
+
+        *,
+        ::before,
+        ::after {
             -webkit-box-sizing: inherit;
             box-sizing: inherit;
         }
-        
+
         /* FONT-SIZE SETTINGS */
-        html{
+        html {
             font-family: var(--content-font);
-            font-size:16px;
-            min-width:320px;
-            overflow-x:hidden;
+            font-size: 16px;
+            min-width: 320px;
+            overflow-x: hidden;
         }
+
         body {
-            overflow-x:hidden;
+            overflow-x: hidden;
             background-color: #7DF5BE;
         }
 
-        h1,h2,h3,h4,h5,h6 {font-family: var(--header-font);}
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: var(--header-font);
+        }
 
         /* UTILITY CLASSES */
         .fancy-font {
-            font-family:var(--fancy-font);
+            font-family: var(--fancy-font);
             letter-spacing: .18em;
         }
 
         .contain {
-            max-width:1200px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding:0 10px;
+            padding: 0 10px;
             width: 100%;
         }
 
@@ -89,8 +102,8 @@
             display: block;
             position: fixed;
             width: 100%;
-            height:var(--nav-height);
-            max-height:var(--nav-height);
+            height: var(--nav-height);
+            max-height: var(--nav-height);
             overflow: hidden;
             /* background: #00d0fc; */
             background-image: linear-gradient(to top, #00c6fb 0%, #005bea 100%);
@@ -104,45 +117,53 @@
         }
 
         /* NAV SETTINGS */
-        nav.nav {display: block;padding-top:20px;}
-        .nav-brand {display: inline-block;}
+        nav.nav {
+            display: block;
+            padding-top: 20px;
+        }
+
+        .nav-brand {
+            display: inline-block;
+        }
+
         .nav-brand a {
-            color:#fff;
+            color: #fff;
             text-decoration: none;
             border: 2px solid transparent;
             border-radius: 30px;
-            padding: 8px; 
+            padding: 8px;
         }
 
         .nav-brand a:focus {
             border: 2px solid var(--green);
             border-radius: 30px;
         }
+
         .nav-menu {
             display: inline-block;
             margin-left: var(--main-x-padding);
         }
 
         .nav-item {
-            padding:8px;
-            margin:7px;
+            padding: 8px;
+            margin: 7px;
             /* color: #966be6; */
             color: #00f485;
-            font-weight:bold;
+            font-weight: bold;
             border: 2px solid transparent;
         }
-        
-        .nav-item:hover, 
+
+        .nav-item:hover,
         .nav-item:focus {
             border: 2px solid var(--green);
             border-radius: 30px;
         }
-        
+
         /* MAIN SECTION LAYOUT SETTINGS */
         main.main {
             /* remove padding from main container */
             margin: var(--nav-height) auto 0;
-            padding:0;
+            padding: 0;
             width: 100%;
         }
 
@@ -153,11 +174,12 @@
             min-height: var(--main-height);
         }
 
-        .main__left, .main__right {
+        .main__left,
+        .main__right {
             -ms-flex-preferred-size: 100%;
             flex-basis: 100%;
             /* padding for article aside */
-            padding:0 var(--main-x-padding);
+            padding: 0 var(--main-x-padding);
         }
 
         /* SIDEBAR SETTINGS, some in .main__left */
@@ -175,8 +197,9 @@
             border: 2px solid transparent;
             text-decoration: none;
             color: #00b664;
-            padding: 8px; 
+            padding: 8px;
         }
+
         .sidebar__menu a:hover,
         .sidebar__menu a:focus {
             border: 2px solid var(--green);
@@ -190,7 +213,7 @@
 
         .main__title {
             color: var(--title-color);
-            font-weight: normal; 
+            font-weight: normal;
             font-size: 2.5em;
         }
 
@@ -199,7 +222,7 @@
             color: var(--content-color);
             font-size: 1.1rem;
             line-height: 1.5;
-        } 
+        }
 
         article.main__right p {
             margin: 1.5rem 0;
@@ -211,39 +234,57 @@
                 -ms-flex: 2.5;
                 flex: 2.5;
             }
+
             .main__right {
                 -webkit-box-flex: 7.5;
                 -ms-flex: 7.5;
                 flex: 7.5;
             }
 
-            
+
         }
 
         /* MEDIA QUERYS */
-        @media only screen and (max-width: 430px){
-            .nav-menu {margin-left:10px;}
-            .nav-item {padding:5px;margin:0px;}
+        @media only screen and (max-width: 430px) {
+            .nav-menu {
+                margin-left: 10px;
+            }
+
+            .nav-item {
+                padding: 5px;
+                margin: 0px;
+            }
         }
 
         @media only screen and (min-width: 767px) {
-            :root{--main-x-padding: 30px;}
-            html{font-size:17px;}
-
-            .contain{
-                padding:0 var(--main-x-padding);
+            :root {
+                --main-x-padding: 30px;
             }
-            .sidebar{max-width: var(--sidebar-max-width);}
+
+            html {
+                font-size: 17px;
+            }
+
+            .contain {
+                padding: 0 var(--main-x-padding);
+            }
+
+            .sidebar {
+                max-width: var(--sidebar-max-width);
+            }
 
             .sidebar__fixed {
-                position:fixed;
+                position: fixed;
                 height: calc(100vh - var(--nav-height));
-                width: 25vw;}
+                width: 25vw;
+            }
 
             .sidebar__fixed-compliment {
                 position: absolute;
                 margin-left: calc(25vw + calc(var(--main-x-padding) * 1.8));
-                padding-left: var(--main-x-padding);}
+                padding-left: var(--main-x-padding);
+                width: 75vw;
+            }
         }
 
         @media only screen and (min-width: 1145px) {
@@ -255,18 +296,26 @@
         }
 
         @media only screen and (min-width: 1279px) {
-            html{font-size:18px;}
+            html {
+                font-size: 18px;
+            }
         }
 
         @media only screen and (min-width: 1919px) {
-            html{font-size:20px;}
+            html {
+                font-size: 20px;
+            }
         }
 
         @media only screen and (min-width: 2900px) {
-            html{font-size:22px;}
-            .conatin{max-width:2880px;}
-        }
+            html {
+                font-size: 22px;
+            }
 
+            .conatin {
+                max-width: 2880px;
+            }
+        }
     </style>
 </head>
 
@@ -291,13 +340,13 @@
                     <ul id="sidebar-menu" class="sidebar__menu">
                         <li class="sidebar__menu-item"><a href="#Introduction">Introduction</a></li>
                         <li class="sidebar__menu-item"><a href="#Installation-w-o-NPM">Installation w/o NPM</a></li>
-                        <li class="sidebar__menu-item"><a href="#Installation-w-NPM">Installation w/ NPM</a></li>                
+                        <li class="sidebar__menu-item"><a href="#Installation-w-NPM">Installation w/ NPM</a></li>
                         <li class="sidebar__menu-item"><a href="#Use-Cases">Use Cases</a></li>
                     </ul>
                 </nav>
                 <div class="wavy-divider"></div>
                 <ul class="sidebar__menu">
-                        <li class="fancy-font sidebar__menu-item">That's All Folks</li>
+                    <li class="fancy-font sidebar__menu-item">That's All Folks</li>
                 </ul>
             </aside>
             <article id="main-content" class="main__right sidebar__fixed-compliment sly-page">
@@ -307,9 +356,10 @@
 
     <template id="index">
         <style>
-            :root{
+            :root {
                 --header-shadow: 0 0 7px 0 rgba(0, 143, 79, 0.8);
             }
+
             .page-index {
                 --background-image: #7DF5BE;
                 --title-color: #8934b4;
@@ -318,42 +368,99 @@
         </style>
         <article id="main-content" class="page-index main__right sidebar__fixed-compliment sly-page sly-page--next">
             <h1 class="main__title fancy-font">Welcome Home</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos aliquid ullam tempora, quae, corporis explicabo et architecto rerum at doloremque qui aperiam nemo laudantium fugiat exercitationem ea! Minima, rerum dolor!</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, ratione? Vero ut earum porro nemo animi incidunt explicabo officia, facere est quo numquam atque adipisci tempora, iusto repellendus rem culpa?</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum veritatis repellendus numquam optio velit, suscipit unde incidunt? Mollitia minus non iusto incidunt dolore molestiae, saepe ea, impedit aperiam iure doloremque!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos aliquid ullam tempora, quae, corporis explicabo et architecto rerum at doloremque qui aperiam nemo laudantium fugiat exercitationem ea! Minima, rerum dolor!</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, ratione? Vero ut earum porro nemo animi incidunt explicabo officia, facere est quo numquam atque adipisci tempora, iusto repellendus rem culpa?</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum veritatis repellendus numquam optio velit, suscipit unde incidunt? Mollitia minus non iusto incidunt dolore molestiae, saepe ea, impedit aperiam iure doloremque!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos aliquid ullam tempora, quae, corporis explicabo et architecto rerum at doloremque qui aperiam nemo laudantium fugiat exercitationem ea! Minima, rerum dolor!</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, ratione? Vero ut earum porro nemo animi incidunt explicabo officia, facere est quo numquam atque adipisci tempora, iusto repellendus rem culpa?</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum veritatis repellendus numquam optio velit, suscipit unde incidunt? Mollitia minus non iusto incidunt dolore molestiae, saepe ea, impedit aperiam iure doloremque!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos aliquid ullam tempora, quae, corporis explicabo et architecto rerum at doloremque qui aperiam nemo laudantium fugiat exercitationem ea! Minima, rerum dolor!</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, ratione? Vero ut earum porro nemo animi incidunt explicabo officia, facere est quo numquam atque adipisci tempora, iusto repellendus rem culpa?</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum veritatis repellendus numquam optio velit, suscipit unde incidunt? Mollitia minus non iusto incidunt dolore molestiae, saepe ea, impedit aperiam iure doloremque!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos aliquid ullam tempora, quae, corporis explicabo et architecto rerum at doloremque qui aperiam nemo laudantium fugiat exercitationem ea! Minima, rerum dolor!</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, ratione? Vero ut earum porro nemo animi incidunt explicabo officia, facere est quo numquam atque adipisci tempora, iusto repellendus rem culpa?</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum veritatis repellendus numquam optio velit, suscipit unde incidunt? Mollitia minus non iusto incidunt dolore molestiae, saepe ea, impedit aperiam iure doloremque!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos aliquid ullam tempora, quae, corporis explicabo et architecto rerum at doloremque qui aperiam nemo laudantium fugiat exercitationem ea! Minima, rerum dolor!</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, ratione? Vero ut earum porro nemo animi incidunt explicabo officia, facere est quo numquam atque adipisci tempora, iusto repellendus rem culpa?</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum veritatis repellendus numquam optio velit, suscipit unde incidunt? Mollitia minus non iusto incidunt dolore molestiae, saepe ea, impedit aperiam iure doloremque!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos aliquid ullam tempora, quae, corporis explicabo et architecto rerum at doloremque qui aperiam nemo laudantium fugiat exercitationem ea! Minima, rerum dolor!</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, ratione? Vero ut earum porro nemo animi incidunt explicabo officia, facere est quo numquam atque adipisci tempora, iusto repellendus rem culpa?</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum veritatis repellendus numquam optio velit, suscipit unde incidunt? Mollitia minus non iusto incidunt dolore molestiae, saepe ea, impedit aperiam iure doloremque!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos aliquid ullam tempora, quae, corporis explicabo et architecto rerum at doloremque qui aperiam nemo laudantium fugiat exercitationem ea! Minima, rerum dolor!</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, ratione? Vero ut earum porro nemo animi incidunt explicabo officia, facere est quo numquam atque adipisci tempora, iusto repellendus rem culpa?</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum veritatis repellendus numquam optio velit, suscipit unde incidunt? Mollitia minus non iusto incidunt dolore molestiae, saepe ea, impedit aperiam iure doloremque!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos aliquid ullam tempora, quae, corporis explicabo et architecto rerum at doloremque qui aperiam nemo laudantium fugiat exercitationem ea! Minima, rerum dolor!</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, ratione? Vero ut earum porro nemo animi incidunt explicabo officia, facere est quo numquam atque adipisci tempora, iusto repellendus rem culpa?</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum veritatis repellendus numquam optio velit, suscipit unde incidunt? Mollitia minus non iusto incidunt dolore molestiae, saepe ea, impedit aperiam iure doloremque!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum veritatis repellendus numquam optio velit, suscipit unde incidunt? Mollitia minus non iusto incidunt dolore molestiae, saepe ea, impedit aperiam iure doloremque!</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos aliquid ullam tempora, quae, corporis
+                explicabo et architecto rerum at doloremque qui aperiam nemo laudantium fugiat exercitationem ea!
+                Minima, rerum dolor!</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, ratione? Vero ut earum porro nemo
+                animi incidunt explicabo officia, facere est quo numquam atque adipisci tempora, iusto repellendus rem
+                culpa?</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum veritatis repellendus numquam optio velit,
+                suscipit unde incidunt? Mollitia minus non iusto incidunt dolore molestiae, saepe ea, impedit aperiam
+                iure doloremque!</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos aliquid ullam tempora, quae, corporis
+                explicabo et architecto rerum at doloremque qui aperiam nemo laudantium fugiat exercitationem ea!
+                Minima, rerum dolor!</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, ratione? Vero ut earum porro nemo
+                animi incidunt explicabo officia, facere est quo numquam atque adipisci tempora, iusto repellendus rem
+                culpa?</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum veritatis repellendus numquam optio velit,
+                suscipit unde incidunt? Mollitia minus non iusto incidunt dolore molestiae, saepe ea, impedit aperiam
+                iure doloremque!</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos aliquid ullam tempora, quae, corporis
+                explicabo et architecto rerum at doloremque qui aperiam nemo laudantium fugiat exercitationem ea!
+                Minima, rerum dolor!</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, ratione? Vero ut earum porro nemo
+                animi incidunt explicabo officia, facere est quo numquam atque adipisci tempora, iusto repellendus rem
+                culpa?</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum veritatis repellendus numquam optio velit,
+                suscipit unde incidunt? Mollitia minus non iusto incidunt dolore molestiae, saepe ea, impedit aperiam
+                iure doloremque!</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos aliquid ullam tempora, quae, corporis
+                explicabo et architecto rerum at doloremque qui aperiam nemo laudantium fugiat exercitationem ea!
+                Minima, rerum dolor!</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, ratione? Vero ut earum porro nemo
+                animi incidunt explicabo officia, facere est quo numquam atque adipisci tempora, iusto repellendus rem
+                culpa?</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum veritatis repellendus numquam optio velit,
+                suscipit unde incidunt? Mollitia minus non iusto incidunt dolore molestiae, saepe ea, impedit aperiam
+                iure doloremque!</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos aliquid ullam tempora, quae, corporis
+                explicabo et architecto rerum at doloremque qui aperiam nemo laudantium fugiat exercitationem ea!
+                Minima, rerum dolor!</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, ratione? Vero ut earum porro nemo
+                animi incidunt explicabo officia, facere est quo numquam atque adipisci tempora, iusto repellendus rem
+                culpa?</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum veritatis repellendus numquam optio velit,
+                suscipit unde incidunt? Mollitia minus non iusto incidunt dolore molestiae, saepe ea, impedit aperiam
+                iure doloremque!</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos aliquid ullam tempora, quae, corporis
+                explicabo et architecto rerum at doloremque qui aperiam nemo laudantium fugiat exercitationem ea!
+                Minima, rerum dolor!</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, ratione? Vero ut earum porro nemo
+                animi incidunt explicabo officia, facere est quo numquam atque adipisci tempora, iusto repellendus rem
+                culpa?</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum veritatis repellendus numquam optio velit,
+                suscipit unde incidunt? Mollitia minus non iusto incidunt dolore molestiae, saepe ea, impedit aperiam
+                iure doloremque!</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos aliquid ullam tempora, quae, corporis
+                explicabo et architecto rerum at doloremque qui aperiam nemo laudantium fugiat exercitationem ea!
+                Minima, rerum dolor!</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, ratione? Vero ut earum porro nemo
+                animi incidunt explicabo officia, facere est quo numquam atque adipisci tempora, iusto repellendus rem
+                culpa?</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum veritatis repellendus numquam optio velit,
+                suscipit unde incidunt? Mollitia minus non iusto incidunt dolore molestiae, saepe ea, impedit aperiam
+                iure doloremque!</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos aliquid ullam tempora, quae, corporis
+                explicabo et architecto rerum at doloremque qui aperiam nemo laudantium fugiat exercitationem ea!
+                Minima, rerum dolor!</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, ratione? Vero ut earum porro nemo
+                animi incidunt explicabo officia, facere est quo numquam atque adipisci tempora, iusto repellendus rem
+                culpa?</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum veritatis repellendus numquam optio velit,
+                suscipit unde incidunt? Mollitia minus non iusto incidunt dolore molestiae, saepe ea, impedit aperiam
+                iure doloremque!</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos aliquid ullam tempora, quae, corporis
+                explicabo et architecto rerum at doloremque qui aperiam nemo laudantium fugiat exercitationem ea!
+                Minima, rerum dolor!</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, ratione? Vero ut earum porro nemo
+                animi incidunt explicabo officia, facere est quo numquam atque adipisci tempora, iusto repellendus rem
+                culpa?</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum veritatis repellendus numquam optio velit,
+                suscipit unde incidunt? Mollitia minus non iusto incidunt dolore molestiae, saepe ea, impedit aperiam
+                iure doloremque!</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum veritatis repellendus numquam optio velit,
+                suscipit unde incidunt? Mollitia minus non iusto incidunt dolore molestiae, saepe ea, impedit aperiam
+                iure doloremque!</p>
         </article>
     </template>
 
     <template id="usage">
         <style>
-            :root{
+            :root {
                 --header-shadow: 0 0 7px 0 rgba(45, 171, 255, 0.8);
             }
+
             .page-usage {
                 --background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
                 --title-color: #043F66;
@@ -363,9 +470,12 @@
         <article id="main-content" class="page-usage main__right sidebar__fixed-compliment sly-page sly-page--next">
             <h1 class="main__title fancy-font">Usage</h1>
             <p>This is a magical example.</p>
-            <p>Lorem ipsum elit. Eligendi praesentium ea, totam magnam magni velit. Quae nemo vitae inventore cumque. Neque harum dolore fugiat, dolorem facilis recusandae! Magnam, minima!</p>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus ullam natus veniam voluptatum, deserunt dolore ea fuga nemo vel cumque optio. Iusto eaque nulla voluptatum aut qui.</p>
-            <p>Lorem ipsum, dolor  adipisicing elit. Dignissimos magni cumque accusamus quaerat nulla soluta, molestiae deserunt praesentium ipsam laborum excepturi obcaecati unde voluptatem. Odit voluptas ducimus non?</p>
+            <p>Lorem ipsum elit. Eligendi praesentium ea, totam magnam magni velit. Quae nemo vitae inventore cumque.
+                Neque harum dolore fugiat, dolorem facilis recusandae! Magnam, minima!</p>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus ullam natus veniam voluptatum,
+                deserunt dolore ea fuga nemo vel cumque optio. Iusto eaque nulla voluptatum aut qui.</p>
+            <p>Lorem ipsum, dolor adipisicing elit. Dignissimos magni cumque accusamus quaerat nulla soluta, molestiae
+                deserunt praesentium ipsam laborum excepturi obcaecati unde voluptatem. Odit voluptas ducimus non?</p>
         </article>
     </template>
 
@@ -374,6 +484,7 @@
             :root {
                 --header-shadow: 0 0 7px 0 rgba(176, 134, 104, 0.8);
             }
+
             .page-docs {
                 --background-image: linear-gradient(to right, #ffc3a0 0%, #ffafbd 100%);
                 --title-color: #9e5428;
@@ -383,17 +494,24 @@
         <article id="main-content" class="page-docs main__right sidebar__fixed-compliment sly-page sly-page--next">
             <h1 class="main__title fancy-font">Docs</h1>
             <p>This is a magical example.</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum sit eum quam harum obcaecati? Totam provident voluptate quas fuga iste impedit, porro suscipit rerum possimus qui, reprehenderit dolor vel veniam.</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto consectetur magnam possimus ea nostrum sed tempora reiciendis sit. Vel dolore praesentium quaerat repellat libero commodi voluptatem, magnam numquam id consequatur.</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni delectus voluptas, obcaecati fuga exercitationem dignissimos totam. Eos, tempore, doloremque facilis saepe alias earum perferendis reprehenderit suscipit nemo aliquid non! Illo.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum sit eum quam harum obcaecati? Totam
+                provident voluptate quas fuga iste impedit, porro suscipit rerum possimus qui, reprehenderit dolor vel
+                veniam.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto consectetur magnam possimus ea nostrum sed
+                tempora reiciendis sit. Vel dolore praesentium quaerat repellat libero commodi voluptatem, magnam
+                numquam id consequatur.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni delectus voluptas, obcaecati fuga
+                exercitationem dignissimos totam. Eos, tempore, doloremque facilis saepe alias earum perferendis
+                reprehenderit suscipit nemo aliquid non! Illo.</p>
         </article>
     </template>
 
     <template id="example">
         <style>
-            :root{
+            :root {
                 --header-shadow: 0 0 7px 0 rgba(60, 148, 136, 0.8);
             }
+
             .page-example {
                 --background-image: linear-gradient(-225deg, #69EACB 0%, #EACCF8 48%, #6654F1 100%);
                 --title-color: #8019b5;
@@ -403,23 +521,29 @@
         <article id="main-content" class="page-example main__right sidebar__fixed-compliment sly-page sly-page--next">
             <h1 class="main__title fancy-font">Example</h1>
             <p>This is a magical example.</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi praesentium ea, totam magnam magni velit. Quae nemo accusamus vitae inventore cumque. Neque harum dolore fugiat, dolorem facilis recusandae! Magnam, minima!</p>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus sequi, molestiae unde ullam natus veniam voluptatum, deserunt dolore ea fuga nemo vel cumque optio. Iusto eaque nulla voluptatum aut qui.</p>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos incidunt dolore magni cumque accusamus quaerat nulla soluta, molestiae deserunt praesentium ipsam laborum excepturi obcaecati unde voluptatem. Odit voluptas ducimus non?</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi praesentium ea, totam magnam magni
+                velit. Quae nemo accusamus vitae inventore cumque. Neque harum dolore fugiat, dolorem facilis
+                recusandae! Magnam, minima!</p>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus sequi, molestiae unde ullam
+                natus veniam voluptatum, deserunt dolore ea fuga nemo vel cumque optio. Iusto eaque nulla voluptatum aut
+                qui.</p>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos incidunt dolore magni cumque
+                accusamus quaerat nulla soluta, molestiae deserunt praesentium ipsam laborum excepturi obcaecati unde
+                voluptatem. Odit voluptas ducimus non?</p>
         </article>
     </template>
 
     <template id="notfound">
         <style>
             div.notfound {
-            margin: var(--main-x-padding) auto;
-            padding: var(--main-x-padding);
-            font-weight: 800;
+                margin: var(--main-x-padding) auto;
+                padding: var(--main-x-padding);
+                font-weight: 800;
             }
 
             div.notfound {
-            background: #000;
-            font-family: cursive;
+                background: #000;
+                font-family: cursive;
             }
 
             .notfound svg {
@@ -430,30 +554,30 @@
                 margin: 0 auto;
             }
 
-            .content{
-            text-align: center;
+            .content {
+                text-align: center;
             }
 
-            .notfound h1{
-            text-align: center;
-            font: 2em var(--header-font);
-            font-weight: 900;
-            color: #2f8f7f;
-            opacity: .6;
+            .notfound h1 {
+                text-align: center;
+                font: 2em var(--header-font);
+                font-weight: 900;
+                color: #2f8f7f;
+                opacity: .6;
             }
 
-            a.notfound{
-            display: inline-block;
-            text-transform: uppercase;
-            font: 1em var(--header-font);
-            font-weight: 300;
-            border: 1px solid #2f8f7f;
-            border-radius: 4px;
-            color: #2f8f7f;
-            margin-top: 10%;
-            padding: 8px 14px;
-            text-decoration: none;
-            opacity: .6;
+            a.notfound {
+                display: inline-block;
+                text-transform: uppercase;
+                font: 1em var(--header-font);
+                font-weight: 300;
+                border: 1px solid #2f8f7f;
+                border-radius: 4px;
+                color: #2f8f7f;
+                margin-top: 10%;
+                padding: 8px 14px;
+                text-decoration: none;
+                opacity: .6;
             }
 
             .text {
@@ -465,35 +589,35 @@
                 animation: stroke-offset 5.5s infinite linear;
             }
 
-            .text:nth-child(1){
+            .text:nth-child(1) {
                 stroke: #1c234d;
                 animation-delay: -1;
             }
 
-            .text:nth-child(2){
+            .text:nth-child(2) {
                 stroke: #315b2c;
                 animation-delay: -2s;
             }
 
-            .text:nth-child(3){
+            .text:nth-child(3) {
                 stroke: #2f8f7f;
                 animation-delay: -3s;
             }
 
-            .text:nth-child(4){
+            .text:nth-child(4) {
                 stroke: #2f8f7f;
                 animation-delay: -4s;
             }
 
-            .text:nth-child(5){
+            .text:nth-child(5) {
                 stroke: #da2717;
                 animation-delay: -5s;
             }
 
-            @keyframes stroke-offset{
+            @keyframes stroke-offset {
                 100% {
-                stroke-dashoffset: -35%;
-            }
+                    stroke-dashoffset: -35%;
+                }
             }
         </style>
         <article id="main-content" class="page-notfound main__right sidebar__fixed-compliment sly-page sly-page--next">
@@ -502,8 +626,8 @@
                     <symbol id="s-text">
                         <text text-anchor="middle" x="50%" y="80%">404</text>
                     </symbol>
-                
-                    <g class = "g-ants">
+
+                    <g class="g-ants">
                         <use xlink:href="#s-text" class="text"></use>
                         <use xlink:href="#s-text" class="text"></use>
                         <use xlink:href="#s-text" class="text"></use>
@@ -511,12 +635,12 @@
                         <use xlink:href="#s-text" class="text"></use>
                     </g>
                 </svg>
-                <div class="content"> 
-                <h1>Page Not Found</h1>
-                <a href="./" class="notfound">Back to Home</a>
+                <div class="content">
+                    <h1>Page Not Found</h1>
+                    <a href="./" class="notfound">Back to Home</a>
                 </div>
             </div>
-        </div>
+            </div>
     </template>
 
     <!-- ROUTING USING page.js -->
@@ -535,6 +659,7 @@
         slyder.addLinkListeners(slyderLinkListenerOptions);
     
     </script> -->
-    
+
 </body>
+
 </html>
