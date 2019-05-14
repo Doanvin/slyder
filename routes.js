@@ -123,7 +123,7 @@ function Slyder() {
     // const next = document.querySelector('.sly-page--next');
     let isAnimating = false;
     const animationEndEventName = whichAnimationEvent();
-    let outClass = ['sly-moveToLeft', 'sly-page--absolute'];
+    let outClass = ['sly-moveToLeft'];
     let inClass = ['sly-moveFromRight'];
 
     async function animation(currentPage, nextPage) {
