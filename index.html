@@ -380,7 +380,7 @@
                 --content-color: rgb(135, 61, 0);
             }
         </style>
-        <article id="main-content" class="page-docs smain__right sidebar__fixed-compliment sly-page sly-page--next">
+        <article id="main-content" class="page-docs main__right sidebar__fixed-compliment sly-page sly-page--next">
             <h1 class="main__title fancy-font">Docs</h1>
             <p>This is a magical example.</p>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum sit eum quam harum obcaecati? Totam provident voluptate quas fuga iste impedit, porro suscipit rerum possimus qui, reprehenderit dolor vel veniam.</p>
@@ -519,6 +519,11 @@
         </div>
     </template>
 
+    <!-- ROUTING USING page.js -->
+    <script src="/slyder/page.js"></script>
+    <script src="/slyder/routes.js"></script>
+    <!-- SLYDER ANIMATIONS -->
+    <link rel="stylesheet" href="/slyder/css/slyder.css">
     <!-- INSTANTIATE SLYDER -->
     <script>
         'use strict';
@@ -527,14 +532,8 @@
             linkSelector: 'a'
         }
         var slyder = new Slyder();
-
+    
     </script>
-
-    <!-- ROUTING USING page.js -->
-    <script src="/slyder/page.js"></script>
-    <script src="/slyder/routes.js"></script>
-    <!-- SLYDER ANIMATIONS -->
-    <link rel="stylesheet" href="/slyder/css/slyder.css">
-
+    
 </body>
 </html>
