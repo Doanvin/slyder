@@ -1,5 +1,33 @@
 'use strict';
 
+const Route = (function router(data = {
+        id: 'index',
+        type: 'page',
+        title: '',
+        description: ''
+    }) {
+    const selector = getSelector(data.type, data.id);
+
+    function getSelector(type, id) {
+        return `.${type}-${id}`;
+    }
+
+    setMetadata(data);
+    replaceContent(data.id);
+
+    window.slyder.animate({
+        current: selector
+    });
+})();
+
+const indexData = {
+    id: 'index',
+    type: 'page',
+    title: 'Slyder | Modern Page Transitions',
+    description: 'A simple page transition component for single page applications.'
+}
+let index = new Route(indexData);
+
 // match page base with github pages subdomain
 page.base('/slyder');
 page('/', index);
@@ -116,7 +144,7 @@ function setMetadata(meta) {
 
 
 
-function Slyder(current, next) {
+function Slyder() {
     // const current = document.querySelector('.sly-page');
     // const next = document.querySelector('.sly-page--next');
     let isAnimating = false;
@@ -124,9 +152,18 @@ function Slyder(current, next) {
     let outClass = ['sly-moveToLeft'];
     let inClass = ['sly-moveFromRight'];
 
-    async function animation(current, next) {
-        if (isAnimating) {return;}
+    async function animation(options = {
+        current: 'sly-page',
+        next: 'sly-page--next'
+    }) {
+
+        if (isAnimating) {
+            return;
+        }
         isAnimating = true;
+
+        const current = document.querySelector(options.current);
+        const next = document.querySelector(options.next);
 
         const updateClasses = (current, next, cb) => {
             next.classList.remove('sly-page--next');
@@ -162,14 +199,14 @@ function Slyder(current, next) {
             await addNextListener(next),
             await addCurrentListener(current)
         ])
-        
+
         updateClasses(current, next, () => isAnimating = false);
     }
 
     function addLinkListeners(options = {
-            containerSelector: 'header',
-            linkSelector: 'a'
-        }) {
+        containerSelector: 'header',
+        linkSelector: 'a'
+    }) {
         let header = document.querySelector(options.containerSelector);
         let linkTags = header.querySelectorAll(options.linkSelector);
         let links = Array.prototype.slice.call(linkTags);
@@ -183,8 +220,34 @@ function Slyder(current, next) {
         });
     }
 
-    animation(current, next);
+    // detect the correct transition event
+    function whichAnimationEvent() {
+        const el = document.createElement("div");
 
+        const animations = {
+            "onanimationend": "animationend",
+            "onoanimationend": "oanimationend",
+            "onmozanimationend": "animationend",
+            "onwebkitanimationend": "webkitanimationend"
+        }
+
+        const animationKeys = Object.keys(animations);
+
+        function getKey(myKeys) {
+            let keys = [];
+            myKeys.forEach((key) => {
+                if (el[key] !== undefined) {
+                    keys.push(animations[key]);
+                }
+            });
+            return keys[0];
+        }
+
+        return getKey(animationKeys);
+
+    }
+
+    // Public Api for Slyder instances
     return {
         animate: animation,
         addLinkListeners
@@ -192,40 +255,10 @@ function Slyder(current, next) {
 }
 
 
-
-// detect the correct transition event
-function whichAnimationEvent() {
-    const el = document.createElement("div");
-
-    const animations = {
-        "onanimationend": "animationend",
-        "onoanimationend": "oanimationend",
-        "onmozanimationend": "animationend",
-        "onwebkitanimationend": "webkitanimationend"
-    }
-
-    const animationKeys = Object.keys(animations);
-    function getKey(myKeys) {
-        let keys = [];
-        myKeys.forEach( (key) => {
-            if (el[key] !== undefined)  {
-                keys.push(animations[key]);
-            }
-        });
-        return keys[0];
-    }
-
-    return getKey(animationKeys);
-    
-}
-
 // replace the content of the of the element with id arg
 function replaceContent(id) {
     // check for <template> support
     if ('content' in document.createElement('template')) {
-        // current page before navigating
-        const $currentPage = document.querySelector('.sly-page');
-
         // $content is the element who's content you would like to append to
         const $content = document.getElementById('main-container');
 
@@ -236,22 +269,25 @@ function replaceContent(id) {
         const clone = document.importNode(template.content, true);
         // $content.innerHTML = '';
         $content.appendChild(clone);
-        const $nextPage = document.querySelector('.sly-page--next');
 
-        Slyder($currentPage, $nextPage);
     } else {
         alert('HTML template tags are not supported by your browser. Please upgrade to the latest version of Firefox or Chrome.')
     }
 }
 
-function index() {
-    const metadata = {
-        title: 'Slyder | Modern Page Transitions',
-        description: 'A simple page transition component for single page applications.'
-    }
-    setMetadata(metadata);
-    replaceContent('index');
-}
+
+
+// function index() {
+//     const metadata = {
+//         title: 'Slyder | Modern Page Transitions',
+//         description: 'A simple page transition component for single page applications.'
+//     }
+//     setMetadata(metadata);
+//     replaceContent('index');
+//     slyder.animate({
+//         current: 'page-index'
+//     })
+// }
 
 function usage() {
     const metadata = {
