@@ -170,18 +170,18 @@ function Slyder() {
         containerSelector: 'header',
         linkSelector: 'a'
     }) {
-        let header = document.querySelector(options.containerSelector);
-        let linkTags = header.querySelectorAll(options.linkSelector);
-        let links = Array.prototype.slice.call(linkTags);
+        // let header = document.querySelector(options.containerSelector);
+        // let linkTags = header.querySelectorAll(options.linkSelector);
+        // let links = Array.prototype.slice.call(linkTags);
 
-        function handleClick() {
-            if (event.target.dataset.slyIdx < store.get())
-        }
+        // function handleClick() {
+        //     if (event.target.dataset.slyIdx < store.get())
+        // }
 
-        for (let i = 0; i < links.length; i++) {
-            links[i].dataset.slyIdx = i;
-            links[i].addEventListener('click', handleClick);
-        }
+        // for (let i = 0; i < links.length; i++) {
+        //     links[i].dataset.slyIdx = i;
+        //     links[i].addEventListener('click', handleClick);
+        // }
     }
 
     // replace the content of the of the element with id arg
