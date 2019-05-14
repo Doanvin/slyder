@@ -285,7 +285,7 @@ const indexData = {
     title: 'Slyder | Modern Page Transitions',
     description: 'A simple page transition component for single page applications.'
 }
-let index = route(indexData);
+let index = () => route(indexData);
 
 
 
