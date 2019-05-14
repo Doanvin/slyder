@@ -23,6 +23,7 @@
 
 .sly-page--absolute {
 	position: absolute;
+	right: 0;
 }
 
 /* ANIMATIONS */
