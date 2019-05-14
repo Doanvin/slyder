@@ -1,6 +1,6 @@
 'use strict';
 
-const Route = (function router(data = {
+const Route = function router(data = {
         id: 'index',
         type: 'page',
         title: '',
@@ -18,7 +18,9 @@ const Route = (function router(data = {
     window.slyder.animate({
         current: selector
     });
-})();
+
+    return {selecor}
+}
 
 const indexData = {
     id: 'index',
