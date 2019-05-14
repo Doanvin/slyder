@@ -101,6 +101,19 @@ function setMetadata(meta) {
 //     this.current.remove();
 // }
 
+var store = (function Store() {
+    function getKey(key) {
+        JSON.parse(localStorage.getItem(key));
+    }
+    function setKey(key, value) {
+        localStorage.setItem(key, value);
+    }
+    return {
+        getKey,
+        setKey
+    };
+})();
+
 
 
 
@@ -170,7 +183,7 @@ var slyder = (function Slyder() {
             link.addEventListener('click', {
                 idx: i,
                 handleEvent: event => {
-                    event.target.dataset['sly-idx'] = this.idx;
+                    event.target.dataset['slyIdx'] = this.idx;
                 }
             });
         });
@@ -262,7 +275,7 @@ function route(data = {
     setMetadata(data);
     replaceContent(data.id);
 
-    slyder.animate();
+    slyder.animate(nextPage = selector);
 }
 
 
