@@ -276,8 +276,7 @@ function route(data = {
     }
 
     setMetadata(data);
-    replaceContent(data.id);
-
+    slyder.replaceContent(data.id);
     slyder.animate('.sly-page', selector);
 }
 
