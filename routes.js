@@ -180,12 +180,13 @@ var slyder = (function Slyder() {
         let linkTags = header.querySelectorAll(options.linkSelector);
         let links = Array.prototype.slice.call(linkTags);
         links.forEach((link, i) => {
-            link.addEventListener('click', {
+            let listenerObj = {
                 idx: i,
                 handleEvent: event => {
                     event.target.dataset['slyIdx'] = this.idx;
                 }
-            });
+            }
+            link.addEventListener('click', listenerObj, listenerObj);
         });
     }
 
