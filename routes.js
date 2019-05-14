@@ -118,8 +118,8 @@ var slyder = (function Slyder() {
         }
         isAnimating = true;
 
-        const current = document.querySelector(options.current);
-        const next = document.querySelector(options.next);
+        const current = document.querySelector(current);
+        const next = document.querySelector(next);
 
         const updateClasses = (current, next, cb) => {
             next.classList.remove('sly-page--next');
@@ -262,7 +262,7 @@ function route(data = {
     setMetadata(data);
     replaceContent(data.id);
 
-    slyder.animate(selector);
+    slyder.animate();
 }
 
 
