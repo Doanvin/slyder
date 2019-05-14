@@ -20,6 +20,10 @@
 	z-index: 999;
 }
 
+.sly-page--absolute {
+	position: absolute;
+}
+
 /* ANIMATIONS */
 /* move from / to  */
 
