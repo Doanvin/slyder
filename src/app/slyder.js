@@ -1,32 +1,3 @@
-'use strict';
-
-// Set the metadata for the new page
-// meta is an object with title and description properties
-function setMetadata(meta) {
-    let title = document.getElementsByTagName('title')[0],
-        description = document.querySelector('meta[name="description"]');
-
-    title.setAttribute('title', meta.title);
-    description.setAttribute('content', meta.description);
-}
-
-// function Slyder(current, next, options = {
-//     animate: 'moveToLeft'
-// }) {
-//     this.sly = options;
-//     this.current = current;
-//     this.next = next;
-//     this.animationEndEvent = whichAnimationEvent();
-//     this.currentAnimationEnded = false;
-//     this.nextAnimationEnded = false;
-//     this.isAnimating = true;
-//     var outClass = '',
-//         inClass = '';
-
-//     if (!this.sly) {
-//         console.error('You need to setup a variable named "sly" on the window.\nvar sly = {animate: "moveToLeft"};  or \nwindow.sly = {animate: "moveToLeft"};');
-//     }
-
 //     switch (this.sly.animate) {
 //         case 'moveToLeft':
 //             outClass = 'sly-moveToLeft sly-page--current';
@@ -92,33 +63,25 @@ function setMetadata(meta) {
 
 //     });
 
-// }
 
-// Slyder.prototype.handleEndAnimation = function () {
-//     this.currentAnimationEnded = false;
-//     this.nextAnimationEnded = false;
-//     this.next.classList = 'sly-page';
-//     this.current.remove();
-// }
+// var store = (function Store() {
+//     function get(key) {
+//         JSON.parse(localStorage.getItem(key));
+//     }
 
-var store = (function Store() {
-    function get(key) {
-        JSON.parse(localStorage.getItem(key));
-    }
-
-    function set(key, value) {
-        localStorage.setItem(key, value);
-    }
-    return {
-        get,
-        set
-    };
-})();
+//     function set(key, value) {
+//         localStorage.setItem(key, value);
+//     }
+//     return {
+//         get,
+//         set
+//     };
+// })();
 
 
 
 
-function Slyder() {
+export function Slyder() {
     // const current = document.querySelector('.sly-page');
     // const next = document.querySelector('.sly-page--next');
     let isAnimating = false;
@@ -139,12 +102,12 @@ function Slyder() {
 
         // Functions to handle animationEndEvent
 
-        function handleNextAnimationEnd() {
+        const handleNextAnimationEnd = () => {
             next.classList.remove(...inClass);
             next.removeEventListener(animationEndEventName, handleNextAnimationEnd);
         }
 
-        function handleCurrentAnimationEnd() {
+        const handleCurrentAnimationEnd = () => {
             current.removeEventListener(animationEndEventName, handleCurrentAnimationEnd);
             current.remove();
             isAnimating = false;
@@ -242,161 +205,7 @@ function Slyder() {
     return {
         animate: animation,
         addLinkListeners,
-        replaceContent
+        replaceContent,
+        isAnimating
     }
 };
-
-var slyder = new Slyder();
-
-
-
-
-// function index() {
-//     const metadata = {
-//         title: 'Slyder | Modern Page Transitions',
-//         description: 'A simple page transition component for single page applications.'
-//     }
-//     setMetadata(metadata);
-//     replaceContent('index');
-//     slyder.animate({
-//         current: 'page-index'
-//     })
-// }
-
-
-
-function route(data = {
-    id: 'index',
-    type: 'page',
-    title: '',
-    description: ''
-}) {
-
-    setMetadata(data);
-
-    function transition(cb) {
-        let contentReplaced = slyder.replaceContent(data.id);
-        if (contentReplaced) {
-            cb();
-        }
-    }
-
-    transition(() => slyder.animate('.sly-page', '.sly-page--next'));
-}
-
-
-const indexData = {
-    id: 'index',
-    type: 'page',
-    title: 'Slyder | Modern Page Transitions',
-    description: 'A simple page transition component for single page applications.'
-}
-
-function index() {
-    route(indexData)
-}
-
-const usageData = {
-    id: 'usage',
-    type: 'page',
-    title: 'Slyder | Usage',
-    description: 'How to use Slyder page transitions for single page applications. When to use Slyder.'
-}
-
-function usage() {
-    route(usageData)
-}
-
-
-const docsData = {
-    id: 'docs',
-    type: 'page',
-    title: 'Slyder | Documentation',
-    description: 'Learn about Slyder page transitions for single page applicaitons. Use Slyder for a superior UX.'
-}
-
-function docs() {
-    route(docsData)
-}
-
-const exampleData = {
-    id: 'example',
-    type: 'page',
-    title: 'Slyder | Examples',
-    description: 'A walk through of Slyder page transitions being used. Look at the code.'
-}
-
-function example() {
-    route(exampleData)
-}
-
-const notfoundData = {
-    id: 'notfound',
-    type: 'page',
-    title: 'Slyder | 404 Page Not Found',
-    description: 'Slyder page transitions for single page applications 404 page.'
-}
-
-function notfound() {
-    route(notfoundData)
-}
-
-
-// match page base with github pages subdomain
-page.base('/slyder');
-page('/', index);
-page('/usage', usage);
-page('/docs', docs);
-// page('/docs/:page', docs);
-page('/example', example);
-page('*', notfound);
-page({
-    hashbang: true
-});
-
-
-
-// function usage() {
-//     const metadata = {
-//         title: 'Slyder | Usage',
-//         description: 'How to use Slyder page transitions for single page applications. When to use Slyder.'
-//     }
-//     setMetadata(metadata);
-//     slyder.replaceContent('usage');
-//     slyder.animate('.sly-page', '.sly-page--next');
-// }
-
-// function docs() {
-//     const metadata = {
-//         title: 'Slyder | Documentation',
-//         description: 'Learn about Slyder page transitions for single page applicaitons. Use Slyder for a superior UX.'
-//     }
-//     setMetadata(metadata);
-//     slyder.replaceContent('docs');
-//     slyder.animate('.sly-page', '.sly-page--next');
-// }
-
-// function example() {
-//     const metadata = {
-//         title: 'Slyder | Examples',
-//         description: 'A walk through of Slyder page transitions being used. Look at the code.'
-//     }
-//     setMetadata(metadata);
-//     slyder.replaceContent('example');
-//     slyder.animate('.sly-page', '.sly-page--next');
-// }
-
-// function notfound() {
-//     const metadata = {
-//         title: 'Slyder | 404 Page Not Found',
-//         description: 'Slyder page transitions for single page applications 404 page.'
-//     }
-//     setMetadata(metadata);
-//     slyder.replaceContent('notfound');
-//     slyder.animate('.sly-page', '.sly-page--next');
-// }
-
-//   function contact(ctx) {
-//     document.querySelector('p')
-//       .textContent = 'viewing contact ' + (ctx.params.contactName || '');
-//   }

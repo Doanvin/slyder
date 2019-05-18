@@ -11,9 +11,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Slyder | Modern Page Transitions</title>
     <meta name="description" content="A simple page transition component for single page applications.">
-    <link rel="stylesheet" href="normalize.min.css">
+    <!-- <link rel="stylesheet" href="normalize.min.css"> -->
     <!-- match base with github pages subdomain -->
-    <base href="/slyder/">
+    <!-- <base href="/slyder/"> -->
     <!-- GOOGLE FONTS -->
     <link href="https://fonts.googleapis.com/css?family=Mr+Dafoe|Open+Sans|Prompt" rel="stylesheet">
 
@@ -230,15 +230,12 @@
 
         @media only screen and (min-width: 767px) {
             .main__left {
-                -webkit-box-flex: 2.5;
-                -ms-flex: 2.5;
-                flex: 2.5;
+                width: var(--sidebar-max-width);
             }
 
             .main__right {
-                -webkit-box-flex: 7.5;
-                -ms-flex: 7.5;
-                flex: 7.5;
+                margin-left: var(--sidebar-max-width);
+                width: calc(100vw - var(--sidebar-max-width));
             }
 
 
@@ -276,41 +273,38 @@
             .sidebar__fixed {
                 position: fixed;
                 height: var(--main-height);
-                width: 25vw;
+                width: var(--sidebar-max-width);
             }
 
             .sidebar__fixed-compliment {
                 position: absolute;
-                margin-left: calc(25vw + calc(var(--main-x-padding) * 1.8));
+                margin-left: 280px;
                 padding-left: var(--main-x-padding);
                 height: var(--main-height);
-                width: calc(75vw - calc(60px * 1.9))
-            }
-        }
-
-        @media only screen and (min-width: 1145px) {
-            .sidebar__fixed-compliment {
-                /* HARD CODED MAX WIDTH OF SIDEBAR TO BE MARGIN-LEFT OF ARTICLE */
-                margin-left: 340px;
-                width: calc(100vw - 400px);
+                width: calc(100vw - var(--sidebar-max-width));
             }
         }
 
         @media only screen and (min-width: 1279px) {
             html {
-                font-size: 18px;
+                font-size: 17px;
+            }
+
+            .main-content__container {
+                max-width: 960px;
+                margin: 0 auto;
             }
         }
 
         @media only screen and (min-width: 1919px) {
             html {
-                font-size: 20px;
+                font-size: 18px;
             }
         }
 
         @media only screen and (min-width: 2900px) {
             html {
-                font-size: 22px;
+                font-size: 18px;
             }
 
             .conatin {
@@ -350,7 +344,7 @@
                     <li class="fancy-font sidebar__menu-item">That's All Folks</li>
                 </ul>
             </aside>
-            <article id="main-content" class="main__right sidebar__fixed-compliment sly-page">
+            <article id="main-content" class="main__right main__right--contained sidebar__fixed-compliment sly-page">
             </article>
         </section>
     </main>
@@ -368,7 +362,8 @@
             }
         </style>
         <article id="main-content" class="page-index main__right sidebar__fixed-compliment sly-page sly-page--next">
-            <h1 class="main__title fancy-font">Welcome Home</h1>
+            <div class="main-content__container">
+                <h1 class="main__title fancy-font">Welcome Home</h1>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos aliquid ullam tempora, quae, corporis
                 explicabo et architecto rerum at doloremque qui aperiam nemo laudantium fugiat exercitationem ea!
                 Minima, rerum dolor!</p>
@@ -453,6 +448,7 @@
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum veritatis repellendus numquam optio velit,
                 suscipit unde incidunt? Mollitia minus non iusto incidunt dolore molestiae, saepe ea, impedit aperiam
                 iure doloremque!</p>
+            </div>
         </article>
     </template>
 
@@ -469,14 +465,16 @@
             }
         </style>
         <article id="main-content" class="page-usage main__right sidebar__fixed-compliment sly-page sly-page--next">
-            <h1 class="main__title fancy-font">Usage</h1>
-            <p>This is a magical example.</p>
-            <p>Lorem ipsum elit. Eligendi praesentium ea, totam magnam magni velit. Quae nemo vitae inventore cumque.
-                Neque harum dolore fugiat, dolorem facilis recusandae! Magnam, minima!</p>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus ullam natus veniam voluptatum,
-                deserunt dolore ea fuga nemo vel cumque optio. Iusto eaque nulla voluptatum aut qui.</p>
-            <p>Lorem ipsum, dolor adipisicing elit. Dignissimos magni cumque accusamus quaerat nulla soluta, molestiae
-                deserunt praesentium ipsam laborum excepturi obcaecati unde voluptatem. Odit voluptas ducimus non?</p>
+            <div class="main-content__container">
+                    <h1 class="main__title fancy-font">Usage</h1>
+                    <p>This is a magical example.</p>
+                    <p>Lorem ipsum elit. Eligendi praesentium ea, totam magnam magni velit. Quae nemo vitae inventore cumque.
+                        Neque harum dolore fugiat, dolorem facilis recusandae! Magnam, minima!</p>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus ullam natus veniam voluptatum,
+                        deserunt dolore ea fuga nemo vel cumque optio. Iusto eaque nulla voluptatum aut qui.</p>
+                    <p>Lorem ipsum, dolor adipisicing elit. Dignissimos magni cumque accusamus quaerat nulla soluta, molestiae
+                        deserunt praesentium ipsam laborum excepturi obcaecati unde voluptatem. Odit voluptas ducimus non?</p>
+            </div>
         </article>
     </template>
 
@@ -493,17 +491,19 @@
             }
         </style>
         <article id="main-content" class="page-docs main__right sidebar__fixed-compliment sly-page sly-page--next">
-            <h1 class="main__title fancy-font">Docs</h1>
-            <p>This is a magical example.</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum sit eum quam harum obcaecati? Totam
-                provident voluptate quas fuga iste impedit, porro suscipit rerum possimus qui, reprehenderit dolor vel
-                veniam.</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto consectetur magnam possimus ea nostrum sed
-                tempora reiciendis sit. Vel dolore praesentium quaerat repellat libero commodi voluptatem, magnam
-                numquam id consequatur.</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni delectus voluptas, obcaecati fuga
-                exercitationem dignissimos totam. Eos, tempore, doloremque facilis saepe alias earum perferendis
-                reprehenderit suscipit nemo aliquid non! Illo.</p>
+            <div class="main-content__container">
+                    <h1 class="main__title fancy-font">Docs</h1>
+                    <p>This is a magical example.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum sit eum quam harum obcaecati? Totam
+                        provident voluptate quas fuga iste impedit, porro suscipit rerum possimus qui, reprehenderit dolor vel
+                        veniam.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto consectetur magnam possimus ea nostrum sed
+                        tempora reiciendis sit. Vel dolore praesentium quaerat repellat libero commodi voluptatem, magnam
+                        numquam id consequatur.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni delectus voluptas, obcaecati fuga
+                        exercitationem dignissimos totam. Eos, tempore, doloremque facilis saepe alias earum perferendis
+                        reprehenderit suscipit nemo aliquid non! Illo.</p>
+            </div>
         </article>
     </template>
 
@@ -520,17 +520,19 @@
             }
         </style>
         <article id="main-content" class="page-example main__right sidebar__fixed-compliment sly-page sly-page--next">
-            <h1 class="main__title fancy-font">Example</h1>
-            <p>This is a magical example.</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi praesentium ea, totam magnam magni
-                velit. Quae nemo accusamus vitae inventore cumque. Neque harum dolore fugiat, dolorem facilis
-                recusandae! Magnam, minima!</p>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus sequi, molestiae unde ullam
-                natus veniam voluptatum, deserunt dolore ea fuga nemo vel cumque optio. Iusto eaque nulla voluptatum aut
-                qui.</p>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos incidunt dolore magni cumque
-                accusamus quaerat nulla soluta, molestiae deserunt praesentium ipsam laborum excepturi obcaecati unde
-                voluptatem. Odit voluptas ducimus non?</p>
+            <div class="main-content__container">
+                    <h1 class="main__title fancy-font">Example</h1>
+                    <p>This is a magical example.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi praesentium ea, totam magnam magni
+                        velit. Quae nemo accusamus vitae inventore cumque. Neque harum dolore fugiat, dolorem facilis
+                        recusandae! Magnam, minima!</p>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus sequi, molestiae unde ullam
+                        natus veniam voluptatum, deserunt dolore ea fuga nemo vel cumque optio. Iusto eaque nulla voluptatum aut
+                        qui.</p>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos incidunt dolore magni cumque
+                        accusamus quaerat nulla soluta, molestiae deserunt praesentium ipsam laborum excepturi obcaecati unde
+                        voluptatem. Odit voluptas ducimus non?</p>
+            </div>
         </article>
     </template>
 
@@ -645,10 +647,10 @@
     </template>
 
     <!-- ROUTING USING page.js -->
-    <script src="/slyder/page.js"></script>
-    <script src="/slyder/routes.js"></script>
+    <!-- <script src="/slyder/page.js"></script> -->
+    <!-- <script src="/slyder/routes.js"></script> -->
     <!-- SLYDER ANIMATIONS -->
-    <link rel="stylesheet" href="/slyder/css/slyder.css">
+    <!-- <link rel="stylesheet" href="/slyder/css/slyder.css"> -->
     <!-- ADD SLYDER LINK LISTENERS -->
     <!-- <script>
         'use strict';
