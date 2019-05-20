@@ -1,53 +1,4 @@
-//     switch (this.sly.animate) {
-//         case 'moveToLeft':
-//             outClass = 'sly-moveToLeft sly-page--current';
-//             inClass = 'sly-moveFromRight';
-//             break;
-//         case 'moveToRight':
-//             outClass = 'sly-moveToRight sly-page--current';
-//             inClass = 'sly-moveFromLeft';
-//             break;
-//         case 'moveToTop':
-//             outClass = 'sly-moveToTop sly-page--current';
-//             inClass = 'sly-moveFromBottom';
-//             break;
-//         case 'moveToBottom':
-//             outClass = 'sly-moveToBottom sly-page--current';
-//             inClass = 'sly-moveFromTop';
-//             break;
-//         case 'fadeInLeft':
-//             outClass = 'sly-fade sly-page--current';
-//             inClass = 'sly-moveFromRight sly-ontop';
-//             break;
-//         case 'faseInRight':
-//             outClass = 'sly-fade sly-page--current';
-//             inClass = 'sly-moveFromLeft sly-ontop';
-//             break;
-//         case 'fadeInTop':
-//             outClass = 'sly-fade sly-page--current';
-//             inClass = 'sly-moveFromBottom sly-ontop';
-//             break;
-//         case 'fadeInBottom':
-//             outClass = 'sly-fade sly-page--current';
-//             inClass = 'sly-moveFromTop sly-ontop';
-//             break;
-//         case 'moveToLeftFade':
-//             outClass = 'sly-moveToLeftFade sly-page--current';
-//             inClass = 'sly-moveFromRightFade';
-//             break;
-//         case 'moveToRightFade':
-//             outClass = 'sly-moveToRightFade sly-page--current';
-//             inClass = 'sly-moveFromLeftFade';
-//             break;
-//         case 'moveToTopFade':
-//             outClass = 'sly-moveToTopFade sly-page--current';
-//             inClass = 'sly-moveFromBottomFade';
-//             break;
-//         case 'moveToBottomFade':
-//             outClass = 'sly-moveToBottomFade sly-page--current';
-//             inClass = 'sly-moveFromTopFade';
-//             break;
-//     }
+
 
 //     this.current.classList = outClass;
 //     this.next.classList = inClass;
@@ -81,14 +32,16 @@
 
 
 
-export function Slyder() {
+export function Slyder(animationType, animationDirection) {
     // const current = document.querySelector('.sly-page');
     // const next = document.querySelector('.sly-page--next');
     let isAnimating = false;
     const animationEndEventName = whichAnimationEvent();
     let outClass = ['sly-moveToLeft'];
     let inClass = ['sly-moveFromRight'];
+    setCaseName(0);
     let paths = [];
+    let caseName = '';
 
     async function animation(currentPage, nextPage) {
         const current = document.querySelector(currentPage);
@@ -159,14 +112,87 @@ export function Slyder() {
                 return element == window.location.hash.slice(2);
             });
             if (currentIdx === -1 || currentIdx == undefined) {currentIdx = 0}
-            console.log('curr: ' + currentIdx);
+
             let nextIdx = paths.findIndex((element) => {
                 return element == nextPath;
             });
-            console.log('next: ' + nextIdx);
-            // slyder.setAnimation();
+
+            if (nextIdx < currentIdx) {
+                setCaseName(1);
+            } else {
+                setCaseName(0);
+            }
         }
         catch (error) {console.error(error)}
+    }
+
+    function setCaseName(nextIndexHigher = 0) {
+        // animationType
+        let horizontal = ['ToLeft', 'ToRight'];
+        let vertical = ['ToTop', 'ToBottom'];
+
+        if (animationDirection === 'horizontal') {
+            caseName = animationType + horizontal[nextIndexHigher];
+        }
+
+        if (animationDirection === 'vertical') {
+            caseName = animationType + vertical[nextIndexHigher];
+        }
+        console.log(caseName)
+        setAnimationClasses(caseName);
+    }
+
+    function setAnimationClasses(caseName) {
+        switch (caseName) {
+            case 'moveToLeft':
+                outClass = ['sly-moveToLeft'];
+                inClass = ['sly-moveFromRight'];
+                break;
+            case 'moveToRight':
+                outClass = ['sly-moveToRight'];
+                inClass = ['sly-moveFromLeft'];
+                break;
+            case 'moveToTop':
+                outClass = ['sly-moveToTop'];
+                inClass = ['sly-moveFromBottom'];
+                break;
+            case 'moveToBottom':
+                outClass = ['sly-moveToBottom'];
+                inClass = ['sly-moveFromTop'];
+                break;
+            case 'fadeToLeft':
+                outClass = ['sly-fade'];
+                inClass = ['sly-fadeFromRight', 'sly-page--ontop'];
+                break;
+            case 'fadeToRight':
+                outClass = ['sly-fade'];
+                inClass = ['sly-fadeFromLeft', 'sly-page--ontop'];
+                break;
+            case 'fadeToTop':
+                outClass = ['sly-fade'];
+                inClass = ['sly-fadeFromBottom', 'sly-page--ontop'];
+                break;
+            case 'fadeToBottom':
+                outClass = ['sly-fade'];
+                inClass = ['sly-fadeFromTop', 'sly-page--ontop'];
+                break;
+            case 'fadeToLeft':
+                outClass = ['sly-fadeToLeft'];
+                inClass = ['sly-fadeFromRight'];
+                break;
+            case 'fadeToRight':
+                outClass = ['sly-fadeToRight'];
+                inClass = ['sly-fadeFromLeft'];
+                break;
+            case 'fadeToTop':
+                outClass = ['sly-fadeToTop'];
+                inClass = ['sly-fadeFromBottom'];
+                break;
+            case 'fadeToBottom':
+                outClass = ['sly-fadeToBottom'];
+                inClass = ['sly-fadeFromTop'];
+                break;
+        }
     }
 
     // replace the content of the of the element with id arg

@@ -4,7 +4,7 @@ import {
     Slyder
 } from "./slyder";
 
-const slyder = new Slyder();
+const slyder = new Slyder('move', 'horizontal');
 const  header = document.getElementsByTagName('header')[0];
 slyder.addLinkIndexes(header, 'a');
 
