@@ -11,11 +11,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Slyder | Modern Page Transitions</title>
     <meta name="description" content="A simple page transition component for single page applications.">
-    <!-- <link rel="stylesheet" href="normalize.min.css"> -->
     <!-- match base with github pages subdomain -->
-    <!-- <base href="/slyder/"> -->
+    <!-- <base href="/#"> -->
     <!-- GOOGLE FONTS -->
-    <link href="https://fonts.googleapis.com/css?family=Mr+Dafoe|Open+Sans|Prompt" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Mr+Dafoe|Open+Sans|Prompt|Harmattan" rel="stylesheet">
 
 
     <style>
@@ -76,18 +75,22 @@
             font-family: var(--header-font);
         }
 
+        a {
+            outline: none;
+        }
+
         /* UTILITY CLASSES */
         .fancy-font {
             font-family: var(--fancy-font);
             letter-spacing: .18em;
         }
 
-        .contain {
+        /* .contain {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 10px;
             width: 100%;
-        }
+        } */
 
         .wavy-divider {
             width: 100%;
@@ -151,6 +154,10 @@
             color: #00f485;
             font-weight: bold;
             border: 2px solid transparent;
+            border-radius: 30px;
+            /* border-bottom-left-radius: 0px;
+            border-bottom-right-radius: 0px; */
+            text-decoration: none;
         }
 
         .nav-item:hover,
@@ -168,16 +175,15 @@
         }
 
         .main__container {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
+            /* display: flex; */
+            /* flex-direction: row;
+            flex-wrap: wrap; */
             min-height: var(--main-height);
         }
 
-        .main__left,
-        .main__right {
-            -ms-flex-preferred-size: 100%;
-            flex-basis: 100%;
+        .main__left {
+            /* -ms-flex-preferred-size: 100%;
+            flex-basis: 100%; */
             /* padding for article aside */
             padding: 0 var(--main-x-padding);
         }
@@ -195,6 +201,7 @@
 
         .sidebar__menu a {
             border: 2px solid transparent;
+            border-radius: 30px;
             text-decoration: none;
             color: #00b664;
             padding: 8px;
@@ -214,7 +221,12 @@
         .main__title {
             color: var(--title-color);
             font-weight: normal;
-            font-size: 2.5em;
+            font-size: 5rem;
+            margin: 1rem 0;
+            padding-top: 2rem;
+            line-height: 5rem;
+            font-weight: 600;
+            font-family: 'Harmattan', 'Promt', sans-serif;
         }
 
         article.main__right {
@@ -243,10 +255,19 @@
                 width: calc(100vw - var(--sidebar-max-width));
             }
 
+            nav.nav {
+                padding-left: var(--main-x-padding) !important;
+            }
 
         }
 
         /* MEDIA QUERYS */
+        @media only screen and (max-width: 767px) {
+            .sidebar__title {
+                padding-top: 25px;
+            }
+        }
+
         @media only screen and (max-width: 430px) {
             .nav-menu {
                 margin-left: 10px;
@@ -271,6 +292,14 @@
                 padding: 0 var(--main-x-padding);
             }
 
+            nav.nav {
+                padding: 15px;
+            }
+
+            .nav-brand {
+                font-size: 1.5rem;
+            }
+
             .sidebar {
                 max-width: var(--sidebar-max-width);
             }
@@ -284,9 +313,18 @@
             .sidebar__fixed-compliment {
                 position: absolute;
                 margin-left: 280px;
-                padding-left: var(--main-x-padding);
                 height: var(--main-height);
                 width: calc(100vw - var(--sidebar-max-width));
+            }
+
+            .main-content__container {
+                background: var(--background-image);
+            }
+
+            .main-content__wrapper {
+                padding-left: var(--main-x-padding);
+                padding-bottom: 500px;
+                background: var(--background-image);
             }
         }
 
@@ -298,6 +336,10 @@
             .main-content__container {
                 max-width: 960px;
                 margin: 0 auto;
+            }
+
+            .main__title {
+                margin: 1.5rem 0;
             }
         }
 
@@ -322,12 +364,12 @@
 
 <body>
     <header class="header header--shadow">
-        <nav id="main-nav" class="nav contain">
-            <div class="nav-brand fancy-font"><a href="./">SLYDER</a></div>
+        <nav id="main-nav" class="nav nav--main">
+            <div class="nav-brand fancy-font"><a href="/">SLYDER</a></div>
             <div class="nav-menu">
-                <a href="./usage" class="nav-item">Usage</a>
-                <a href="./docs" class="nav-item">Docs</a>
-                <a href="./example" class="nav-item">Example</a>
+                <a href="/usage" class="nav-item">Usage</a>
+                <a href="/docs" class="nav-item">Docs</a>
+                <a href="/example" class="nav-item">Example</a>
             </div>
         </nav>
     </header>
@@ -363,134 +405,182 @@
 
                 .page-index {
                     --background-image: #7df5be;
-                    --title-color: #0D663E;
-                    --content-color: #137347;
+                    --title-color: #066A3D;
+                    --content-color: #087543;
                 }
             </style>
-            <div class="main-content__container">
-                <h1 class="main__title fancy-font">Welcome Home</h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos aliquid ullam tempora, quae, corporis
-                    explicabo et architecto rerum at doloremque qui aperiam nemo laudantium fugiat exercitationem ea!
-                    Minima, rerum dolor!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, ratione? Vero ut earum porro
-                    nemo
-                    animi incidunt explicabo officia, facere est quo numquam atque adipisci tempora, iusto repellendus
-                    rem
-                    culpa?</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum veritatis repellendus numquam optio
-                    velit,
-                    suscipit unde incidunt? Mollitia minus non iusto incidunt dolore molestiae, saepe ea, impedit
-                    aperiam
-                    iure doloremque!</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos aliquid ullam tempora, quae, corporis
-                    explicabo et architecto rerum at doloremque qui aperiam nemo laudantium fugiat exercitationem ea!
-                    Minima, rerum dolor!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, ratione? Vero ut earum porro
-                    nemo
-                    animi incidunt explicabo officia, facere est quo numquam atque adipisci tempora, iusto repellendus
-                    rem
-                    culpa?</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum veritatis repellendus numquam optio
-                    velit,
-                    suscipit unde incidunt? Mollitia minus non iusto incidunt dolore molestiae, saepe ea, impedit
-                    aperiam
-                    iure doloremque!</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos aliquid ullam tempora, quae, corporis
-                    explicabo et architecto rerum at doloremque qui aperiam nemo laudantium fugiat exercitationem ea!
-                    Minima, rerum dolor!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, ratione? Vero ut earum porro
-                    nemo
-                    animi incidunt explicabo officia, facere est quo numquam atque adipisci tempora, iusto repellendus
-                    rem
-                    culpa?</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum veritatis repellendus numquam optio
-                    velit,
-                    suscipit unde incidunt? Mollitia minus non iusto incidunt dolore molestiae, saepe ea, impedit
-                    aperiam
-                    iure doloremque!</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos aliquid ullam tempora, quae, corporis
-                    explicabo et architecto rerum at doloremque qui aperiam nemo laudantium fugiat exercitationem ea!
-                    Minima, rerum dolor!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, ratione? Vero ut earum porro
-                    nemo
-                    animi incidunt explicabo officia, facere est quo numquam atque adipisci tempora, iusto repellendus
-                    rem
-                    culpa?</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum veritatis repellendus numquam optio
-                    velit,
-                    suscipit unde incidunt? Mollitia minus non iusto incidunt dolore molestiae, saepe ea, impedit
-                    aperiam
-                    iure doloremque!</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos aliquid ullam tempora, quae, corporis
-                    explicabo et architecto rerum at doloremque qui aperiam nemo laudantium fugiat exercitationem ea!
-                    Minima, rerum dolor!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, ratione? Vero ut earum porro
-                    nemo
-                    animi incidunt explicabo officia, facere est quo numquam atque adipisci tempora, iusto repellendus
-                    rem
-                    culpa?</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum veritatis repellendus numquam optio
-                    velit,
-                    suscipit unde incidunt? Mollitia minus non iusto incidunt dolore molestiae, saepe ea, impedit
-                    aperiam
-                    iure doloremque!</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos aliquid ullam tempora, quae, corporis
-                    explicabo et architecto rerum at doloremque qui aperiam nemo laudantium fugiat exercitationem ea!
-                    Minima, rerum dolor!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, ratione? Vero ut earum porro
-                    nemo
-                    animi incidunt explicabo officia, facere est quo numquam atque adipisci tempora, iusto repellendus
-                    rem
-                    culpa?</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum veritatis repellendus numquam optio
-                    velit,
-                    suscipit unde incidunt? Mollitia minus non iusto incidunt dolore molestiae, saepe ea, impedit
-                    aperiam
-                    iure doloremque!</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos aliquid ullam tempora, quae, corporis
-                    explicabo et architecto rerum at doloremque qui aperiam nemo laudantium fugiat exercitationem ea!
-                    Minima, rerum dolor!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, ratione? Vero ut earum porro
-                    nemo
-                    animi incidunt explicabo officia, facere est quo numquam atque adipisci tempora, iusto repellendus
-                    rem
-                    culpa?</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum veritatis repellendus numquam optio
-                    velit,
-                    suscipit unde incidunt? Mollitia minus non iusto incidunt dolore molestiae, saepe ea, impedit
-                    aperiam
-                    iure doloremque!</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos aliquid ullam tempora, quae, corporis
-                    explicabo et architecto rerum at doloremque qui aperiam nemo laudantium fugiat exercitationem ea!
-                    Minima, rerum dolor!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, ratione? Vero ut earum porro
-                    nemo
-                    animi incidunt explicabo officia, facere est quo numquam atque adipisci tempora, iusto repellendus
-                    rem
-                    culpa?</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum veritatis repellendus numquam optio
-                    velit,
-                    suscipit unde incidunt? Mollitia minus non iusto incidunt dolore molestiae, saepe ea, impedit
-                    aperiam
-                    iure doloremque!</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos aliquid ullam tempora, quae, corporis
-                    explicabo et architecto rerum at doloremque qui aperiam nemo laudantium fugiat exercitationem ea!
-                    Minima, rerum dolor!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, ratione? Vero ut earum porro
-                    nemo
-                    animi incidunt explicabo officia, facere est quo numquam atque adipisci tempora, iusto repellendus
-                    rem
-                    culpa?</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum veritatis repellendus numquam optio
-                    velit,
-                    suscipit unde incidunt? Mollitia minus non iusto incidunt dolore molestiae, saepe ea, impedit
-                    aperiam
-                    iure doloremque!</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum veritatis repellendus numquam optio
-                    velit,
-                    suscipit unde incidunt? Mollitia minus non iusto incidunt dolore molestiae, saepe ea, impedit
-                    aperiam
-                    iure doloremque!</p>
+            <div class="main-content__wrapper">
+                <div class="main-content__container">
+                    <h1 class="main__title">Modern Page Transitions</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos aliquid ullam tempora, quae,
+                        corporis
+                        explicabo et architecto rerum at doloremque qui aperiam nemo laudantium fugiat exercitationem
+                        ea!
+                        Minima, rerum dolor!</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, ratione? Vero ut earum
+                        porro
+                        nemo
+                        animi incidunt explicabo officia, facere est quo numquam atque adipisci tempora, iusto
+                        repellendus
+                        rem
+                        culpa?</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum veritatis repellendus numquam
+                        optio
+                        velit,
+                        suscipit unde incidunt? Mollitia minus non iusto incidunt dolore molestiae, saepe ea, impedit
+                        aperiam
+                        iure doloremque!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos aliquid ullam tempora, quae,
+                        corporis
+                        explicabo et architecto rerum at doloremque qui aperiam nemo laudantium fugiat exercitationem
+                        ea!
+                        Minima, rerum dolor!</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, ratione? Vero ut earum
+                        porro
+                        nemo
+                        animi incidunt explicabo officia, facere est quo numquam atque adipisci tempora, iusto
+                        repellendus
+                        rem
+                        culpa?</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum veritatis repellendus numquam
+                        optio
+                        velit,
+                        suscipit unde incidunt? Mollitia minus non iusto incidunt dolore molestiae, saepe ea, impedit
+                        aperiam
+                        iure doloremque!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos aliquid ullam tempora, quae,
+                        corporis
+                        explicabo et architecto rerum at doloremque qui aperiam nemo laudantium fugiat exercitationem
+                        ea!
+                        Minima, rerum dolor!</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, ratione? Vero ut earum
+                        porro
+                        nemo
+                        animi incidunt explicabo officia, facere est quo numquam atque adipisci tempora, iusto
+                        repellendus
+                        rem
+                        culpa?</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum veritatis repellendus numquam
+                        optio
+                        velit,
+                        suscipit unde incidunt? Mollitia minus non iusto incidunt dolore molestiae, saepe ea, impedit
+                        aperiam
+                        iure doloremque!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos aliquid ullam tempora, quae,
+                        corporis
+                        explicabo et architecto rerum at doloremque qui aperiam nemo laudantium fugiat exercitationem
+                        ea!
+                        Minima, rerum dolor!</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, ratione? Vero ut earum
+                        porro
+                        nemo
+                        animi incidunt explicabo officia, facere est quo numquam atque adipisci tempora, iusto
+                        repellendus
+                        rem
+                        culpa?</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum veritatis repellendus numquam
+                        optio
+                        velit,
+                        suscipit unde incidunt? Mollitia minus non iusto incidunt dolore molestiae, saepe ea, impedit
+                        aperiam
+                        iure doloremque!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos aliquid ullam tempora, quae,
+                        corporis
+                        explicabo et architecto rerum at doloremque qui aperiam nemo laudantium fugiat exercitationem
+                        ea!
+                        Minima, rerum dolor!</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, ratione? Vero ut earum
+                        porro
+                        nemo
+                        animi incidunt explicabo officia, facere est quo numquam atque adipisci tempora, iusto
+                        repellendus
+                        rem
+                        culpa?</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum veritatis repellendus numquam
+                        optio
+                        velit,
+                        suscipit unde incidunt? Mollitia minus non iusto incidunt dolore molestiae, saepe ea, impedit
+                        aperiam
+                        iure doloremque!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos aliquid ullam tempora, quae,
+                        corporis
+                        explicabo et architecto rerum at doloremque qui aperiam nemo laudantium fugiat exercitationem
+                        ea!
+                        Minima, rerum dolor!</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, ratione? Vero ut earum
+                        porro
+                        nemo
+                        animi incidunt explicabo officia, facere est quo numquam atque adipisci tempora, iusto
+                        repellendus
+                        rem
+                        culpa?</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum veritatis repellendus numquam
+                        optio
+                        velit,
+                        suscipit unde incidunt? Mollitia minus non iusto incidunt dolore molestiae, saepe ea, impedit
+                        aperiam
+                        iure doloremque!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos aliquid ullam tempora, quae,
+                        corporis
+                        explicabo et architecto rerum at doloremque qui aperiam nemo laudantium fugiat exercitationem
+                        ea!
+                        Minima, rerum dolor!</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, ratione? Vero ut earum
+                        porro
+                        nemo
+                        animi incidunt explicabo officia, facere est quo numquam atque adipisci tempora, iusto
+                        repellendus
+                        rem
+                        culpa?</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum veritatis repellendus numquam
+                        optio
+                        velit,
+                        suscipit unde incidunt? Mollitia minus non iusto incidunt dolore molestiae, saepe ea, impedit
+                        aperiam
+                        iure doloremque!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos aliquid ullam tempora, quae,
+                        corporis
+                        explicabo et architecto rerum at doloremque qui aperiam nemo laudantium fugiat exercitationem
+                        ea!
+                        Minima, rerum dolor!</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, ratione? Vero ut earum
+                        porro
+                        nemo
+                        animi incidunt explicabo officia, facere est quo numquam atque adipisci tempora, iusto
+                        repellendus
+                        rem
+                        culpa?</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum veritatis repellendus numquam
+                        optio
+                        velit,
+                        suscipit unde incidunt? Mollitia minus non iusto incidunt dolore molestiae, saepe ea, impedit
+                        aperiam
+                        iure doloremque!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos aliquid ullam tempora, quae,
+                        corporis
+                        explicabo et architecto rerum at doloremque qui aperiam nemo laudantium fugiat exercitationem
+                        ea!
+                        Minima, rerum dolor!</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, ratione? Vero ut earum
+                        porro
+                        nemo
+                        animi incidunt explicabo officia, facere est quo numquam atque adipisci tempora, iusto
+                        repellendus
+                        rem
+                        culpa?</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum veritatis repellendus numquam
+                        optio
+                        velit,
+                        suscipit unde incidunt? Mollitia minus non iusto incidunt dolore molestiae, saepe ea, impedit
+                        aperiam
+                        iure doloremque!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum veritatis repellendus numquam
+                        optio
+                        velit,
+                        suscipit unde incidunt? Mollitia minus non iusto incidunt dolore molestiae, saepe ea, impedit
+                        aperiam
+                        iure doloremque!</p>
+                </div>
             </div>
         </article>
     </template>
@@ -508,19 +598,22 @@
                     --content-color: #044A77;
                 }
             </style>
-            <div class="main-content__container">
-                <h1 class="main__title fancy-font">Usage</h1>
-                <p>This is a magical example.</p>
-                <p>Lorem ipsum elit. Eligendi praesentium ea, totam magnam magni velit. Quae nemo vitae inventore
-                    cumque.
-                    Neque harum dolore fugiat, dolorem facilis recusandae! Magnam, minima!</p>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus ullam natus veniam
-                    voluptatum,
-                    deserunt dolore ea fuga nemo vel cumque optio. Iusto eaque nulla voluptatum aut qui.</p>
-                <p>Lorem ipsum, dolor adipisicing elit. Dignissimos magni cumque accusamus quaerat nulla soluta,
-                    molestiae
-                    deserunt praesentium ipsam laborum excepturi obcaecati unde voluptatem. Odit voluptas ducimus non?
-                </p>
+            <div class="main-content__wrapper">
+                <div class="main-content__container">
+                    <h1 class="main__title">Usage</h1>
+                    <p>This is a magical example.</p>
+                    <p>Lorem ipsum elit. Eligendi praesentium ea, totam magnam magni velit. Quae nemo vitae inventore
+                        cumque.
+                        Neque harum dolore fugiat, dolorem facilis recusandae! Magnam, minima!</p>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus ullam natus veniam
+                        voluptatum,
+                        deserunt dolore ea fuga nemo vel cumque optio. Iusto eaque nulla voluptatum aut qui.</p>
+                    <p>Lorem ipsum, dolor adipisicing elit. Dignissimos magni cumque accusamus quaerat nulla soluta,
+                        molestiae
+                        deserunt praesentium ipsam laborum excepturi obcaecati unde voluptatem. Odit voluptas ducimus
+                        non?
+                    </p>
+                </div>
             </div>
         </article>
     </template>
@@ -538,20 +631,72 @@
                     --content-color: #811F1A;
                 }
             </style>
-            <div class="main-content__container">
-                <h1 class="main__title fancy-font">Docs</h1>
-                <p>This is a magical example.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum sit eum quam harum obcaecati? Totam
-                    provident voluptate quas fuga iste impedit, porro suscipit rerum possimus qui, reprehenderit dolor
-                    vel
-                    veniam.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto consectetur magnam possimus ea nostrum
-                    sed
-                    tempora reiciendis sit. Vel dolore praesentium quaerat repellat libero commodi voluptatem, magnam
-                    numquam id consequatur.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni delectus voluptas, obcaecati fuga
-                    exercitationem dignissimos totam. Eos, tempore, doloremque facilis saepe alias earum perferendis
-                    reprehenderit suscipit nemo aliquid non! Illo.</p>
+            <div class="main-content__wrapper">
+                <div class="main-content__container">
+                    <h1 class="main__title">Docs</h1>
+                    <p>This is a magical example.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum sit eum quam harum obcaecati?
+                        Totam
+                        provident voluptate quas fuga iste impedit, porro suscipit rerum possimus qui, reprehenderit
+                        dolor
+                        vel
+                        veniam.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto consectetur magnam possimus ea
+                        nostrum
+                        sed
+                        tempora reiciendis sit. Vel dolore praesentium quaerat repellat libero commodi voluptatem,
+                        magnam
+                        numquam id consequatur.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni delectus voluptas, obcaecati fuga
+                        exercitationem dignissimos totam. Eos, tempore, doloremque facilis saepe alias earum perferendis
+                        reprehenderit suscipit nemo aliquid non! Illo.</p>
+                    <h2 id="Introduction">Introduction</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum sit eum quam harum obcaecati?
+                        Totam
+                        provident voluptate quas fuga iste impedit, porro suscipit rerum possimus qui, reprehenderit
+                        dolor
+                        vel
+                        veniam.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto consectetur magnam possimus ea
+                        nostrum
+                        sed
+                        tempora reiciendis sit. Vel dolore praesentium quaerat repellat libero commodi voluptatem,
+                        magnam
+                        numquam id consequatur.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni delectus voluptas, obcaecati fuga
+                        exercitationem dignissimos totam. Eos, tempore, doloremque facilis saepe alias earum perferendis
+                        reprehenderit suscipit nemo aliquid non! Illo.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum sit eum quam harum obcaecati?
+                        Totam
+                        provident voluptate quas fuga iste impedit, porro suscipit rerum possimus qui, reprehenderit
+                        dolor
+                        vel
+                        veniam.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto consectetur magnam possimus ea
+                        nostrum
+                        sed
+                        tempora reiciendis sit. Vel dolore praesentium quaerat repellat libero commodi voluptatem,
+                        magnam
+                        numquam id consequatur.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni delectus voluptas, obcaecati fuga
+                        exercitationem dignissimos totam. Eos, tempore, doloremque facilis saepe alias earum perferendis
+                        reprehenderit suscipit nemo aliquid non! Illo.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum sit eum quam harum obcaecati?
+                        Totam
+                        provident voluptate quas fuga iste impedit, porro suscipit rerum possimus qui, reprehenderit
+                        dolor
+                        vel
+                        veniam.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto consectetur magnam possimus ea
+                        nostrum
+                        sed
+                        tempora reiciendis sit. Vel dolore praesentium quaerat repellat libero commodi voluptatem,
+                        magnam
+                        numquam id consequatur.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni delectus voluptas, obcaecati fuga
+                        exercitationem dignissimos totam. Eos, tempore, doloremque facilis saepe alias earum perferendis
+                        reprehenderit suscipit nemo aliquid non! Illo.</p>
+                </div>
             </div>
         </article>
     </template>
@@ -569,20 +714,26 @@
                     --content-color: #5E2A95;
                 }
             </style>
-            <div class="main-content__container">
-                <h1 class="main__title fancy-font">Example</h1>
-                <p>This is a magical example.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi praesentium ea, totam magnam magni
-                    velit. Quae nemo accusamus vitae inventore cumque. Neque harum dolore fugiat, dolorem facilis
-                    recusandae! Magnam, minima!</p>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus sequi, molestiae unde ullam
-                    natus veniam voluptatum, deserunt dolore ea fuga nemo vel cumque optio. Iusto eaque nulla voluptatum
-                    aut
-                    qui.</p>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos incidunt dolore magni cumque
-                    accusamus quaerat nulla soluta, molestiae deserunt praesentium ipsam laborum excepturi obcaecati
-                    unde
-                    voluptatem. Odit voluptas ducimus non?</p>
+            <div class="main-content__wrapper">
+                <div class="main-content__container">
+                    <h1 class="main__title">Example</h1>
+                    <p>This is a magical example.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi praesentium ea, totam magnam
+                        magni
+                        velit. Quae nemo accusamus vitae inventore cumque. Neque harum dolore fugiat, dolorem facilis
+                        recusandae! Magnam, minima!</p>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus sequi, molestiae unde
+                        ullam
+                        natus veniam voluptatum, deserunt dolore ea fuga nemo vel cumque optio. Iusto eaque nulla
+                        voluptatum
+                        aut
+                        qui.</p>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos incidunt dolore magni
+                        cumque
+                        accusamus quaerat nulla soluta, molestiae deserunt praesentium ipsam laborum excepturi obcaecati
+                        unde
+                        voluptatem. Odit voluptas ducimus non?</p>
+                </div>
             </div>
         </article>
     </template>
@@ -676,7 +827,7 @@
                 }
             </style>
             <div class="notfound">
-                <svg viewBox="0 0 360 300">
+                <svg viewBox="0 0 380 300">
                     <symbol id="s-text">
                         <text text-anchor="middle" x="50%" y="80%">404</text>
                     </symbol>
@@ -694,25 +845,9 @@
                     <a href="./" class="notfound">Back to Home</a>
                 </div>
             </div>
+            </div>
         </article>
     </template>
-
-    <!-- ROUTING USING page.js -->
-    <!-- <script src="/slyder/page.js"></script> -->
-    <!-- <script src="/slyder/routes.js"></script> -->
-    <!-- SLYDER ANIMATIONS -->
-    <!-- <link rel="stylesheet" href="/slyder/css/slyder.css"> -->
-    <!-- ADD SLYDER LINK LISTENERS -->
-    <!-- <script>
-        'use strict';
-        let slyderLinkListenerOptions = {
-            containerSelector: 'header',
-            linkSelector: 'a'
-        }
-
-        slyder.addLinkListeners(slyderLinkListenerOptions);
-    
-    </script> -->
 
 </body>
 

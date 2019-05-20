@@ -1,37 +1,3 @@
-
-
-//     this.current.classList = outClass;
-//     this.next.classList = inClass;
-//     this.current.addEventListener(this.animationEndEvent, () => {
-//         this.current.removeEventListener(this.animationEndEvent);
-//         this.currentAnimationEnded = true;
-//         if (this.nextAnimationEnded === true) this.handleEndAnimation.bind(this);
-//     });
-//     this.next.addEventListener(this.animataionEndEvent, () => {
-//         this.next.removeEventListener(this.animataionEndEvent);
-//         this.nextAnimationEnded = true;
-//         if (this.currentAnimationEnded === true) this.handleEndAnimation.bind(this);
-
-//     });
-
-
-// var store = (function Store() {
-//     function get(key) {
-//         JSON.parse(localStorage.getItem(key));
-//     }
-
-//     function set(key, value) {
-//         localStorage.setItem(key, value);
-//     }
-//     return {
-//         get,
-//         set
-//     };
-// })();
-
-
-
-
 export function Slyder(animationType, animationDirection) {
     // const current = document.querySelector('.sly-page');
     // const next = document.querySelector('.sly-page--next');
@@ -102,8 +68,6 @@ export function Slyder(animationType, animationDirection) {
             }
         }
 
-        console.log(paths)
-
     }
 
     function compareIndexes(nextPath = '') {
@@ -138,7 +102,7 @@ export function Slyder(animationType, animationDirection) {
         if (animationDirection === 'vertical') {
             caseName = animationType + vertical[nextIndexHigher];
         }
-        console.log(caseName)
+
         setAnimationClasses(caseName);
     }
 

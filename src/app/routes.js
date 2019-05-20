@@ -7,6 +7,7 @@ import {
 const slyder = new Slyder('move', 'horizontal');
 const  header = document.getElementsByTagName('header')[0];
 slyder.addLinkIndexes(header, 'a');
+let firstLoad = true;
 
 function route(
     slyder,
@@ -40,7 +41,7 @@ function route(
     setMetadata(data);
     transition(() => slyder.animate('.sly-page', '.sly-page--next'));
 
-    // page.exit(`${data.path}`, removeResizeListeners);
+    firstLoad = false;
 }
 
 
@@ -52,8 +53,13 @@ const indexData = {
     description: 'A simple page transition component for single page applications.'
 }
 
-function index() {
-    if (slyder.isAnimating()) return;
+function index(ctx, next) {
+    let h = window.location.hash.slice(2);
+    if(h == "") {h = "/";}
+    if (h === indexData.path) {
+        if (firstLoad) {}
+        else {return;}
+    }
     route(slyder, indexData)
 }
 
@@ -65,7 +71,7 @@ const usageData = {
     description: 'How to use Slyder page transitions for single page applications. When to use Slyder.'
 }
 
-function usage() {
+function usage(ctx, next) {
     route(slyder, usageData)
 }
 
@@ -78,7 +84,7 @@ const docsData = {
     description: 'Learn about Slyder page transitions for single page applicaitons. Use Slyder for a superior UX.'
 }
 
-function docs() {
+function docs(ctx, next) {
     route(slyder, docsData)
 }
 
@@ -90,7 +96,7 @@ const exampleData = {
     description: 'A walk through of Slyder page transitions being used. Look at the code.'
 }
 
-function example() {
+function example(ctx, next) {
     route(slyder, exampleData)
 }
 
@@ -102,7 +108,7 @@ const notfoundData = {
     description: 'Slyder page transitions for single page applications 404 page.'
 }
 
-function notfound() {
+function notfound(ctx, next) {
     route(slyder, notfoundData)
 }
 
@@ -112,7 +118,7 @@ function notfound() {
 page('/', index);
 page('/usage', usage);
 page('/docs', docs);
-// page('/docs/:page', docs);
+page('/docs/:page', docs);
 page('/example', example);
 page('*', notfound);
 page({

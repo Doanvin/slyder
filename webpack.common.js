@@ -1,6 +1,7 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const webpack = require('webpack');
 const autoprefixer = require("autoprefixer");
+const { BaseHrefWebpackPlugin } = require('base-href-webpack-plugin');
 
 module.exports = {
     entry: {
@@ -39,6 +40,7 @@ module.exports = {
                     autoprefixer()
                 ]
             }
-        })
+        }),
+        new BaseHrefWebpackPlugin({ baseHref: '/#!' })
     ],
 }
