@@ -88,6 +88,7 @@ export function Slyder() {
     const animationEndEventName = whichAnimationEvent();
     let outClass = ['sly-moveToLeft'];
     let inClass = ['sly-moveFromRight'];
+    let paths = [];
 
     async function animation(currentPage, nextPage) {
         const current = document.querySelector(currentPage);
@@ -129,22 +130,43 @@ export function Slyder() {
         ]).then(updateClasses(current, next));
     }
 
-    function addLinkListeners(options = {
-        containerSelector: 'header',
-        linkSelector: 'a'
-    }) {
-        // let header = document.querySelector(options.containerSelector);
-        // let linkTags = header.querySelectorAll(options.linkSelector);
-        // let links = Array.prototype.slice.call(linkTags);
+    function addLinkIndexes(container, linkSelector = 'a') {
+        if (!container instanceof HTMLElement) return console.error('container argument passed to Slyder.addLinkIndexes must be of type HTMLElement');
+        let linkTags = container.querySelectorAll(linkSelector);
+        let links = Array.prototype.slice.call(linkTags);
 
         // function handleClick() {
-        //     if (event.target.dataset.slyIdx < store.get())
+        //     event.target.dataset[slyIdx]
         // }
 
-        // for (let i = 0; i < links.length; i++) {
-        //     links[i].dataset.slyIdx = i;
-        //     links[i].addEventListener('click', handleClick);
-        // }
+        
+        for (let i = 0; i < links.length; i++) {
+            links[i].dataset.slyIdx = i;
+            // links[i].addEventListener('click', handleClick);
+            // only add indexes to links within this website
+            if (links[i]['hostname'] === window.location.hostname) {
+                paths.push(links[i]['pathname']);
+            }
+        }
+
+        console.log(paths)
+
+    }
+
+    function compareIndexes(nextPath = '') {
+        try {
+            let currentIdx = paths.findIndex((element) => {
+                return element == window.location.hash.slice(2);
+            });
+            if (currentIdx === -1 || currentIdx == undefined) {currentIdx = 0}
+            console.log('curr: ' + currentIdx);
+            let nextIdx = paths.findIndex((element) => {
+                return element == nextPath;
+            });
+            console.log('next: ' + nextIdx);
+            // slyder.setAnimation();
+        }
+        catch (error) {console.error(error)}
     }
 
     // replace the content of the of the element with id arg
@@ -154,10 +176,17 @@ export function Slyder() {
         }
         isAnimating = true;
 
+        try {
+            const template = document.getElementById(id);
+        } catch (error) {
+             console.error(error);
+             
+        }
+
         // check for <template> support
         if ('content' in document.createElement('template')) {
             // $content is the element who's content you would like to append to
-            const $content = document.getElementById('main-container');
+            const $content = document.getElementById('sly-container');
 
             // select the template used to replace $content
             const template = document.getElementById(id);
@@ -187,6 +216,8 @@ export function Slyder() {
 
         const animationKeys = Object.keys(animations);
 
+        // returns the first key that matches an animation property
+        // of the HMTLElement for users browser
         function getKey(myKeys) {
             let keys = [];
             myKeys.forEach((key) => {
@@ -201,11 +232,16 @@ export function Slyder() {
 
     }
 
+    const _isAnimating = () => isAnimating;
+    const _paths = () => paths;
+
     // Public Api for Slyder instances
     return {
         animate: animation,
-        addLinkListeners,
+        addLinkIndexes,
         replaceContent,
-        isAnimating
+        isAnimating: _isAnimating,
+        paths: _paths,
+        compareIndexes
     }
 };

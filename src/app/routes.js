@@ -4,7 +4,9 @@ import {
     Slyder
 } from "./slyder";
 
-var slyder = new Slyder();
+const slyder = new Slyder();
+const  header = document.getElementsByTagName('header')[0];
+slyder.addLinkIndexes(header, 'a');
 
 function route(
     slyder,
@@ -16,6 +18,8 @@ function route(
         description: ''
     }
 ) {
+    slyder.compareIndexes(data.path);
+    
 
     // Set the metadata for the new page
     // meta is an object with title and description properties
@@ -49,6 +53,7 @@ const indexData = {
 }
 
 function index() {
+    if (slyder.isAnimating()) return;
     route(slyder, indexData)
 }
 

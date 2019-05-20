@@ -1,3 +1,4 @@
+// Remember to include only neccessary polyfills in production
 import "@babel/polyfill";
 import './app/routes';
 import './master.scss';
